@@ -4,13 +4,19 @@ const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 // const errorHandler = require('middleware/error-handler');
+function errorHandler(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+}
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // global error handler
 // app.use(errorHandler);
+
+
 
 // const connection = mysql.createConnection({
 //   host: 'localhost',
@@ -73,6 +79,7 @@ app.set('views', 'views/');
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/adminlte', express.static(path.join(__dirname, 'node_modules/admin-lte')));
 
+// Authentication  Routes
 app.get('/', (req, res) => {
   res.render('pages/auth/login.ejs', { title: 'Component Craze' });
  });
@@ -89,6 +96,7 @@ app.get('/auth/recover-password', (req, res) => {
   res.render('pages/auth/recover-password.ejs', { title: 'Component Craze' });
 });
 
+// main Admin (build wizard) routes
 app.get('/dashboard', (req, res) => {
   res.render('pages/dashboard.ejs', { title: 'Component Craze' });
 });
@@ -97,9 +105,9 @@ app.get('/dashboard', (req, res) => {
 //     res.render('pages/category.ejs', { category: [] });
 //   });
 
-app.get('/category/addCategory', (req, res) => {
-    res.render('pages/addCategory.ejs', { title: 'Component1111111111 Craze' });
-  });
+// app.get('/category/addCategory', (req, res) => {
+//     res.render('pages/addCategory.ejs', { title: 'Component1111111111 Craze' });
+//   });
 
   app.get('/company', (req, res) => {
     res.render('pages/company.ejs', { title: 'Component Craze' });
@@ -109,21 +117,52 @@ app.get('/company/addCompany', (req, res) => {
     res.render('pages/addCompany.ejs', { title: 'Component1111111111 Craze' });
   });
 
-  app.get('/auth/login', (req, res) => {
-    res.render('pages/', { title: 'Component Craze' });
-  });
 
   app.get('/deliveryPerson', (req, res) => {
     res.render('pages/deliveryPerson.ejs', { title: 'Component Craze' });
   });
 
+  // app.get('/offer', (req, res) => {
+  //   res.render('pages/offer.ejs', { title: 'Component Craze' });
+  // });
+
+  app.get('/offer/addOffer', (req, res) => {
+    res.render('pages/addOffer.ejs', { title: 'Component Craze' });
+  });
+
+
+  // Supplier's Routes
+  app.get('/sup_dashborad', (req, res) => {
+    res.render('pages/supllier/dashboard.ejs', { title: 'Component Craze' });
+  });
+
+  app.get('/addItems', (req, res) => {
+    res.render('pages/supllier/addItems.ejs', { title: 'Component Craze' });
+  });
+
+  app.get('/motherboard', (req, res) => {
+    res.render('pages/supllier/motherboard.ejs', { title: 'Component Craze' });
+  });
+
+  
+
+  // build wizard (customer side's routes)
+  app.get('/home-page', (req, res) => {
+    res.render('pages/build-wizard/home-page.ejs', { title: 'Component Craze' });
+  });
+
+
+
 // Require employee routes
-const categoryRoutes = require('./routes/categoryRoute');
-const category = require('./db/models/category');
+const offerRoutes = require('./routes/offer-route');
+const offer = require('./db/models/offer');
+const cabinet = require('./routes/cabinet-route');
 
 // using as middleware
-app.use('/category', categoryRoutes)
+app.use('/offer', offerRoutes)
+app.use('/cabinet', cabinet)
 
+app.use(errorHandler);
 
 app.listen(3000, () => {
   console.log('Server started on port 3000');

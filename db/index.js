@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 
 const basename = path.basename(__filename);
 const db = {};
-const sequelize = new Sequelize("demo1", "root", "", {
+const sequelize = new Sequelize("buildwizard", "root", "", {
   host: "127.0.0.1",
   dialect: "mysql",
 });
