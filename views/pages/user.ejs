@@ -21,8 +21,8 @@
   </head>
   <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-      <%- include('../../partials/top-nav'); %> <%-
-      include('../../partials/sidebar'); %>
+      <%- include('../partials/top-nav'); %> <%-
+      include('../partials/sidebar');%>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -30,12 +30,12 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Motherboard</h1>
+                <h1>User Details</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item">
-                    <a href="/addItems">Add Item</a>
+                    <a href="/user/addUser">Add User</a>
                   </li>
                 </ol>
               </div>
@@ -136,7 +136,17 @@
                         colspan="1"
                         aria-label="Rendering engine: activate to sort column ascending"
                       >
-                        Image
+                      Name
+                      </th>
+                      <th
+                        class="sorting"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Rendering engine: activate to sort column ascending"
+                      >
+                        Mobile Number
                       </th>
                       <th
                         class="sorting sorting_desc"
@@ -147,7 +157,7 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                        Name
+                        Email
                       </th>
                       <th
                         class="sorting sorting_desc"
@@ -158,73 +168,7 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                        Price
-                      </th>
-                      <th
-                        class="sorting sorting_desc"
-                        tabindex="0"
-                        aria-controls="example1"
-                        rowspan="1"
-                        colspan="1"
-                        aria-label="Platform(s): activate to sort column ascending"
-                        aria-sort="descending"
-                      >
-                        Quantity
-                      </th>
-                      <th
-                        class="sorting sorting_desc"
-                        tabindex="0"
-                        aria-controls="example1"
-                        rowspan="1"
-                        colspan="1"
-                        aria-label="Platform(s): activate to sort column ascending"
-                        aria-sort="descending"
-                      >
-                        CPU Socket
-                      </th>
-                      <th
-                        class="sorting sorting_desc"
-                        tabindex="0"
-                        aria-controls="example1"
-                        rowspan="1"
-                        colspan="1"
-                        aria-label="Platform(s): activate to sort column ascending"
-                        aria-sort="descending"
-                      >
-                        Maximum Ram Capicity
-                      </th>
-                      <th
-                        class="sorting sorting_desc"
-                        tabindex="0"
-                        aria-controls="example1"
-                        rowspan="1"
-                        colspan="1"
-                        aria-label="Platform(s): activate to sort column ascending"
-                        aria-sort="descending"
-                      >
-                        PCI Slots
-                      </th>
-                      <th
-                        class="sorting sorting_desc"
-                        tabindex="0"
-                        aria-controls="example1"
-                        rowspan="1"
-                        colspan="1"
-                        aria-label="Platform(s): activate to sort column ascending"
-                        aria-sort="descending"
-                      >
-                      Sata Ports
-                      </th>
-                      <th
-                        class="sorting sorting_desc"
-                        tabindex="0"
-                        aria-controls="example1"
-                        rowspan="1"
-                        colspan="1"
-                        aria-label="Platform(s): activate to sort column ascending"
-                        aria-sort="descending"
-                      >
-                        USB Ports
+                        Role
                       </th>
                       <th
                         class="sorting"
@@ -239,24 +183,19 @@
                       <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
                     </tr>
                   </thead>
-                  <% if(typeof motherboard=='object' && motherboard.length){ for(var i =
-                  0; i< motherboard.length; i++) {%>
+                  <% if(typeof user=='object' && user.length){ for(var i = 0;
+                  i< user.length; i++) {%>
                   <tbody>
                     <tr class="odd">
                       <td class="dtr-control" tabindex="0">
-                        <%= motherboard[i].cabinet_ImageURL%>
+                        <%= user[i].fname +" "+user[i].lname %>
                       </td>
-                      <td><%= motherboard[i].nameMotherboard%></td>
-                      <td class="sorting_1"><%= motherboard[i].priceMotherboard%></td>
-                      <td class="sorting_1"><%= motherboard[i].quantityMotherboard%></td>
-                      <td class="sorting_1"><%= motherboard[i].cpu_socket%></td>
-                      <td class="sorting_1"><%= motherboard[i].ram_slots%></td>
-                      <td class="sorting_1"><%= motherboard[i].max_ram_capacity%></td>
-                      <td class="sorting_1"><%= motherboard[i].pci_slots%></td>
-                      <td class="sorting_1"><%= motherboard[i].sata_ports%></td>
+                      <td><%= user[i].phone_no%></td>
+                      <td><%= user[i].email%></td>
+                      <td><%= user[i].role%></td>
                       <td>
-                        <a href="/cabinet/<%= motherboard[i].idMotherboard%>?id=motherboard">Edit</a>
-                        <a href="/cabinet/delete/<%= motherboard[i].idMotherboard%>?id=motherboard"
+                        <a href="/user/<%= user[i].idUser%>">Edit</a>
+                        <a href="/user/delete/<%= user[i].idUser%>"
                           >Delete</a
                         >
                       </td>
@@ -287,9 +226,14 @@
       </div>
       <!-- /.content-wrapper -->
 
-      <%- include('../../partials/footer'); %>
+      <%- include('../partials/footer'); %>
     </div>
     <!-- ./wrapper -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
 
     <!-- jQuery -->
     <script src="./plugins/jquery/jquery.min.js"></script>

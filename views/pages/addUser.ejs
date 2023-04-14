@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AdminLTE 3 | Navbar & Tabs</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css" />
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="/plugins/sweetalert2/sweetalert2.min.css" />
+    <!-- Toastr -->
+    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <%- include('../partials/top-nav'); %> <%- include('../partials/sidebar');
+      %>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>User</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="/user">Back</a></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <!-- left column -->
+              <div class="col-md-12">
+                <!-- jquery validation -->
+                <div class="card card-primary">
+                  <!-- <div class="card-header">
+                <h3 class="card-title">Quick Example <small>jQuery Validation</small></h3>
+              </div> -->
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form
+                    id="quickForm" enctype="multipart/form-data"
+                    action="<%= typeof user=='object' && user.idUser ? '/user/update' : '/user/add' %>"
+                    method="post"
+                  >
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label for="user_name">First Name</label>
+                          <input
+                            type="hidden"
+                            name="idUser"
+                            value="<%= typeof user=='object' && user.idUser? user.idUser : '' %>"
+                          />
+                          <input
+                            type="text"
+                            name="fname"
+                            class="form-control"
+                            id="user_name"
+                            value="<%= typeof user=='object' && user.fname ? user.fname : '' %>"
+                            placeholder="Enter first name"
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <label for="PromoCode">Last Name</label>
+                          <input
+                            type="text"
+                            name="lname"
+                            class="form-control"
+                            id="company"
+                            value="<%= typeof user=='object' && user.lname ? user.lname : '' %>"
+                            placeholder="Enter last name"
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <label for="DsicountPercentage">Mobile Number</label>
+                          <input
+                            type="tel"
+                            name="phone_no"
+                            class="form-control"
+                            id="company"
+                            value="<%= typeof user=='object' && user.phone_no ? user.phone_no : '' %>"
+                            placeholder="Enter mobile number"
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <label for="MinimumAmount">Email</label>
+                          <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                            id="company"
+                            value="<%= typeof user=='object' && user.email ? user.email : '' %>"
+                            placeholder="Enter email id"
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <label for="start_date">Address</label>
+                          <textarea
+                            class="form-control"
+                            name="address"
+                            id="addressaddressaddress"
+                            style="width: 100%"
+                            placeholder="Enter user address"
+                          ><%= typeof user=='object' && user.address ? user.address : '' %></textarea>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="start_date">Role</label>
+                          <select
+                            id="dropdownItem"
+                            name="role"
+                            class="form-control select"
+                            data-placeholder="Select a Item"
+                            style="width: 100%"
+                          >
+                            <option value="" selected disabled>--Please choose A Role--</option>
+                            <option value="Delivery Person" <%= typeof user=='object' && user.role == 'Delivery Person' ? 'selected' : '' %>>
+                              Delivery Person
+                            </option>
+                            <option value="Technical Team"<%= typeof user=='object' && user.role == 'Technical Team' ? 'selected' : '' %>>
+                              Technical Team
+                            </option>
+                          </select>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="MinimumAmount">Date OF Birth</label>
+                          <input
+                            type="date"
+                            name="dob"
+                            class="form-control"
+                            id="company"
+                            value="<%= typeof user=='object' && user.dob ? user.dob : '' %>"
+                            placeholder="Enter date of birth"
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <label for="MinimumAmount">Aadhar Card Number</label>
+                          <input
+                            type="number"
+                            name="adharcard_no"
+                            class="form-control"
+                            id="company"
+                            value="<%= typeof user=='object' && user.adharcard_no ? user.adharcard_no : '' %>"
+                            placeholder="Enter aadhar card number"
+                          />
+                        </div>
+
+                        <div class="col-md-6">
+                          <label for="image">Aadhar Card Image</label>
+                          <input
+                            type="file"
+                            name="aadharCardImageURL"
+                            class="form-control"
+                            id="image_input_aadharcard"
+                            value="<%= typeof user=='object' && user.aadharCardImageURL ? user.aadharCardImageURL : '' %>"
+                            placeholder="Enter Dimention of cabinet"
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <a href="" download  id="aadharcard_image_download">
+                            <img src="/<%= typeof user=='object' && user.aadharCardImageURL ? user.aadharCardImageURL : '' %>" height="100" width="100" id="image_preview_aadharcard" style="padding: 10px;">
+                          </a>
+                        </div>
+                        
+
+                          
+                          
+                          <div class="col-md-6">
+                            <label for="ethernetport">Gender</label
+                            ><br />
+                            <div class="form-group">
+                              <div class="form-check">
+                                <input
+                                  type="radio"
+                                  name="gender"
+                                  value=0 <%= typeof user=='object' && user.gender == 0 ? 'checked' : '' %>
+                                />&nbsp; <label>Male</label> &nbsp; &nbsp;
+                                &nbsp;
+
+                                <input
+                                  type="radio"
+                                  name="gender"
+                                  value=1 <%= typeof user=='object' && user.gender == 1 ? 'checked' : '' %>
+                                />&nbsp;
+                                <label>Female</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="MinimumAmount">Pincode </label>
+                            <input
+                              type="number"
+                              name="pincode"
+                              class="form-control"
+                              id="company"
+                              value="<%= typeof user=='object' && user.pincode ? user.pincode : '' %>"
+                              placeholder="Enter pincode"
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label for="MinimumAmount">City </label>
+                            <input
+                              type="text"
+                              name="city"
+                              class="form-control"
+                              id="company"
+                              value="<%= typeof user=='object' && user.city ? user.city : '' %>"
+                              placeholder="Enter city"
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label for="MinimumAmount">State </label>
+                            <select
+                            id="dropdownItem"
+                            name="state"
+                            class="form-control select2"
+                            data-placeholder="Select a Item"
+                            style="width: 100%"
+                          >
+                            <option value=""selected disabled>--Please choose A State--</option>
+                            <option value="Andhra Pradesh"<%= typeof user=='object' && user.state == 'Andhra Pradesh' ? 'selected' : '' %>>Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh"<%= typeof user=='object' && user.state == 'Arunachal Pradesh' ? 'selected' : '' %>>Arunachal Pradesh</option>
+                            <option value="Assam"<%= typeof user=='object' && user.state == 'Assam' ? 'selected' : '' %>>Assam</option>
+                            <option value="Bihar"<%= typeof user=='object' && user.state == 'Bihar' ? 'selected' : '' %>>Bihar</option>
+                            <option value="Chhattisgarh"<%= typeof user=='object' && user.state == 'Chhattisgarh' ? 'selected' : '' %>>Chhattisgarh</option>
+                            <option value="Goa"<%= typeof user=='object' && user.state == 'Goa' ? 'selected' : '' %>>Goa</option>
+                            <option value="Gujarat"<%= typeof user=='object' && user.state == 'Gujarat' ? 'selected' : '' %>>Gujarat</option>
+                            <option value="Haryana"<%= typeof user=='object' && user.state == 'Haryana' ? 'selected' : '' %>>Haryana</option>
+                            <option value="Himachal Pradesh"<%= typeof user=='object' && user.state == 'Himachal Pradesh' ? 'selected' : '' %>>Himachal Pradesh</option>
+                            <option value="Jharkhand"<%= typeof user=='object' && user.state == 'Jharkhand' ? 'selected' : '' %>>Jharkhand</option>
+                            <option value="Karnataka"<%= typeof user=='object' && user.state == 'Karnataka' ? 'selected' : '' %>>Karnataka</option>
+                            <option value="Kerala"<%= typeof user=='object' && user.state == 'Kerala' ? 'selected' : '' %>>Kerala</option>
+                            <option value="Madhya Pradesh"<%= typeof user=='object' && user.state == 'Madhya Pradesh' ? 'selected' : '' %>>Madhya Pradesh</option>
+                            <option value="Maharashtra"<%= typeof user=='object' && user.state == 'Maharashtra' ? 'selected' : '' %>>Maharashtra</option>
+                            <option value="Manipur"<%= typeof user=='object' && user.state == 'Manipur' ? 'selected' : '' %>>Manipur</option>
+                            <option value="Meghalaya"<%= typeof user=='object' && user.state == 'Meghalaya' ? 'selected' : '' %>>Meghalaya</option>
+                            <option value="Mizoram"<%= typeof user=='object' && user.state == 'Mizoram' ? 'selected' : '' %>>Mizoram</option>
+                            <option value="Nagaland"<%= typeof user=='object' && user.state == 'Nagaland' ? 'selected' : '' %>>Nagaland</option>
+                            <option value="Odisha"<%= typeof user=='object' && user.state == 'Odisha' ? 'selected' : '' %>>Odisha</option>
+                            <option value="Punjab"<%= typeof user=='object' && user.state == 'Punjab' ? 'selected' : '' %>>Punjab</option>
+                            <option value="Rajasthan"<%= typeof user=='object' && user.state == 'Rajasthan' ? 'selected' : '' %>>Rajasthan</option>
+                            <option value="Sikkim"<%= typeof user=='object' && user.state == 'Sikkim' ? 'selected' : '' %>>Sikkim</option>
+                            <option value="Tamil Nadu"<%= typeof user=='object' && user.state == 'Tamil Nadu' ? 'selected' : '' %>>Tamil Nadu</option>
+                            <option value="Telangana"<%= typeof user=='object' && user.state == 'Telangana' ? 'selected' : '' %>>Telangana</option>
+                            <option value="Tripura"<%= typeof user=='object' && user.state == 'Tripura' ? 'selected' : '' %>>Tripura</option>
+                            <option value="Uttar Pradesh"<%= typeof user=='object' && user.state == 'Uttar Pradesh' ? 'selected' : '' %>>Uttar Pradesh</option>
+                            <option value="Uttarakhand"<%= typeof user=='object' && user.state == 'Uttarakhand' ? 'selected' : '' %>>Uttarakhand</option>
+                            <option value="West Bengal"<%= typeof user=='object' && user.state == 'West Bengal' ? 'selected' : '' %>>West Bengal</option>
+                          </select>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="MinimumAmount">Password </label>
+                            <input
+                              type="password"
+                              name="password"
+                              class="form-control"
+                              id="company"
+                              value="<%= typeof user=='object' && user.password ? user.password : '' %>"
+                              placeholder="Enter minimum amount"
+                            />
+                          </div>
+                          <div class="col-md-6">
+                            <label for="MinimumAmount">Confiem Password </label>
+                            <input
+                              type="password"
+                              name="confirmPassword"
+                              class="form-control"
+                              id="company"
+                              value="<%= typeof user=='object' && user.confirmPassword ? user.confirmPassword : '' %>"
+                              placeholder="Enter minimum amount"
+                            />
+                          </div>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.card -->
+              </div>
+              <!--/.col (left) -->
+              <!-- right column -->
+              <div class="col-md-6"></div>
+              <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <%- include('../partials/footer'); %>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/dist/js/demo.js"></script>
+    <script>
+        // Get the textarea element by ID
+        var messageTextArea = document.getElementById("address");
+      
+        // Trim the value of the textarea and set it back as the value
+        messageTextArea.value = messageTextArea.value.trim();
+      </script>
+
+      <!-- aadharcard image script -->
+      <script>
+        const image_input_aadharcard = document.getElementById('image_input_aadharcard');
+        const image_preview_aadharcard = document.getElementById('image_preview_aadharcard');
+        const aadharcard_image_download = document.getElementById('aadharcard_image_download');
+          
+        image_input_aadharcard.addEventListener('change', () => {
+            const file = image_input_aadharcard.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = () => {
+                aadharcard_image_download.href =reader.result;
+    
+                image_preview_aadharcard.src = reader.result;
+              };
+            }
+          });
+      </script>
+  </body>
+</html>

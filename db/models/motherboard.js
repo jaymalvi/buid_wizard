@@ -24,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
           allowNull: true,
           field: "description",
         },
-        image_url: {
+        cabinet_ImageURL: {
           type: Sequelize.STRING,
           allowNull: true,
           field: "image_url",
@@ -65,17 +65,17 @@ module.exports = (sequelize, Sequelize) => {
           field: "usb_ports",
         },
         ethernet_port: {
-          type: Sequelize.BOOLEAN,
+          type: Sequelize.TINYINT,
           allowNull: true,
           field: "ethernet_port",
         },
         wifi_module: {
-          type: Sequelize.BOOLEAN,
+          type: Sequelize.TINYINT,
           allowNull: true,
           field: "wifi_module",
         },
         bluetooth_module: {
-          type: Sequelize.BOOLEAN,
+          type: Sequelize.TINYINT,
           allowNull: true,
           field: "bluetooth_module",
         },
@@ -84,6 +84,11 @@ module.exports = (sequelize, Sequelize) => {
           allowNull: true,
           field: "quantity",
         },
+        supplierId: {
+          field: "supplierId",
+          type: Sequelize.INTEGER,
+          allowNull: true,
+        }
       },
       {
         tableName: "motherboard",

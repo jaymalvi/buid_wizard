@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AdminLTE 3 | Navbar & Tabs</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css" />
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="/plugins/sweetalert2/sweetalert2.min.css" />
+    <!-- Toastr -->
+    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <%- include('../partials/top-nav'); %> <%- include('../partials/sidebar');
+      %>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>View Supplier Items</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item">
+                    <a href="/supplier">Back</a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <div class="card-body">
+          <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <div class="dt-buttons btn-group flex-wrap">
+                  
+                  <% if (typeof cabinet == 'object' && cabinet && cabinet.length ) { %>
+                    <button
+                      class="btn btn-secondary"
+                      tabindex="0"
+                      aria-controls="example1"
+                      type="button"
+                      onclick="showDiv('Cabinet')"
+                    >
+                      <span>Cabinet</span>
+                    </button>
+                  <% } %>
+
+                  <% if (typeof motherboard == 'object' && motherboard && motherboard.length ) { %>
+                    <button
+                      class="btn btn-secondary"
+                      tabindex="0"
+                      aria-controls="example1"
+                      type="button"
+                      onclick="showDiv('Motherboard')"
+                    >
+                      <span>Motherboard</span>
+                    </button>
+                  <% } %>
+
+                  <% if (typeof cpu == 'object' && cpu && cpu.length ) { %>
+                    <button
+                      class="btn btn-secondary "
+                      tabindex="0"
+                      aria-controls="example1"
+                      type="button"
+                      onclick="showDiv('CPU')"
+                    >
+                      <span>CPU</span>
+                    </button>
+                  <% } %>
+
+                  <% if (typeof ram == 'object' && ram && ram.length ) { %>
+                    <button
+                      class="btn btn-secondary "
+                      tabindex="0"
+                      aria-controls="example1"
+                      type="button"
+                      onclick="showDiv('Ram')"
+                    >
+                      <span>Ram</span>
+                    </button>
+                  <% } %>
+
+                  <% if (typeof cooling_system == 'object' && cooling_system && cooling_system.length ) { %>
+                    <button
+                      class="btn btn-secondary"
+                      tabindex="0"
+                      aria-controls="example1"
+                      type="button"
+                      onclick="showDiv('CoolingSystem')"
+                    >
+                      <span>Cooling System</span>
+                    </button>
+                  <% } %>
+
+                  <% if (typeof graphic_card == 'object' && graphic_card && graphic_card.length ) { %>
+                    <button
+                      class="btn btn-secondary"
+                      tabindex="0"
+                      aria-controls="example1"
+                      type="button"
+                      onclick="showDiv('GraphicCard')"
+                    >
+                      <span>Graphic Card</span>
+                    </button>
+                  <% } %>
+
+                  <% if (typeof power_supply == 'object' && power_supply && power_supply.length ) { %>
+                    <button
+                      class="btn btn-secondary "
+                      tabindex="0"
+                      aria-controls="example1"
+                      type="button"
+                      onclick="showDiv('PowerSupply')"
+                    >
+                      <span>Power Supply</span>
+                    </button>
+                  <% } %>
+
+                  <% if (typeof storage == 'object' && storage && storage.length ) { %>
+                    <button
+                      class="btn btn-secondary "
+                      tabindex="0"
+                      aria-controls="example1"
+                      type="button"
+                      onclick="showDiv('Storage')"
+                    >
+                      <span>Storage</span>
+                    </button>
+                  <% } %>
+
+                  <% if (typeof peripheral == 'object' && peripheral && peripheral.length ) { %>
+                    <button
+                      class="btn btn-secondary"
+                      tabindex="0"
+                      aria-controls="example1"
+                      type="button"
+                      onclick="showDiv('Peripheral')"
+                    >
+                      <span>Peripheral</span>
+                    </button>
+                  <% } %>
+                  
+            </div>
+            <br>
+            <br>
+            <br>
+
+            <!-- cabinet item -->
+            <div class="row" id="Cabinet" style="display:none">
+                <div class="col-sm-12">
+                  <table
+                    id="example1"
+                    class="table table-bordered table-striped dataTable dtr-inline"
+                    aria-describedby="example1_info"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Rendering engine: activate to sort column ascending"
+                        >
+                          Image
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Factor
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Dimentions
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Material
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          No. Of Bayes
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          No. Of Fans
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                        Price
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Engine version: activate to sort column ascending"
+                        >
+                          action
+                        </th>
+                        <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                      </tr>
+                    </thead>
+                    <% if(typeof cabinet=='object' && cabinet.length){ for(var i =
+                    0; i< cabinet.length; i++) {%>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="dtr-control" tabindex="0">
+                          <%= cabinet[i].cabinet_ImageURL%>
+                        </td>
+                        <td><%= cabinet[i].NameCabinet%></td>
+                        <td class="sorting_1"><%= cabinet[i].Form_Factor%></td>
+                        <td class="sorting_1"><%= cabinet[i].Dimensions%></td>
+                        <td class="sorting_1"><%= cabinet[i].Material%></td>
+                        <td class="sorting_1"><%= cabinet[i].NoOfBayes%></td>
+                        <td class="sorting_1"><%= cabinet[i].NoOfFans%></td>
+                        <td class="sorting_1"><%= cabinet[i].Pricecabinet%></td>
+                        <td class="sorting_1"><%= cabinet[i].quantityCabinet%></td>
+                        <td>
+                          <a href="/cabinet/<%= cabinet[i].idCabinet%>?id=cabinet">Edit</a>
+                          <a href="/cabinet/delete/<%= cabinet[i].idCabinet%>?id=cabinet"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      <% }}%>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+            <!-- Motherboard item -->
+            <div class="row" id="Motherboard" style="display:none">
+                <div class="col-sm-12">
+                  <table
+                    id="example1"
+                    class="table table-bordered table-striped dataTable dtr-inline"
+                    aria-describedby="example1_info"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Rendering engine: activate to sort column ascending"
+                        >
+                          Image
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          CPU Socket
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Maximum Ram Capicity
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          PCI Slots
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                        Sata Ports
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          USB Ports
+                        </th>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Engine version: activate to sort column ascending"
+                        >
+                          action
+                        </th>
+                        <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                      </tr>
+                    </thead>
+                    <% if(typeof motherboard=='object' && motherboard.length){ for(var i =
+                    0; i< motherboard.length; i++) {%>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="dtr-control" tabindex="0">
+                          <%= motherboard[i].cabinet_ImageURL%>
+                        </td>
+                        <td><%= motherboard[i].nameMotherboard%></td>
+                        <td class="sorting_1"><%= motherboard[i].priceMotherboard%></td>
+                        <td class="sorting_1"><%= motherboard[i].quantityMotherboard%></td>
+                        <td class="sorting_1"><%= motherboard[i].cpu_socket%></td>
+                        <td class="sorting_1"><%= motherboard[i].ram_slots%></td>
+                        <td class="sorting_1"><%= motherboard[i].max_ram_capacity%></td>
+                        <td class="sorting_1"><%= motherboard[i].pci_slots%></td>
+                        <td class="sorting_1"><%= motherboard[i].sata_ports%></td>
+                        <td>
+                          <a href="/cabinet/<%= motherboard[i].idMotherboard%>?id=motherboard">Edit</a>
+                          <a href="/cabinet/delete/<%= motherboard[i].idMotherboard%>?id=motherboard"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      <% }}%>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+            <!-- cpu item -->
+            <div class="row" id="CPU" style="display:none">
+                <div class="col-sm-12">
+                  <table
+                    id="example1"
+                    class="table table-bordered table-striped dataTable dtr-inline"
+                    aria-describedby="example1_info"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Rendering engine: activate to sort column ascending"
+                        >
+                          Image
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Socket Type
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Number Of Cors
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Clock Speed
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                        Cache Size
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Power Consumption
+                        </th>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Engine version: activate to sort column ascending"
+                        >
+                          Action
+                        </th>
+                        <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                      </tr>
+                    </thead>
+                    <% if(typeof cpu=='object' && cpu.length){ for(var i =
+                    0; i< cpu.length; i++) {%>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="dtr-control" tabindex="0">
+                          <%= cpu[i].cabinet_ImageURL%>
+                        </td>
+                        <td><%= cpu[i].NameCPU%></td>
+                        <td class="sorting_1"><%= cpu[i].PriceCPU%></td>
+                        <td class="sorting_1"><%= cpu[i].quantityCPU%></td>
+                        <td class="sorting_1"><%= cpu[i].socket_type%></td>
+                        <td class="sorting_1"><%= cpu[i].number_of_cores%></td>
+                        <td class="sorting_1"><%= cpu[i].clock_speed%></td>
+                        <td class="sorting_1"><%= cpu[i].cache_size%></td>
+                        <td class="sorting_1"><%= cpu[i].power_consumtionCPU%></td>
+                        <td>
+                          <a href="/cabinet/<%= cpu[i].idCpu%>?id=cpu">Edit</a>
+                          <a href="/cabinet/delete/<%= cpu[i].idCpu%>?id=cpu"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      <% }}%>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+            <!-- ram Item -->
+            <div class="row" id="Ram" style="display:none">
+                <div class="col-sm-12">
+                  <table
+                    id="example1"
+                    class="table table-bordered table-striped dataTable dtr-inline"
+                    aria-describedby="example1_info"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Rendering engine: activate to sort column ascending"
+                        >
+                          Image
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                        Memory Size
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                        Memory Type
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                        Memory Speed
+                        </th>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Engine version: activate to sort column ascending"
+                        >
+                          Action
+                        </th>
+                        <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                      </tr>
+                    </thead>
+                    <% if(typeof ram=='object' && ram.length){ for(var i =
+                    0; i< ram.length; i++) {%>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="dtr-control" tabindex="0">
+                          <%= ram[i].ImageURLRam%>
+                        </td>
+                        <td><%= ram[i].NameRam%></td>
+                        <td class="sorting_1"><%= ram[i].PriceRam%></td>
+                        <td class="sorting_1"><%= ram[i].quantityRam%></td>
+                        <td class="sorting_1"><%= ram[i].memory_sizeRam%></td>
+                        <td class="sorting_1"><%= ram[i].memory_typeRam%></td>
+                        <td class="sorting_1"><%= ram[i].memory_speed%></td>
+                        <td>
+                          <a href="/cabinet/<%= ram[i].idRam%>?id=ram">Edit</a>
+                          <a href="/cabinet/delete/<%= ram[i].idRam%>?id=ram"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      <% }}%>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+            <!-- Cooling system item -->
+            <div class="row" id="CoolingSystem" style="display:none">
+                <div class="col-sm-12">
+                  <table
+                    id="example1"
+                    class="table table-bordered table-striped dataTable dtr-inline"
+                    aria-describedby="example1_info"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Rendering engine: activate to sort column ascending"
+                        >
+                          Image
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Type
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Fan Speed
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Engine version: activate to sort column ascending"
+                        >
+                          action
+                        </th>
+                        <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                      </tr>
+                    </thead>
+                    <% if(typeof cooling_system=='object' && cooling_system.length){ for(var i =
+                    0; i< cooling_system.length; i++) {%>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="dtr-control" tabindex="0">
+                          <%= cooling_system[i].ImageURLColling%>
+                        </td>
+                        <td><%= cooling_system[i].NameColling%></td>
+                        <td class="sorting_1"><%= cooling_system[i].PriceColling%></td>
+                        <td class="sorting_1"><%= cooling_system[i].quantityColling%></td>
+                        <td class="sorting_1"><%= cooling_system[i].coollingType%></td>
+                        <td class="sorting_1"><%= cooling_system[i].fan%></td>
+                        <td>
+                          <a href="/cabinet/<%= cooling_system[i].idCooling_System%>?id=colling">Edit</a>
+                          <a href="/cabinet/delete/<%= cooling_system[i].idCooling_System%>?id=colling"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      <% }}%>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+            <!-- graphiccard item -->
+            <div class="row" id="GraphicCard" style="display:none">
+                <div class="col-sm-12">
+                  <table
+                    id="example1"
+                    class="table table-bordered table-striped dataTable dtr-inline"
+                    aria-describedby="example1_info"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Rendering engine: activate to sort column ascending"
+                        >
+                          Image
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Chipset
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Memory Type
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Memory Size
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Core Clock
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Power Consumption
+                        </th>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Engine version: activate to sort column ascending"
+                        >
+                          Action
+                        </th>
+                        <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                      </tr>
+                    </thead>
+                    <% if(typeof graphic_card=='object' && graphic_card.length){ for(var i =
+                      0; i< graphic_card.length; i++){%>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="dtr-control" tabindex="0">
+                          <%= graphic_card[i].ImageURLGraphic%>
+                        </td>
+                        <td><%= graphic_card[i].NameGraphic%></td>
+                        <td class="sorting_1"><%= graphic_card[i].PriceGraphic%></td>
+                        <td class="sorting_1"><%= graphic_card[i].quantityGraphic%></td>
+                        <td class="sorting_1"><%= graphic_card[i].chipset%></td>
+                        <td class="sorting_1"><%= graphic_card[i].memory_typeGraphic%></td>
+                        <td class="sorting_1"><%= graphic_card[i].memory_size%></td>
+                        <td class="sorting_1"><%= graphic_card[i].core_clock%></td>
+                        <td class="sorting_1">
+                          <%= graphic_card[i].power_consumtionGraphic%>
+                        </td>
+                        <td>
+                          <a href="/cabinet/<%= graphic_card[i].idgraphic%>?id=graphiccard">Edit</a>
+                          <a href="/cabinet/delete/<%= graphic_card[i].idgraphic%>?id=graphiccard"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      <%}}%>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+            <!-- power Supply item -->
+            <div class="row" id="PowerSupply" style="display:none">
+                <div class="col-sm-12">
+                  <table
+                    id="example1"
+                    class="table table-bordered table-striped dataTable dtr-inline"
+                    aria-describedby="example1_info"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Rendering engine: activate to sort column ascending"
+                        >
+                          Image
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Wattage
+                        </th>
+                        
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Engine version: activate to sort column ascending"
+                        >
+                          action
+                        </th>
+                        <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                      </tr>
+                    </thead>
+                    <% if(typeof power_supply=='object' && power_supply.length){ for(var i =
+                    0; i< power_supply.length; i++) {%>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="dtr-control" tabindex="0">
+                          <%= power_supply[i].cabinet_ImageURL%>
+                        </td>
+                        <td><%= power_supply[i].NamePower%></td>
+                        <td class="sorting_1"><%= power_supply[i].PricePower%></td>
+                        <td class="sorting_1"><%= power_supply[i].quantityPower%></td>
+                        <td class="sorting_1"><%= power_supply[i].wattage%></td>
+                        <td>
+                          <a href="/cabinet/<%= power_supply[i].idpower%>?id=powersupply">Edit</a>
+                          <a href="/cabinet/delete/<%= power_supply[i].idpower%>?id=powersupply"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      <% }}%>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+            <!-- Storage item -->
+            <div class="row" id="Storage" style="display:none">
+                <div class="col-sm-12">
+                  <table
+                    id="example1"
+                    class="table table-bordered table-striped dataTable dtr-inline"
+                    aria-describedby="example1_info"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Rendering engine: activate to sort column ascending"
+                        >
+                          Image
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Storage Speed
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Storage Type
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Storage Size
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                        Read Speed
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Write Speed
+                        </th>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Engine version: activate to sort column ascending"
+                        >
+                          action
+                        </th>
+                        <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                      </tr>
+                    </thead>
+                    <% if(typeof storage=='object' && storage.length){ for(var i =
+                    0; i< storage.length; i++) {%>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="dtr-control" tabindex="0">
+                          <%= storage[i].cabinet_ImageURL%>
+                        </td>
+                        <td><%= storage[i].NameStorage%></td>
+                        <td class="sorting_1"><%= storage[i].PriceStorage%></td>
+                        <td class="sorting_1"><%= storage[i].quantityStorage%></td>
+                        <td class="sorting_1"><%= storage[i].storage_speed%></td>
+                        <td class="sorting_1"><%= storage[i].storage_type%></td>
+                        <td class="sorting_1"><%= storage[i].storage_size%></td>
+                        <td class="sorting_1"><%= storage[i].read_speed%></td>
+                        <td class="sorting_1"><%= storage[i].write_speed%></td>
+                        <td>
+                          <a href="/cabinet/<%= storage[i].idstorage%>?id=storage">Edit</a>
+                          <a href="/cabinet/delete/<%= storage[i].idstorage%>?id=storage"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      <% }}%>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+            <!-- Peripheral Item -->
+            <div class="row" id="Peripheral" style="display:none">
+                <div class="col-sm-12">
+                  <table
+                    id="example1"
+                    class="table table-bordered table-striped dataTable dtr-inline"
+                    aria-describedby="example1_info"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Rendering engine: activate to sort column ascending"
+                        >
+                          Image
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Peripheral Device Name
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                         Company Name
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Quantity
+                        </th>
+                        <th
+                          class="sorting"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Engine version: activate to sort column ascending"
+                        >
+                          action
+                        </th>
+                        <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                      </tr>
+                    </thead>
+                    <% if(typeof peripheral=='object' && peripheral.length){ for(var i =
+                    0; i< peripheral.length; i++) {%>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="dtr-control" tabindex="0">
+                          <%= peripheral[i].cabinet_ImageURL%>
+                        </td>
+                        <td><%= peripheral[i].dropdownPeripheralDevice%></td>
+                        <td class="sorting_1"><%= peripheral[i].Nameperipheral%></td>
+                        <td class="sorting_1"><%= peripheral[i].Priceperipheral%></td>
+                        <td class="sorting_1"><%= peripheral[i].quantityperipheral%></td>
+                        <td>
+                          <a href="/cabinet/<%= peripheral[i].idperipheral%>?id=peripheral">Edit</a>
+                          <a href="/cabinet/delete/<%= peripheral[i].idperipheral%>?id=peripheral"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      <% }}%>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+     
+    </div>
+    <!-- ./wrapper -->
+    <script>
+        function showDiv(divId) {
+        const div = document.getElementById(divId);
+
+        if (div.style.display === "none") {
+            div.style.display = "block";
+        } else {
+            div.style.display = "none";
+        }
+}
+
+    </script>
+
+
+
+
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/dist/js/demo.js"></script>
+  </body>
+</html>

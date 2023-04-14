@@ -30,7 +30,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Motherboard</h1>
+                <h1>Graphic Card</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -180,7 +180,7 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                        CPU Socket
+                        Chipset
                       </th>
                       <th
                         class="sorting sorting_desc"
@@ -191,7 +191,7 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                        Maximum Ram Capicity
+                        Memory Type
                       </th>
                       <th
                         class="sorting sorting_desc"
@@ -202,7 +202,7 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                        PCI Slots
+                        Memory Size
                       </th>
                       <th
                         class="sorting sorting_desc"
@@ -213,7 +213,7 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                      Sata Ports
+                        Core Clock
                       </th>
                       <th
                         class="sorting sorting_desc"
@@ -224,7 +224,7 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                        USB Ports
+                        Power Consumption
                       </th>
                       <th
                         class="sorting"
@@ -234,34 +234,36 @@
                         colspan="1"
                         aria-label="Engine version: activate to sort column ascending"
                       >
-                        action
+                        Action
                       </th>
                       <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
                     </tr>
                   </thead>
-                  <% if(typeof motherboard=='object' && motherboard.length){ for(var i =
-                  0; i< motherboard.length; i++) {%>
+                  <% if(typeof graphic_card=='object' && graphic_card.length){ for(var i =
+                    0; i< graphic_card.length; i++){%>
                   <tbody>
                     <tr class="odd">
                       <td class="dtr-control" tabindex="0">
-                        <%= motherboard[i].cabinet_ImageURL%>
+                        <%= graphic_card[i].ImageURLGraphic%>
                       </td>
-                      <td><%= motherboard[i].nameMotherboard%></td>
-                      <td class="sorting_1"><%= motherboard[i].priceMotherboard%></td>
-                      <td class="sorting_1"><%= motherboard[i].quantityMotherboard%></td>
-                      <td class="sorting_1"><%= motherboard[i].cpu_socket%></td>
-                      <td class="sorting_1"><%= motherboard[i].ram_slots%></td>
-                      <td class="sorting_1"><%= motherboard[i].max_ram_capacity%></td>
-                      <td class="sorting_1"><%= motherboard[i].pci_slots%></td>
-                      <td class="sorting_1"><%= motherboard[i].sata_ports%></td>
+                      <td><%= graphic_card[i].NameGraphic%></td>
+                      <td class="sorting_1"><%= graphic_card[i].PriceGraphic%></td>
+                      <td class="sorting_1"><%= graphic_card[i].quantityGraphic%></td>
+                      <td class="sorting_1"><%= graphic_card[i].chipset%></td>
+                      <td class="sorting_1"><%= graphic_card[i].memory_typeGraphic%></td>
+                      <td class="sorting_1"><%= graphic_card[i].memory_size%></td>
+                      <td class="sorting_1"><%= graphic_card[i].core_clock%></td>
+                      <td class="sorting_1">
+                        <%= graphic_card[i].power_consumtionGraphic%>
+                      </td>
                       <td>
-                        <a href="/cabinet/<%= motherboard[i].idMotherboard%>?id=motherboard">Edit</a>
-                        <a href="/cabinet/delete/<%= motherboard[i].idMotherboard%>?id=motherboard"
+                        <a href="/cabinet/<%= graphic_card[i].idgraphic%>?id=graphiccard">Edit</a>
+                        <a href="/cabinet/delete/<%= graphic_card[i].idgraphic%>?id=graphiccard"
                           >Delete</a
                         >
                       </td>
                     </tr>
-                    <% }}%>
+                    <%}}%>
                   </tbody>
                 </table>
               </div>

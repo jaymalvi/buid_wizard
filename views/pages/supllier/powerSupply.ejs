@@ -30,7 +30,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Motherboard</h1>
+                <h1>Power Supply</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -180,52 +180,9 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                        CPU Socket
+                        Wattage
                       </th>
-                      <th
-                        class="sorting sorting_desc"
-                        tabindex="0"
-                        aria-controls="example1"
-                        rowspan="1"
-                        colspan="1"
-                        aria-label="Platform(s): activate to sort column ascending"
-                        aria-sort="descending"
-                      >
-                        Maximum Ram Capicity
-                      </th>
-                      <th
-                        class="sorting sorting_desc"
-                        tabindex="0"
-                        aria-controls="example1"
-                        rowspan="1"
-                        colspan="1"
-                        aria-label="Platform(s): activate to sort column ascending"
-                        aria-sort="descending"
-                      >
-                        PCI Slots
-                      </th>
-                      <th
-                        class="sorting sorting_desc"
-                        tabindex="0"
-                        aria-controls="example1"
-                        rowspan="1"
-                        colspan="1"
-                        aria-label="Platform(s): activate to sort column ascending"
-                        aria-sort="descending"
-                      >
-                      Sata Ports
-                      </th>
-                      <th
-                        class="sorting sorting_desc"
-                        tabindex="0"
-                        aria-controls="example1"
-                        rowspan="1"
-                        colspan="1"
-                        aria-label="Platform(s): activate to sort column ascending"
-                        aria-sort="descending"
-                      >
-                        USB Ports
-                      </th>
+                      
                       <th
                         class="sorting"
                         tabindex="0"
@@ -239,24 +196,20 @@
                       <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
                     </tr>
                   </thead>
-                  <% if(typeof motherboard=='object' && motherboard.length){ for(var i =
-                  0; i< motherboard.length; i++) {%>
+                  <% if(typeof power_supply=='object' && power_supply.length){ for(var i =
+                  0; i< power_supply.length; i++) {%>
                   <tbody>
                     <tr class="odd">
                       <td class="dtr-control" tabindex="0">
-                        <%= motherboard[i].cabinet_ImageURL%>
+                        <%= power_supply[i].cabinet_ImageURL%>
                       </td>
-                      <td><%= motherboard[i].nameMotherboard%></td>
-                      <td class="sorting_1"><%= motherboard[i].priceMotherboard%></td>
-                      <td class="sorting_1"><%= motherboard[i].quantityMotherboard%></td>
-                      <td class="sorting_1"><%= motherboard[i].cpu_socket%></td>
-                      <td class="sorting_1"><%= motherboard[i].ram_slots%></td>
-                      <td class="sorting_1"><%= motherboard[i].max_ram_capacity%></td>
-                      <td class="sorting_1"><%= motherboard[i].pci_slots%></td>
-                      <td class="sorting_1"><%= motherboard[i].sata_ports%></td>
+                      <td><%= power_supply[i].NamePower%></td>
+                      <td class="sorting_1"><%= power_supply[i].PricePower%></td>
+                      <td class="sorting_1"><%= power_supply[i].quantityPower%></td>
+                      <td class="sorting_1"><%= power_supply[i].wattage%></td>
                       <td>
-                        <a href="/cabinet/<%= motherboard[i].idMotherboard%>?id=motherboard">Edit</a>
-                        <a href="/cabinet/delete/<%= motherboard[i].idMotherboard%>?id=motherboard"
+                        <a href="/cabinet/<%= power_supply[i].idpower%>?id=powersupply">Edit</a>
+                        <a href="/cabinet/delete/<%= power_supply[i].idpower%>?id=powersupply"
                           >Delete</a
                         >
                       </td>

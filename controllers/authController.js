@@ -1,10 +1,11 @@
 const { response } = require('express');
 const db = require('../db/index');
-const offer = require('../db/models/offer');
+const user = require('../db/models/user');
 
 exports.findAll = async function(req, res) {
   const offer= await await db.offer.findAll({raw :true});
   console.log(offer); 
+  console.log(userData);
   return res.render('pages/offer.ejs', { offer , userData: req.session && req.session.user ? req.session.user : null });
 
 };
@@ -44,10 +45,15 @@ exports.update = async function(req,res){
 
 
 
-exports.findOne = async function(req, res) {
-   const offer = await db.offer.findOne({where:{idOffers:req.params.id}, raw:true });
-   console.log(offer);
-   return res.render('pages/addOffer.ejs', { offer , userData: req.session && req.session.user ? req.session.user : null  });
+exports.login = async function(req, res) {
+
+    if(req.body.role=="admin"){
+        const user = await db.user.findOne({where:{email:req.body.email}, raw:true });
+        console.log(user);
+        return res.render('pages/dashboard.ejs', { user , userData: req.session && req.session.user ? req.session.user : null  });
+
+    }
+
 };
 
 exports.delete = async function(req, res) {

@@ -1,14 +1,15 @@
 module.exports = (sequelize, Sequelize) => {
-    const cpu = sequelize.define(
-      "cpu",
+    const graphic_card = sequelize.define(
+      "graphic_card",
       {
-        idCpu: {
+        idgraphic: {
           type: Sequelize.INTEGER,
-          primaryKey: true,
+          allowNull: true,
           autoIncrement: true,
-          field: "idCpu",
+          primaryKey: true,
+          field: "idGraphic_Card",
         },
-        NameCPU: {
+        Name: {
           type: Sequelize.STRING,
           allowNull: true,
           field: "Name",
@@ -21,53 +22,49 @@ module.exports = (sequelize, Sequelize) => {
         cabinet_ImageURL: {
           type: Sequelize.STRING,
           allowNull: true,
-          field: "image_URL",
+          field: "ImageURL",
         },
-        socket_type: {
+        chipset: {
           type: Sequelize.STRING,
           allowNull: true,
-          field: "Socket_Type",
+          field: "Chipset",
         },
-        number_of_cores: {
+        memory_typeGraphic: {
+          type: Sequelize.STRING,
+          allowNull: true,
+          field: "MemoryTytpe",
+        },
+        memory_sizeGraphic: {
           type: Sequelize.INTEGER,
           allowNull: true,
-          field: "NoOfCores",
+          field: "MemorySize",
         },
-        clock_speed: {
+        core_clock: {
           type: Sequelize.DECIMAL,
           allowNull: true,
-          field: "ClockSpeed",
+          field: "CoreClock",
         },
-        cache_size: {
-          type: Sequelize.DECIMAL,
-          allowNull: true,
-          field: "CacheSize",
-        },
-        power_consumtionCPU: {
+        power_consumtionGraphic: {
           type: Sequelize.DECIMAL,
           allowNull: true,
           field: "PowerConsumption",
         },
-        PriceCPU: {
+        PriceGraphic: {
           type: Sequelize.DECIMAL,
           allowNull: true,
           field: "Price",
         },
-        quantityCPU: {
+        quantityGraphic: {
           type: Sequelize.INTEGER,
           allowNull: true,
           field: "quantity",
-        },supplierId: {
-          field: "supplierId",
-          type: Sequelize.INTEGER,
-          allowNull: true,
         }
       },
       {
-        tableName: "cpu",
+        tableName: "graphic_card",
         timestamps: false,
       }
     );
-    return cpu;
+    return graphic_card;
   };
   

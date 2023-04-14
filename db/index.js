@@ -31,21 +31,3 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
-// const mysql = require('mysql');
-//local mysql db connection
-// const connection = mysql.createConnection({
-//   host     : 'localhost',
-//   user     : 'root',
-//   password : '',
-//   database : 'demo1'
-// });
-
-// connection.connect((error) => {
-//     if (error) {
-//       console.error('Error connecting to MySQL database:', error);
-//     } else {
-//       console.log('Connected to MySQL database!');
-//     }
-//   });
-
-// module.exports = connection;

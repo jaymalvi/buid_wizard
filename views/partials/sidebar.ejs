@@ -4,7 +4,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <!-- <img src="./dist/img/logo.jpeg" alt="AdminLTE Logo" class="brand-image" style="opacity: .8"> -->
-      <span class="brand-text font-weight-light">Build Wizard</span>
+      <span class="brand-text font-weight-light">Build Wizard <%= typeof userData == 'object' && userData && userData.role ? userData.role : '' %></span>
     </a>
 
     <!-- Sidebar -->
@@ -15,7 +15,7 @@
           <img src="./dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><%= typeof userData == 'object' && userData && userData.fname ? userData.fname : '' %> <%= typeof userData == 'object' && userData && userData.lname ? userData.lname : '' %></a>
         </div>
       </div>
 
@@ -36,7 +36,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-              <li class="nav-item">
+              <!-- <% if(userData.role == "Admin"){%> -->
+               <li class="nav-item">
                 <a href="/dashboard" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
@@ -96,15 +97,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/deliveryPerson" class="nav-link">
+                <a href="/user" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
-                    Delivery Person
+                    Users
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/category" class="nav-link">
+                <a href="/supplier" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                     Supplier
@@ -135,6 +136,7 @@
                   </p>
                 </a>
               </li>
+              <!-- <% } else {%> -->
               <li class="nav-item">
                 <a href="/sup_dashborad" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
@@ -165,44 +167,50 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/category" class="nav-link">
+                    <a href="/cabinet?id=cpu" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>CPU</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/company" class="nav-link">
+                    <a href="/cabinet?id=ram" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Ram</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/category" class="nav-link">
+                    <a href="/cabinet?id=colling" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Cooling System</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../../index2.html" class="nav-link">
+                    <a href="/cabinet?id=graphiccard" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Graphic Card</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/category" class="nav-link">
+                    <a href="/cabinet?id=powersupply" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Power Supplies</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/company" class="nav-link">
+                    <a href="/cabinet?id=storage" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Storage</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="/cabinet?id=peripheral" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Peripheral Device</p>
+                    </a>
+                  </li>
                 </ul>
               </li> 
-          
+          <!-- <% }%> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

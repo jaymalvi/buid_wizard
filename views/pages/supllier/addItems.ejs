@@ -21,8 +21,9 @@
   </head>
   <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-      <%- include('../../partials/top-nav'); %> <%-
-      include('../../partials/sidebar'); %>
+      <%- include('../../partials/top-nav'); %> 
+      <%- include('../../partials/sidebar'); %>
+      
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -54,7 +55,7 @@
                 <!-- jquery validation -->
                 <div class="card card-primary">
                   <form
-                    id="quickForm"
+                    id="quickForm" enctype="multipart/form-data"
                     action="<%= typeof data=='object' && data.item ? '/cabinet/update' : '/cabinet/add' %>"
                     method="post"
                   >
@@ -62,7 +63,7 @@
                       <div class="card-body">
                         <div class="form-group">
                           <div class="form-group">
-                            <label for="dropdownItem">Item<%= typeof data=='object' && data.item %></label>
+                            <label for="dropdownItem">Item</label>
                             <select
                               id="dropdownItem"
                               name="item"
@@ -75,13 +76,13 @@
                               </option>
                               <option value="cabinet" <%= typeof data=='object' && data.item == 'cabinet' ? 'selected' : '' %>>Cabinet</option>
                               <option value="motherboard" <%= typeof data=='object' && data.item == 'motherboard' ? 'selected' : '' %>>Motherboard</option>
-                              <option value="cpu">CPU</option>
-                              <option value="ram">Ram</option>
-                              <option value="colling">Colling</option>
-                              <option value="graphiccard">Graphic Card</option>
-                              <option value="supllier">Power Supplies</option>
-                              <option value="storage">Storage</option>
-                              <option value="peripheral">
+                              <option value="cpu"<%= typeof data=='object' && data.item == 'cpu' ? 'selected' : '' %>>CPU</option>
+                              <option value="ram"<%= typeof data=='object' && data.item == 'ram' ? 'selected' : '' %>>Ram</option>
+                              <option value="colling"<%= typeof data=='object' && data.item == 'colling' ? 'selected' : '' %>>Colling System</option>
+                              <option value="graphiccard"<%= typeof data=='object' && data.item == 'graphiccard' ? 'selected' : '' %>>Graphic Card</option>
+                              <option value="powersupply"<%= typeof data=='object' && data.item == 'powersupply' ? 'selected' : '' %>>Power Supplies</option>
+                              <option value="storage"<%= typeof data=='object' && data.item == 'storage' ? 'selected' : '' %>>Storage</option>
+                              <option value="peripheral"<%= typeof data=='object' && data.item == 'peripheral' ? 'selected' : '' %>>
                                 Peripheral Device
                               </option>
                             </select>
@@ -94,6 +95,11 @@
                                   type="hidden"
                                   name="idCabinet"
                                   value="<%= typeof data=='object' && data.idCabinet ? data.idCabinet : '' %>"
+                                />
+                                <input
+                                  type="hidden"
+                                  name="supplierId"
+                                  value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
                                 />
                                 <input
                                   type="text"
@@ -132,13 +138,17 @@
                                   type="file"
                                   name="cabinet_ImageURL"
                                   class="form-control"
-                                  id="image"
+                                  id="image-input-cabinet"
                                   value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
                                   placeholder="Enter Dimention of cabinet"
                                 />
                               </div>
 
-                              <div class="col-md-6"></div>
+                              <div class="col-md-6">
+                                <a href="" download  id="cabinet_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image-preview-cabinet" style="padding: 10px;">
+                                </a>
+                              </div>
 
                               <div class="col-md-6">
                                 <label for="factor">Factor</label>
@@ -208,6 +218,11 @@
                                   value="<%= typeof data=='object' && data.idMotherboard ? data.idMotherboard : '' %>"
                                 />
                                 <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
+                                <input
                                   type="text"
                                   name="nameMotherboard"
                                   class="form-control"
@@ -242,14 +257,18 @@
                                 <label for="image">Image URL</label>
                                 <input
                                   type="file"
-                                  name="image_url"
+                                  name="cabinet_ImageURL"
                                   class="form-control"
-                                  id="image"
-                                  value="<%= typeof data=='object' && data.image_url ? data.image_url : '' %>"
+                                  id="image_input_motherboard"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
                                   placeholder="Enter Dimention of cabinet"
                                 />
                               </div>
-                              <div class="col-md-6"></div>
+                              <div class="col-md-6">
+                                <a href="" download  id="motherboard_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_motherboard" style="padding: 10px;">
+                                </a>
+                              </div>
                               <div class="col-md-6">
                                 <label for="description">Description</label>
                                 <textarea
@@ -338,14 +357,14 @@
                                     <input
                                       type="radio"
                                       name="ethernet_port"
-                                      value="yes" <%= typeof data=='object' && data.ethernet_port == 'yes' ? 'checked' : '' %>
+                                      value=0 <%= typeof data=='object' && data.ethernet_port == 0 ? 'checked' : '' %>
                                     />&nbsp; <label>YES</label> &nbsp; &nbsp;
                                     &nbsp;
 
                                     <input
                                       type="radio"
-                                      name="ethernetport"
-                                      value="no" <%= typeof data=='object' && data.ethernet_port == 'no' ? 'checked' : '' %>
+                                      name="ethernet_port"
+                                      value=1 <%= typeof data=='object' && data.ethernet_port == 1 ? 'checked' : '' %>
                                     />&nbsp;
                                     <label>NO</label>
                                   </div>
@@ -355,10 +374,10 @@
                                 <label for="wifi">Wifi Module</label><br />
                                 <div class="form-group">
                                   <div class="form-check">
-                                    <input type="radio" name="wifi_module" value="yes"<%= typeof data=='object' && data.wifi_module == 'yes' ? 'checked' : '' %>/>&nbsp;
+                                    <input type="radio" name="wifi_module" value=0 <%= typeof data=='object' && data.wifi_module == 0 ? 'checked' : '' %>/>&nbsp;
                                     <label>YES</label> &nbsp; &nbsp; &nbsp;
 
-                                    <input type="radio" name="wifi_module" value="no" <%= typeof data=='object' && data.wifi_module == 'no' ? 'checked' : '' %>/>&nbsp;
+                                    <input type="radio" name="wifi_module" value=1 <%= typeof data=='object' && data.wifi_module == 1 ? 'checked' : '' %>/>&nbsp;
                                     <label>NO</label>
                                   </div>
                                 </div>
@@ -371,14 +390,14 @@
                                     <input
                                       type="radio"
                                       name="bluetooth_module"
-                                      value="yes" <%= typeof data=='object' && data.bluetooth_module == 'yes' ? 'checked' : '' %>
+                                      value=0 <%= typeof data=='object' && data.bluetooth_module == 0 ? 'checked' : '' %>
                                     />&nbsp; <label>YES</label> &nbsp; &nbsp;
                                     &nbsp;
 
                                     <input
                                       type="radio"
                                       name="bluetooth_module"
-                                      value="no" <%= typeof data=='object' && data.bluetooth_module == 'no' ? 'checked' : '' %>
+                                      value=1 <%= typeof data=='object' && data.bluetooth_module == 1 ? 'checked' : '' %>
                                     />&nbsp;
                                     <label>NO</label>
                                   </div>
@@ -393,14 +412,19 @@
                                 <input
                                   type="hidden"
                                   name="idCpu"
-                                  value="<%= typeof data=='object' && data.idCabinet ? data.idCabinet : '' %>"
+                                  value="<%= typeof data=='object' && data.idCpu ? data.idCpu : '' %>"
                                 />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
                                 <input
                                   type="text"
                                   name="NameCPU"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.Name? data.Name : '' %>"
+                                  value="<%= typeof data=='object' && data.NameCPU? data.NameCPU : '' %>"
                                   placeholder="Enter company name"
                                 />
                               </div>
@@ -411,7 +435,7 @@
                                   name="PriceCPU"
                                   class="form-control"
                                   id="Price"
-                                  value="<%= typeof data=='object' && data.Price ? data.Price : '' %>"
+                                  value="<%= typeof data=='object' && data.PriceCPU ? data.PriceCPU : '' %>"
                                   placeholder="Enter price"
                                 />
                               </div>
@@ -422,7 +446,7 @@
                                   name="quantityCPU"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  value="<%= typeof data=='object' && data.quantityCPU ? data.quantityCPU : '' %>"
                                   placeholder="Enter quantity"
                                 />
                               </div>
@@ -430,14 +454,19 @@
                                 <label for="image">Image URL</label>
                                 <input
                                   type="file"
-                                  name="cpuImageURL"
+                                  name="cabinet_ImageURL"
                                   class="form-control"
-                                  id="image"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  id="image_input_cpu"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
                                   placeholder="Enter Dimention of cabinet"
                                 />
                               </div>
-                              <div class="col-md-6"></div>
+                              <div class="col-md-6">
+                                <a href="" download  id="cpu_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_cpu" style="padding: 10px;">
+                                </a>
+                              </div>
+
                               <div class="col-md-6">
                                 <label for="socket_type">Socket Type</label>
                                 <input
@@ -445,6 +474,7 @@
                                   name="socket_type"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.socket_type ? data.socket_type : '' %>"
                                   placeholder="Enter socket type"
                                 />
                               </div>
@@ -457,6 +487,7 @@
                                   name="number_of_cores"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.number_of_cores ? data.number_of_cores : '' %>"
                                   placeholder="Enter number of cores"
                                 />
                               </div>
@@ -467,6 +498,7 @@
                                   name="clock_speed"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.clock_speed ? data.clock_speed : '' %>"
                                   placeholder="Enter clock speed"
                                 />
                               </div>
@@ -477,6 +509,7 @@
                                   name="cache_size"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.cache_size ? data.cache_size : '' %>"
                                   placeholder="Enter cache size"
                                 />
                               </div>
@@ -489,6 +522,7 @@
                                   name="power_consumtionCPU"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.power_consumtionCPU ? data.power_consumtionCPU : '' %>"
                                   placeholder="Enter power consumtion"
                                 />
                               </div>
@@ -500,15 +534,20 @@
                                 <label for="Name">Name</label>
                                 <input
                                   type="hidden"
-                                  name="idram"
-                                  value="<%= typeof data=='object' && data.idCabinet ? data.idCabinet : '' %>"
+                                  name="idRam"
+                                  value="<%= typeof data=='object' && data.idRam ? data.idRam : '' %>"
                                 />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
                                 <input
                                   type="text"
                                   name="NameRam"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.Name? data.Name : '' %>"
+                                  value="<%= typeof data=='object' && data.NameRam? data.NameRam : '' %>"
                                   placeholder="Enter company name"
                                 />
                               </div>
@@ -519,7 +558,7 @@
                                   name="PriceRam"
                                   class="form-control"
                                   id="Price"
-                                  value="<%= typeof data=='object' && data.Price ? data.Price : '' %>"
+                                  value="<%= typeof data=='object' && data.PriceRam ? data.PriceRam : '' %>"
                                   placeholder="Enter price"
                                 />
                               </div>
@@ -530,7 +569,7 @@
                                   name="quantityRam"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  value="<%= typeof data=='object' && data.quantityRam ? data.quantityRam : '' %>"
                                   placeholder="Enter quantity"
                                 />
                               </div>
@@ -538,20 +577,26 @@
                                 <label for="image">Image URL</label>
                                 <input
                                   type="file"
-                                  name="ImageURLRam"
+                                  name="cabinet_ImageURL"
                                   class="form-control"
-                                  id="image"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  id="image_input_ram"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
                                   placeholder="Enter Dimention of cabinet"
                                 />
                               </div>
-                              <div class="col-md-6"></div>
+                              <div class="col-md-6">
+                                <a href="" download  id="ram_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_ram" style="padding: 10px;">
+                                </a>
+                              </div>
+
                               <div class="col-md-6">
                                 <label for="description">Description</label>
                                 <textarea
                                   class="form-control"
-                                  name="description1"
+                                  name="descriptionRam"
                                   rows="2"
+                                  value="<%= typeof data=='object' && data.descriptionRam? data.descriptionRam : '' %>"
                                   placeholder="Enter description"
                                 >
                                 </textarea>
@@ -563,6 +608,7 @@
                                   name="memory_sizeRam"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.memory_sizeRam? data.memory_sizeRam : '' %>"
                                   placeholder="Enter memory size"
                                 />
                               </div>
@@ -573,6 +619,7 @@
                                   name="memory_typeRam"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.memory_typeRam? data.memory_typeRam : '' %>"
                                   placeholder="Enter memory type"
                                 />
                               </div>
@@ -583,6 +630,7 @@
                                   name="memory_speed"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.memory_speed? data.memory_speed : '' %>"
                                   placeholder="Enter memory speed"
                                 />
                               </div>
@@ -594,15 +642,20 @@
                                 <label for="Name">Name</label>
                                 <input
                                   type="hidden"
-                                  name="idColling"
-                                  value="<%= typeof data=='object' && data.idCabinet ? data.idCabinet : '' %>"
+                                  name="idCooling_System"
+                                  value="<%= typeof data=='object' && data.idCooling_System ? data.idCooling_System : '' %>"
                                 />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
                                 <input
                                   type="text"
                                   name="NameColling"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.Name? data.Name : '' %>"
+                                  value="<%= typeof data=='object' && data.NameColling? data.NameColling : '' %>"
                                   placeholder="Enter company name"
                                 />
                               </div>
@@ -613,7 +666,7 @@
                                   name="PriceColling"
                                   class="form-control"
                                   id="Price"
-                                  value="<%= typeof data=='object' && data.Price ? data.Price : '' %>"
+                                  value="<%= typeof data=='object' && data.PriceColling ? data.PriceColling : '' %>"
                                   placeholder="Enter price"
                                 />
                               </div>
@@ -624,7 +677,7 @@
                                   name="quantityColling"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  value="<%= typeof data=='object' && data.quantityColling ? data.quantityColling : '' %>"
                                   placeholder="Enter quantity"
                                 />
                               </div>
@@ -632,31 +685,27 @@
                                 <label for="image">Image URL</label>
                                 <input
                                   type="file"
-                                  name="ImageURLColling"
+                                  name="cabinet_ImageURL"
                                   class="form-control"
-                                  id="image"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  id="image_input_Colling"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
                                   placeholder="Enter Dimention of cabinet"
                                 />
                               </div>
-                              <div class="col-md-6"></div>
                               <div class="col-md-6">
-                                <label for="description">Description</label>
-                                <textarea
-                                  class="form-control"
-                                  name="descriptionColling"
-                                  rows="2"
-                                  placeholder="Enter description"
-                                >
-                                </textarea>
+                                <a href="" download  id="Colling_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_Colling" style="padding: 10px;">
+                                </a>
                               </div>
+                  
                               <div class="col-md-6">
                                 <label for="company">Type</label>
                                 <input
                                   type="text"
-                                  name="coolling"
+                                  name="coollingType"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.coollingType ? data.coollingType : '' %>"
                                   placeholder="Enter coolling system type"
                                 />
                               </div>
@@ -667,6 +716,7 @@
                                   name="fan"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.fan ? data.fan : '' %>"
                                   placeholder="Enter fan speed"
                                 />
                               </div>
@@ -679,14 +729,19 @@
                                 <input
                                   type="hidden"
                                   name="idgraphic"
-                                  value="<%= typeof data=='object' && data.idCabinet ? data.idCabinet : '' %>"
+                                  value="<%= typeof data=='object' && data.idgraphic ? data.idgraphic : '' %>"
                                 />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
                                 <input
                                   type="text"
                                   name="NameGraphic"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.Name? data.Name : '' %>"
+                                  value="<%= typeof data=='object' && data.NameGraphic? data.NameGraphic : '' %>"
                                   placeholder="Enter company name"
                                 />
                               </div>
@@ -697,7 +752,7 @@
                                   name="PriceGraphic"
                                   class="form-control"
                                   id="Price"
-                                  value="<%= typeof data=='object' && data.Price ? data.Price : '' %>"
+                                  value="<%= typeof data=='object' && data.PriceGraphic ? data.PriceGraphic : '' %>"
                                   placeholder="Enter price"
                                 />
                               </div>
@@ -708,7 +763,7 @@
                                   name="quantityGraphic"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  value="<%= typeof data=='object' && data.quantityGraphic ? data.quantityGraphic : '' %>"
                                   placeholder="Enter quantity"
                                 />
                               </div>
@@ -716,14 +771,19 @@
                                 <label for="image">Image URL</label>
                                 <input
                                   type="file"
-                                  name="ImageURLGraphic"
+                                  name="cabinet_ImageURL"
                                   class="form-control"
-                                  id="image"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  id="image_input_graphic"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
                                   placeholder="Enter Dimention of cabinet"
                                 />
                               </div>
-                              <div class="col-md-6"></div>
+                              <div class="col-md-6">
+                                <a href="" download  id="graphic_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_graphic" style="padding: 10px;">
+                                </a>
+                              </div>
+
                               <div class="col-md-6">
                                 <label for="chipset">Chipset</label>
                                 <input
@@ -731,6 +791,7 @@
                                   name="chipset"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.chipset ? data.chipset : '' %>"
                                   placeholder="Enter chipset"
                                 />
                               </div>
@@ -741,6 +802,7 @@
                                   name="memory_typeGraphic"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.memory_typeGraphic ? data.memory_typeGraphic : '' %>"
                                   placeholder="Enter memory type"
                                 />
                               </div>
@@ -751,6 +813,7 @@
                                   name="memory_sizeGraphic"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.memory_sizeGraphic ? data.memory_sizeGraphic : '' %>"
                                   placeholder="Enter memory size"
                                 />
                               </div>
@@ -761,17 +824,8 @@
                                   name="core_clock"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.core_clock ? data.core_clock : '' %>"
                                   placeholder="Enter core clock"
-                                />
-                              </div>
-                              <div class="col-md-6">
-                                <label for="memory_clock">Memory Clock</label>
-                                <input
-                                  type="number"
-                                  name="memory_clock"
-                                  class="form-control"
-                                  id="company"
-                                  placeholder="Enter memory clock"
                                 />
                               </div>
                               <div class="col-md-6">
@@ -783,26 +837,32 @@
                                   name="power_consumtionGraphic"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.power_consumtionGraphic ? data.power_consumtionGraphic : '' %>"
                                   placeholder="Enter power consumtion"
                                 />
                               </div>
                             </div>
 
                             <!-- Power Supplies related values -->
-                            <div class="row" id="supllier">
+                            <div class="row" id="powersupply">
                               <div class="col-md-6">
                                 <label for="Name">Name</label>
                                 <input
                                   type="hidden"
                                   name="idpower"
-                                  value="<%= typeof data=='object' && data.idCabinet ? data.idCabinet : '' %>"
+                                  value="<%= typeof data=='object' && data.idpower ? data.idpower : '' %>"
                                 />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
                                 <input
                                   type="text"
                                   name="NamePower"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.Name? data.Name : '' %>"
+                                  value="<%= typeof data=='object' && data.NamePower? data.NamePower : '' %>"
                                   placeholder="Enter company name"
                                 />
                               </div>
@@ -813,7 +873,7 @@
                                   name="PricePower"
                                   class="form-control"
                                   id="Price"
-                                  value="<%= typeof data=='object' && data.Price ? data.Price : '' %>"
+                                  value="<%= typeof data=='object' && data.PricePower ? data.PricePower : '' %>"
                                   placeholder="Enter price"
                                 />
                               </div>
@@ -824,7 +884,7 @@
                                   name="quantityPower"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  value="<%= typeof data=='object' && data.quantityPower ? data.quantityPower : '' %>"
                                   placeholder="Enter quantity"
                                 />
                               </div>
@@ -832,22 +892,27 @@
                                 <label for="image">Image URL</label>
                                 <input
                                   type="file"
-                                  name="ImageURLPower"
+                                  name="cabinet_ImageURL"
                                   class="form-control"
-                                  id="image"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  id="image_input_Power"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
                                   placeholder="Enter Dimention of cabinet"
                                 />
                               </div>
-                              <div class="col-md-6"></div>
+                              <div class="col-md-6">
+                                <a href="" download  id="Power_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_Power" style="padding: 10px;">
+                                </a>
+                              </div>
+
                               <div class="col-md-6">
                                 <label for="descriptionPower">Description</label>
                                 <textarea
                                   class="form-control"
-                                  name="description3"
+                                  name="descriptionPower"
                                   rows="2"
                                   placeholder="Enter description"
-                                >
+                                ><%= typeof data=='object' && data.descriptionPower ? data.descriptionPower : '' %>
                                 </textarea>
                               </div>
                               <div class="col-md-6">
@@ -857,6 +922,7 @@
                                   name="wattage"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.wattage ? data.wattage : '' %>"
                                   placeholder="Enter wattage"
                                 />
                               </div>
@@ -869,14 +935,19 @@
                                 <input
                                   type="hidden"
                                   name="idstorage"
-                                  value="<%= typeof data=='object' && data.idCabinet ? data.idCabinet : '' %>"
+                                  value="<%= typeof data=='object' && data.idstorage ? data.idstorage : '' %>"
                                 />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
                                 <input
                                   type="text"
                                   name="NameStorage"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.Name? data.Name : '' %>"
+                                  value="<%= typeof data=='object' && data.NameStorage? data.NameStorage : '' %>"
                                   placeholder="Enter company name"
                                 />
                               </div>
@@ -887,7 +958,7 @@
                                   name="PriceStorage"
                                   class="form-control"
                                   id="Price"
-                                  value="<%= typeof data=='object' && data.Price ? data.Price : '' %>"
+                                  value="<%= typeof data=='object' && data.PriceStorage ? data.PriceStorage : '' %>"
                                   placeholder="Enter price"
                                 />
                               </div>
@@ -898,7 +969,7 @@
                                   name="quantityStorage"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  value="<%= typeof data=='object' && data.quantityStorage ? data.quantityStorage : '' %>"
                                   placeholder="Enter quantity"
                                 />
                               </div>
@@ -906,22 +977,25 @@
                                 <label for="image">Image URL</label>
                                 <input
                                   type="file"
-                                  name="ImageURLStorage"
+                                  name="cabinet_ImageURL"
                                   class="form-control"
-                                  id="image"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  id="image_input_Storage"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
                                   placeholder="Enter Dimention of cabinet"
                                 />
                               </div>
-                              <div class="col-md-6"></div>
+                              <div class="col-md-6">
+                                <a href="" download  id="Storage_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_Storage" style="padding: 10px;">
+                                </a>
+                              </div>
                               <div class="col-md-6">
                                 <label for="descriptionStorage">Description</label>
                                 <textarea
                                   class="form-control"
-                                  name="description4"
-                                  rows="2"
+                                  name="descriptionStorage"
                                   placeholder="Enter description"
-                                >
+                                ><%= typeof data=='object' && data.descriptionStorage ? data.descriptionStorage : '' %>
                                 </textarea>
                               </div>
                               <div class="col-md-6">
@@ -931,6 +1005,7 @@
                                   name="storage_speed"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.storage_speed ? data.storage_speed : '' %>"
                                   placeholder="Enter storage speed"
                                 />
                               </div>
@@ -941,6 +1016,7 @@
                                   name="storage_type"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.storage_type ? data.storage_type : '' %>"
                                   placeholder="Enter storage type"
                                 />
                               </div>
@@ -951,6 +1027,7 @@
                                   name="storage_size"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.storage_size ? data.storage_size : '' %>"
                                   placeholder="Enter storage size"
                                 />
                               </div>
@@ -961,6 +1038,7 @@
                                   name="read_speed"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.read_speed ? data.read_speed : '' %>"
                                   placeholder="Enter read speed"
                                 />
                               </div>
@@ -971,6 +1049,7 @@
                                   name="write_speed"
                                   class="form-control"
                                   id="company"
+                                  value="<%= typeof data=='object' && data.write_speed ? data.write_speed : '' %>"
                                   placeholder="Enter write speed"
                                 />
                               </div>
@@ -983,14 +1062,19 @@
                                 <input
                                   type="hidden"
                                   name="idperipheral"
-                                  value="<%= typeof data=='object' && data.idCabinet ? data.idCabinet : '' %>"
+                                  value="<%= typeof data=='object' && data.idperipheral ? data.idperipheral : '' %>"
                                 />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
                                 <input
                                   type="text"
                                   name="Nameperipheral"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.Name? data.Name : '' %>"
+                                  value="<%= typeof data=='object' && data.Nameperipheral? data.Nameperipheral : '' %>"
                                   placeholder="Enter company name"
                                 />
                               </div>
@@ -1001,7 +1085,7 @@
                                   name="Priceperipheral"
                                   class="form-control"
                                   id="Price"
-                                  value="<%= typeof data=='object' && data.Price ? data.Price : '' %>"
+                                  value="<%= typeof data=='object' && data.Priceperipheral ? data.Priceperipheral : '' %>"
                                   placeholder="Enter price"
                                 />
                               </div>
@@ -1012,7 +1096,7 @@
                                   name="quantityperipheral"
                                   class="form-control"
                                   id="company"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  value="<%= typeof data=='object' && data.quantityperipheral ? data.quantityperipheral : '' %>"
                                   placeholder="Enter quantity"
                                 />
                               </div>
@@ -1020,21 +1104,25 @@
                                 <label for="image">Image URL</label>
                                 <input
                                   type="file"
-                                  name="ImageURLperipheral"
+                                  name="cabinet_ImageURL"
                                   class="form-control"
-                                  id="image"
-                                  value="<%= typeof data=='object' && data.quantity ? data.quantity : '' %>"
+                                  id="image_input_peripheral"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
                                   placeholder="Enter Dimention of cabinet"
                                 />
                               </div>
-                              <div class="col-md-6"></div>
+                              <div class="col-md-6">
+                                <a href="" download  id="peripheral_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_peripheral" style="padding: 10px;">
+                                </a>
+                              </div>
                               <div class="col-md-6">
                                 <label for="description"
                                   >Peripheral Device Name</label
                                 >
                                 <select
                                   id="dropdownItem"
-                                  name="dropdownItem1"
+                                  name="dropdownPeripheralDevice"
                                   class="form-control select2"
                                   data-placeholder="Select a Item"
                                   style="width: 100%"
@@ -1042,15 +1130,25 @@
                                   <option value="">
                                     --Please choose an Item--
                                   </option>
-                                  <option value="printer">Printer</option>
-                                  <option value="scanner">Scanner</option>
-                                  <option value="keyboard">Keyboard</option>
-                                  <option value="mouse">Mouse</option>
-                                  <option value="external-modem">
+                                  <option value="printer" <%= typeof data=='object' && data.dropdownPeripheralDevice == 'printer' ? 'selected' : '' %>>Printer</option>
+                                  <option value="scanner" <%= typeof data=='object' && data.dropdownPeripheralDevice == 'scanner' ? 'selected' : '' %>>Scanner</option>
+                                  <option value="keyboard" <%= typeof data=='object' && data.dropdownPeripheralDevice == 'keyboard' ? 'selected' : '' %>>Keyboard</option>
+                                  <option value="mouse" <%= typeof data=='object' && data.dropdownPeripheralDevice == 'mouse' ? 'selected' : '' %>>Mouse</option>
+                                  <option value="external-modem" <%= typeof data=='object' && data.dropdownPeripheralDevice == 'external-modem' ? 'selected' : '' %>>
                                     External Modem
                                   </option>
                                 </select>
                               </div>
+                              <div class="col-md-6">
+                                <label for="descriptionPeripheral">Description</label>
+                                <textarea
+                                  class="form-control"
+                                  name="descriptionPeripheral"
+                                  placeholder="Enter description"
+                                ><%= typeof data=='object' && data.descriptionPeripheral ? data.descriptionPeripheral : '' %>
+                                </textarea>
+                              </div>
+
                             </div>
                             <!-- form-group -->
                           </div>
@@ -1092,6 +1190,8 @@
     <!-- AdminLTE for demo purposes -->
     <script src="/dist/js/demo.js"></script>
 
+
+    <!-- jquery for dropdown show and hide as per click -->
     <script>
       $(document).ready(function () {
         var selectedValue = $("#dropdownItem").val();
@@ -1102,7 +1202,7 @@
           $("#ram").hide();
           $("#colling").hide();
           $("#graphiccard").hide();
-          $("#supllier").hide();
+          $("#powersupply").hide();
           $("#storage").hide();
           $("#peripheral").hide();
         } else if (selectedValue == "motherboard") {
@@ -1112,7 +1212,7 @@
           $("#ram").hide();
           $("#colling").hide();
           $("#graphiccard").hide();
-          $("#supllier").hide();
+          $("#powersupply").hide();
           $("#storage").hide();
           $("#peripheral").hide();
         } else if (selectedValue == "cpu") {
@@ -1122,7 +1222,7 @@
           $("#ram").hide();
           $("#colling").hide();
           $("#graphiccard").hide();
-          $("#supllier").hide();
+          $("#powersupply").hide();
           $("#storage").hide();
           $("#peripheral").hide();
         } else if (selectedValue == "ram") {
@@ -1132,7 +1232,7 @@
           $("#ram").show();
           $("#colling").hide();
           $("#graphiccard").hide();
-          $("#supllier").hide();
+          $("#powersupply").hide();
           $("#storage").hide();
           $("#peripheral").hide();
         } else if (selectedValue == "colling") {
@@ -1142,7 +1242,7 @@
           $("#ram").hide();
           $("#colling").show();
           $("#graphiccard").hide();
-          $("#supllier").hide();
+          $("#powersupply").hide();
           $("#storage").hide();
           $("#peripheral").hide();
         } else if (selectedValue == "graphiccard") {
@@ -1152,17 +1252,17 @@
           $("#ram").hide();
           $("#colling").hide();
           $("#graphiccard").show();
-          $("#supllier").hide();
+          $("#powersupply").hide();
           $("#storage").hide();
           $("#peripheral").hide();
-        } else if (selectedValue == "supllier") {
+        } else if (selectedValue == "powersupply") {
           $("#motherboard").hide();
           $("#cabinet").hide();
           $("#cpu").hide();
           $("#ram").hide();
           $("#colling").hide();
           $("#graphiccard").hide();
-          $("#supllier").show();
+          $("#powersupply").show();
           $("#storage").hide();
           $("#peripheral").hide();
         } else if (selectedValue == "storage") {
@@ -1172,7 +1272,7 @@
           $("#ram").hide();
           $("#colling").hide();
           $("#graphiccard").hide();
-          $("#supllier").hide();
+          $("#powersupply").hide();
           $("#storage").show();
           $("#peripheral").hide();
         } else if (selectedValue == "peripheral") {
@@ -1182,7 +1282,7 @@
           $("#ram").hide();
           $("#colling").hide();
           $("#graphiccard").hide();
-          $("#supllier").hide();
+          $("#powersupply").hide();
           $("#storage").hide();
           $("#peripheral").show();
         } else if (selectedValue == "") {
@@ -1192,7 +1292,7 @@
           $("#ram").hide();
           $("#colling").hide();
           $("#graphiccard").hide();
-          $("#supllier").hide();
+          $("#powersupply").hide();
           $("#storage").hide();
           $("#peripheral").hide();
         }
@@ -1206,7 +1306,7 @@
             $("#ram").hide();
             $("#colling").hide();
             $("#graphiccard").hide();
-            $("#supllier").hide();
+            $("#powersupply").hide();
             $("#storage").hide();
             $("#peripheral").hide();
           } else if (selectedValue == "motherboard") {
@@ -1216,7 +1316,7 @@
             $("#ram").hide();
             $("#colling").hide();
             $("#graphiccard").hide();
-            $("#supllier").hide();
+            $("#powersupply").hide();
             $("#storage").hide();
             $("#peripheral").hide();
           } else if (selectedValue == "cpu") {
@@ -1226,7 +1326,7 @@
             $("#ram").hide();
             $("#colling").hide();
             $("#graphiccard").hide();
-            $("#supllier").hide();
+            $("#powersupply").hide();
             $("#storage").hide();
             $("#peripheral").hide();
           } else if (selectedValue == "ram") {
@@ -1236,7 +1336,7 @@
             $("#ram").show();
             $("#colling").hide();
             $("#graphiccard").hide();
-            $("#supllier").hide();
+            $("#powersupply").hide();
             $("#storage").hide();
             $("#peripheral").hide();
           } else if (selectedValue == "colling") {
@@ -1246,7 +1346,7 @@
             $("#ram").hide();
             $("#colling").show();
             $("#graphiccard").hide();
-            $("#supllier").hide();
+            $("#powersupply").hide();
             $("#storage").hide();
             $("#peripheral").hide();
           } else if (selectedValue == "graphiccard") {
@@ -1256,17 +1356,17 @@
             $("#ram").hide();
             $("#colling").hide();
             $("#graphiccard").show();
-            $("#supllier").hide();
+            $("#powersupply").hide();
             $("#storage").hide();
             $("#peripheral").hide();
-          } else if (selectedValue == "supllier") {
+          } else if (selectedValue == "powersupply") {
             $("#motherboard").hide();
             $("#cabinet").hide();
             $("#cpu").hide();
             $("#ram").hide();
             $("#colling").hide();
             $("#graphiccard").hide();
-            $("#supllier").show();
+            $("#powersupply").show();
             $("#storage").hide();
             $("#peripheral").hide();
           } else if (selectedValue == "storage") {
@@ -1276,7 +1376,7 @@
             $("#ram").hide();
             $("#colling").hide();
             $("#graphiccard").hide();
-            $("#supllier").hide();
+            $("#powersupply").hide();
             $("#storage").show();
             $("#peripheral").hide();
           } else if (selectedValue == "peripheral") {
@@ -1286,7 +1386,7 @@
             $("#ram").hide();
             $("#colling").hide();
             $("#graphiccard").hide();
-            $("#supllier").hide();
+            $("#powersupply").hide();
             $("#storage").hide();
             $("#peripheral").show();
           } else if (selectedValue == "") {
@@ -1296,12 +1396,194 @@
             $("#ram").hide();
             $("#colling").hide();
             $("#graphiccard").hide();
-            $("#supllier").hide();
+            $("#powersupply").hide();
             $("#storage").hide();
             $("#peripheral").hide();
           }
         });
       });
     </script>
+
+    <!-- cabinet image script -->
+    <script>
+    const imageInput = document.getElementById('image-input-cabinet');
+    const imagePreview = document.getElementById('image-preview-cabinet');
+    const cabinet_image_download = document.getElementById('cabinet_image_download');
+      
+      imageInput.addEventListener('change', () => {
+        const file = imageInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            cabinet_image_download.href =reader.result;
+
+            imagePreview.src = reader.result;
+          };
+        }
+      });
+        </script>
+
+<!-- motherboard image script -->
+      <script>
+        const image_input_motherboard = document.getElementById('image_input_motherboard');
+        const image_preview_motherboard = document.getElementById('image_preview_motherboard');
+        const motherboard_image_download = document.getElementById('motherboard_image_download');
+          
+        image_input_motherboard.addEventListener('change', () => {
+            const file = image_input_motherboard.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = () => {
+                motherboard_image_download.href =reader.result;
+    
+                image_preview_motherboard.src = reader.result;
+              };
+            }
+          });
+      </script>
+
+<!-- cpu image script -->
+      <script>
+        const image_input_cpu = document.getElementById('image_input_cpu');
+        const image_preview_cpu = document.getElementById('image_preview_cpu');
+        const cpu_image_download = document.getElementById('cpu_image_download');
+          
+        image_input_cpu.addEventListener('change', () => {
+            const file = image_input_cpu.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = () => {
+                cpu_image_download.href =reader.result;
+    
+                image_preview_cpu.src = reader.result;
+              };
+            }
+          });
+      </script>
+
+      <!-- ram image script -->
+      <script>
+        const image_input_ram = document.getElementById('image_input_ram');
+        const image_preview_ram = document.getElementById('image_preview_ram');
+        const ram_image_download = document.getElementById('ram_image_download');
+          
+        image_input_ram.addEventListener('change', () => {
+            const file = image_input_ram.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = () => {
+                ram_image_download.href =reader.result;
+    
+                image_preview_ram.src = reader.result;
+              };
+            }
+          });
+      </script>
+
+      <!-- colling image script -->
+      <script>
+        const image_input_Colling = document.getElementById('image_input_Colling');
+        const image_preview_Colling = document.getElementById('image_preview_Colling');
+        const Colling_image_download = document.getElementById('Colling_image_download');
+          
+        image_input_Colling.addEventListener('change', () => {
+            const file = image_input_Colling.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = () => {
+                Colling_image_download.href =reader.result;
+    
+                image_preview_Colling.src = reader.result;
+              };
+            }
+          });
+      </script>
+
+      <!-- graphic card image script -->
+      <script>
+        const image_input_graphic = document.getElementById('image_input_graphic');
+        const image_preview_graphic = document.getElementById('image_preview_graphic');
+        const graphic_image_download = document.getElementById('graphic_image_download');
+          
+        image_input_graphic.addEventListener('change', () => {
+            const file = image_input_graphic.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = () => {
+                graphic_image_download.href =reader.result;
+    
+                image_preview_graphic.src = reader.result;
+              };
+            }
+          });
+      </script>
+
+      <!-- Power supply image script -->
+      <script>
+        const image_input_Power = document.getElementById('image_input_Power');
+        const image_preview_Power = document.getElementById('image_preview_Power');
+        const Power_image_download = document.getElementById('Power_image_download');
+          
+        image_input_Power.addEventListener('change', () => {
+            const file = image_input_Power.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = () => {
+                Power_image_download.href =reader.result;
+    
+                image_preview_Power.src = reader.result;
+              };
+            }
+          });
+      </script>
+
+      <!-- Storage image script -->
+      <script>
+        const image_input_Storage = document.getElementById('image_input_Storage');
+        const image_preview_Storage = document.getElementById('image_preview_Storage');
+        const Storage_image_download = document.getElementById('Storage_image_download');
+          
+        image_input_Storage.addEventListener('change', () => {
+            const file = image_input_Storage.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = () => {
+                Storage_image_download.href =reader.result;
+    
+                image_preview_Storage.src = reader.result;
+              };
+            }
+          });
+      </script>
+
+      <!-- peripheral image script -->
+      <script>
+        const image_input_peripheral = document.getElementById('image_input_peripheral');
+        const image_preview_peripheral = document.getElementById('image_preview_peripheral');
+        const peripheral_image_download = document.getElementById('peripheral_image_download');
+          
+        image_input_peripheral.addEventListener('change', () => {
+            const file = image_input_peripheral.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = () => {
+                peripheral_image_download.href =reader.result;
+    
+                image_preview_peripheral.src = reader.result;
+              };
+            }
+          });
+      </script>
+
+      
   </body>
 </html>
