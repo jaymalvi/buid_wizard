@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: true,
       },
       cabinet_ImageURL: {
-        field: "ImageURL",
+        field: "ImageUrl",
         type: Sequelize.STRING,
         allowNull: true,
       },
@@ -55,7 +55,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: true,
       },
       quantityCabinet: {
-        field: "quantity",
+        field: "Stock",
         type: Sequelize.INTEGER,
         allowNull: true,
       },

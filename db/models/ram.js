@@ -42,12 +42,12 @@ module.exports = (sequelize, Sequelize) => {
         cabinet_ImageURL: {
           type: Sequelize.STRING,
           allowNull: true,
-          field: "Image_Url",
+          field: "ImageUrl",
         },
         quantityRam: {
           type: Sequelize.INTEGER,
           allowNull: true,
-          field: "quantity",
+          field: "Stock",
         },
         item: {
           type: Sequelize.STRING,

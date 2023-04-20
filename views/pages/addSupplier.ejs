@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AdminLTE 3 | Navbar & Tabs</title>
+    <title>Build Wizard</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -58,7 +58,7 @@
                   <!-- form start -->
                   <form
                     id="quickForm"
-                    action="<%= typeof supplier=='object' && supplier.idSupplier ? '/supplier/update' : '/supplier/add' %>"
+                    action="<%= typeof supplier=='object' && supplier && supplier && supplier.idSupplier ? '/supplier/update' : '/supplier/add' %>"
                     method="post"
                   >
                     <div class="card-body">
@@ -68,7 +68,7 @@
                           <input
                             type="hidden"
                             name="idSupplier"
-                            value="<%= typeof supplier=='object' && supplier.idSupplier? supplier.idSupplier : '' %>"
+                            value="<%= typeof supplier=='object' && supplier && supplier && supplier.idSupplier? supplier.idSupplier : '' %>"
                           />
                           <input
                             type="text"
@@ -76,7 +76,7 @@
                             class="form-control"
                             style="width: 50%"
                             id="offer_name"
-                            value="<%= typeof supplier=='object' && supplier.Name ? supplier.Name : '' %>"
+                            value="<%= typeof supplier=='object' && supplier && supplier.Name ? supplier.Name : '' %>"
                             placeholder="Enter Supplier name"
                           />
                         </div>
@@ -89,7 +89,7 @@
                             class="form-control"
                             style="width: 50%"
                             id="company"
-                            value="<%= typeof supplier=='object' && supplier.Mobile ? supplier.Mobile : '' %>"
+                            value="<%= typeof supplier=='object' && supplier && supplier.Mobile ? supplier.Mobile : '' %>"
                             placeholder="Enter mobile number"
                           />
                         </div>
@@ -101,7 +101,7 @@
                             class="form-control"
                             style="width: 50%"
                             id="company"
-                            value="<%= typeof supplier=='object' && supplier.Email ? supplier.Email : '' %>"
+                            value="<%= typeof supplier=='object' && supplier && supplier.Email ? supplier.Email : '' %>"
                             placeholder="Enter email id "
                           />
                         </div>
@@ -112,7 +112,31 @@
                             name="Address"
                             style="width: 50%"
                             placeholder="Enter supplier address"
-                          ><%= typeof supplier=='object' && supplier.Address ? supplier.Address : '' %></textarea>
+                          ><%= typeof supplier=='object' && supplier && supplier.Address ? supplier.Address : '' %></textarea>
+                        </div>
+                        <div class="col-md-12">
+                          <label for="MinimumAmount">Password </label>
+                          <input
+                            type="password"
+                            name="password"
+                            class="form-control"
+                            id="company"
+                            style="width: 50%"
+                            value="<%= typeof supplier=='object' && supplier.password ? supplier.password : '' %>"
+                            placeholder="Enter minimum amount"
+                          />
+                        </div>
+                        <div class="col-md-12">
+                          <label for="MinimumAmount">Confiem Password </label>
+                          <input
+                            type="password"
+                            name="password1"
+                            class="form-control"
+                            id="company"
+                            style="width: 50%"
+                            value="<%= typeof supplier=='object' && supplier.password ? supplier.password : '' %>"
+                            placeholder="Enter minimum amount"
+                          />
                         </div>
                       </div>
                     </div>

@@ -12,15 +12,15 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="./dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/<%= typeof userData == 'object' && userData && userData.userImageURL ? userData.userImageURL : './dist/img/user2-160x160.jpg' %>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><%= typeof userData == 'object' && userData && userData.fname ? userData.fname : '' %> <%= typeof userData == 'object' && userData && userData.lname ? userData.lname : '' %></a>
+          <a href="#" class="d-block"><%= typeof userData == 'object' && userData && userData.fname ? userData.fname : '' %> <%= typeof userData == 'object' && userData && userData.lname ? userData.lname : '' %><%= typeof userData == 'object' && userData && userData.Name ? userData.Name : '' %></a>
         </div>
       </div>
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
+      <!-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
@@ -29,7 +29,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -45,57 +45,8 @@
                    </p>
                 </a>
               </li> 
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>
-                    Product
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="/category" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Computer</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="../../index2.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Laptop</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/category" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Category</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/company" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Company</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>   
-              <li class="nav-item">
-                <a href="/offer" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>
-                    Order
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/offer" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>
-                    Offer
-                  </p>
-                </a>
-              </li>
+                
+              
               <li class="nav-item">
                 <a href="/user" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
@@ -113,14 +64,110 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/category" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
-                    Order History
+                    Items
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="/supplier/buyComponent" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Cabinet</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Motherboard</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>CPU</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Ram</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Cooling System</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Graphic Card</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Power Supplies</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Storage</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Peripheral Device</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Order
                   </p>
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/offer" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Offer
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Order History
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="/supplier/showItem" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Buy Item</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Sell Item</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- <li class="nav-item">
                 <a href="/category" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
@@ -135,7 +182,7 @@
                     Payment
                   </p>
                 </a>
-              </li>
+              </li> -->
               <!-- <% } else {%> -->
               <li class="nav-item">
                 <a href="/sup_dashborad" class="nav-link">

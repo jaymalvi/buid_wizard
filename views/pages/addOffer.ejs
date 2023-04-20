@@ -1,193 +1,151 @@
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AdminLTE 3 | Navbar & Tabs</title>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
-    />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css" />
-    <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="/plugins/sweetalert2/sweetalert2.min.css" />
-    <!-- Toastr -->
-    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css" />
-    <!-- Theme style -->
-    <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
-    
-  </head>
-  <body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-      <%- include('../partials/top-nav'); %> <%- include('../partials/sidebar');
-      %>
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1>Offer</h1>
-              </div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="/offer">Back</a></li>
-                </ol>
-              </div>
-            </div>
-          </div>
-          <!-- /.container-fluid -->
-        </section>
-
-        <!-- Main content -->
-        <!-- Main content -->
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <!-- left column -->
-              <div class="col-md-12">
-                <!-- jquery validation -->
-                <div class="card card-primary">
-                  <!-- <div class="card-header">
-                <h3 class="card-title">Quick Example <small>jQuery Validation</small></h3>
-              </div> -->
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                  <form
-                    id="quickForm"
-                    action="<%= typeof offer=='object' && offer.idOffers ? '/offer/update' : '/offer/add' %>"
-                    method="post"
-                  >
-                    <div class="card-body">
-                      <!-- <div class="form-group">
-                        <label for="name">Promo Code</label>
-                        <input type="hidden" name="id" value="" />
-                        <input
-                          type="text"
-                          value=""
-                          name="name"
-                          class="form-control"
-                          id="name"
-                          placeholder="Enter promo code EX. BW0313"
-                          required
-                        />
-                      </div> -->
-                      <div class="row">
-                        <div class="col-md-6">
-                          <label for="offer_name">Offer Name</label>
-                          <input
-                            type="hidden"
-                            name="idOffers"
-                            value="<%= typeof offer=='object' && offer.idOffers? offer.idOffers : '' %>"
-                          />
-                          <input
-                            type="text"
-                            name="offer_name"
-                            class="form-control"
-                            id="offer_name"
-                            value="<%= typeof offer=='object' && offer.offer_name ? offer.offer_name : '' %>"
-                            placeholder="Enter offer name"
-                          />
-                        </div>
-                        <div class="col-md-6">
-                          <label for="PromoCode">Promo Code</label>
-                          <input
-                            type="text"
-                            name="PromoCode"
-                            class="form-control"
-                            id="company"
-                            value="<%= typeof offer=='object' && offer.PromoCode ? offer.PromoCode : '' %>"
-                            placeholder="Enter promo code EX. BW0313"
-                          />
-                        </div>
-                        <div class="col-md-6">
-                          <label for="DsicountPercentage"
-                            >Discount Percentage</label
-                          >
-                          <input
-                            type="number"
-                            name="DsicountPercentage"
-                            class="form-control"
-                            id="company"
-                            value="<%= typeof offer=='object' && offer.DsicountPercentage ? offer.DsicountPercentage : '' %>"
-                            placeholder="Enter discount percentage"
-                          />
-                        </div>
-                        <div class="col-md-6">
-                          <label for="MinimumAmount">Minimum Amount</label>
-                          <input
-                            type="number"
-                            name="MinimumAmount"
-                            class="form-control"
-                            id="company"
-                            value="<%= typeof offer=='object' && offer.MinimumAmount ? offer.MinimumAmount : '' %>"
-                            placeholder="Enter minimum amount"
-                          />
-                        </div>
-                        <div class="col-md-6">
-                          <label for="start_date">Start Date</label>
-                          <input
-                            type="date"
-                            name="start_date"
-                            class="form-control"
-                            id="company"
-                            value="<%= typeof offer=='object' && offer.start_date ? offer.start_date : '' %>"
-                            placeholder="Enter start date"
-                          />
-                        </div>
-                        <div class="col-md-6">
-                          <label for="start_date">End Date</label>
-                          <input
-                            type="date"
-                            name="end_date"
-                            class="form-control"
-                            id="company"
-                            value="<%= typeof offer=='object' && offer.end_date ? offer.end_date : '' %>"
-                            placeholder="Enter end date"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                </div>
-                <!-- /.card -->
-              </div>
-              <!--/.col (left) -->
-              <!-- right column -->
-              <div class="col-md-6"></div>
-              <!--/.col (right) -->
-            </div>
-            <!-- /.row -->
-          </div>
-          <!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-        <!-- /.content -->
+<%- include('../partials/top-nav'); %>
+<%- include('../partials/sidebar'); %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Offer</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/offer">Back</a></li>
+          </ol>
+        </div>
       </div>
-      <!-- /.content-wrapper -->
-
-      <%- include('../partials/footer'); %>
     </div>
-    <!-- ./wrapper -->
+    <!-- /.container-fluid -->
+  </section>
 
-    <!-- jQuery -->
-    <script src="/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="/dist/js/demo.js"></script>
-  </body>
+  <!-- Main content -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- jquery validation -->
+          <div class="card card-primary">
+            <!-- <div class="card-header">
+                 <h3 class="card-title">Quick Example <small>jQuery Validation</small></h3>
+                 </div> -->
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form
+              id="quickForm"
+              action="<%= typeof offer=='object' && offer.idOffers ? '/offer/update' : '/offer/add' %>"
+              method="post"
+            >
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="offer_name">Offer Name</label>
+                    <input
+                      type="hidden"
+                      name="idOffers"
+                      value="<%= typeof offer=='object' && offer.idOffers? offer.idOffers : '' %>"
+                    />
+                    <input
+                      type="text"
+                      name="offer_name"
+                      class="form-control"
+                      id="offer_name"
+                      value="<%= typeof offer=='object' && offer.offer_name ? offer.offer_name : '' %>"
+                      placeholder="Enter offer name"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="PromoCode">Promo Code</label>
+                    <input
+                      type="text"
+                      name="PromoCode"
+                      class="form-control"
+                      id="company"
+                      value="<%= typeof offer=='object' && offer.PromoCode ? offer.PromoCode : '' %>"
+                      placeholder="Enter promo code EX. BW0313"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="DsicountPercentage">Discount Percentage</label>
+                    <input
+                      type="number"
+                      name="DsicountPercentage"
+                      class="form-control"
+                      id="company"
+                      value="<%= typeof offer=='object' && offer.DsicountPercentage ? offer.DsicountPercentage : '' %>"
+                      placeholder="Enter discount percentage"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="MinimumAmount">Minimum Amount</label>
+                    <input
+                      type="number"
+                      name="MinimumAmount"
+                      class="form-control"
+                      id="company"
+                      value="<%= typeof offer=='object' && offer.MinimumAmount ? offer.MinimumAmount : '' %>"
+                      placeholder="Enter minimum amount"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="start_date">Start Date</label>
+                    <input
+                      type="date"
+                      name="start_date"
+                      class="form-control"
+                      id="company"
+                      value="<%= typeof offer=='object' && offer.start_date ? offer.start_date : '' %>"
+                      placeholder="Enter start date"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="start_date">End Date</label>
+                    <input
+                      type="date"
+                      name="end_date"
+                      class="form-control"
+                      id="company"
+                      value="<%= typeof offer=='object' && offer.end_date ? offer.end_date : '' %>"
+                      placeholder="Enter end date"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col (left) -->
+        <!-- right column -->
+        <div class="col-md-6"></div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+  <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <%- include('../partials/footer'); %>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+</body>
 </html>

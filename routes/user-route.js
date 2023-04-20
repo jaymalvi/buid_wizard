@@ -21,11 +21,15 @@ const upload = multer({ storage: storage });
 // Retrieve all offer
 router.get('/', userController.findAll);
 // Create a new offer
-router.post('/add', upload.single('aadharCardImageURL'), userController.create);
+router.post('/add', upload.fields([
+  { name: 'aadharCardImageURL' },
+  { name: 'userImageURL' }]), userController.create);
 // Retrieve a single offer with id
 router.get('/:id', userController.findOne);
 // Update a offer with id
-router.post('/update', upload.single('aadharCardImageURL'), userController.update);
+router.post('/update', upload.fields([
+  { name: 'aadharCardImageURL' },
+  { name: 'userImageURL' }]), userController.update)
 // Delete a offer with id
 router.get('/delete/:id', userController.delete);
 

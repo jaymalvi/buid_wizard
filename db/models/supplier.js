@@ -28,7 +28,11 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.STRING,
           allowNull: true,
           field: "Address",
-        }
+        },
+        password: {
+          type: Sequelize.STRING,
+          allowNull: true,
+        },
       },
       {
         tableName: "supplier",

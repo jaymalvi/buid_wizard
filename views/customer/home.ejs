@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../layouts/navbar.ejs') %>
+    </header>
+<div class="video">
+    <video autoplay loop muted>
+        <source src="video/video.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="video">
+    <video autoplay loop muted>
+        <source src="video/video2.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="video">
+    <video autoplay loop muted>
+        <source src="video/video3.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="video">
+    <video autoplay loop muted>
+        <source src="video/video4.mp4" type="video/mp4">
+
+    </video>
+    <form action="/filter" method="get">
+        <button class="startBuild" type="submit">Start Building</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="nzxtcom-by-htmltodesign">
+    <div class="divpage-wrapper">
+        <div class="div">
+            <div class="div1">
+                <div class="div2">
+                    <img class="svg-icon" alt="" src="./public/svg.svg" />
+                    <div class="all">All</div>
+                    <div class="a">
+                        <div class="pc">PC</div>
+                    </div>
+                    <div class="keyboard">Keyboard</div>
+                </div>
+                <img class="div-icon" alt="" src="./public/div.svg" />
+            </div>
+        </div>
+        <div class="divmain-wrapper">
+            <div class="divremove-me-build-container">
+                <div class="div3">
+                    <div class="div4">
+                        <b class="h7-build">H7 Build</b>
+                        <div class="div5">
+                            <div class="button">
+                                <img class="svg-icon1" alt="" src="./public/svg1.svg" />
+                                <div class="save">Save</div>
+                            </div>
+                            <div class="button1">
+                                <img class="svg-icon1" alt="" src="./public/svg2.svg" />
+                                <div class="save">Load</div>
+                            </div>
+                            <div class="button2">
+                                <img class="svg-icon1" alt="" src="./public/svg3.svg" />
+                                <div class="save">Restart</div>
+                            </div>
+                            <button class="button3">
+                                <img class="svg-icon1" alt="" src="./public/svg4.svg" />
+                                <div class="share">Share</div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="div6">
+                        <img class="div-icon1" alt="" src="./public/div1@2x.png" />
+                        <div class="ul">
+                            <div class="li">
+                                <div class="button4">
+                                    <div class="span">
+                                        <div class="image">
+                                            <div class="image1"></div>
+                                        </div>
+                                        <div class="chipsetsvg">
+                                            <div class="chipsetsvg1">
+                                                <div class="frame">
+                                                    <img class="vector-icon" alt="" src="./public/vector.svg" /><img
+                                                        class="vector-icon1" alt="" src="./public/vector1.svg" /><img
+                                                        class="vector-icon2" alt="" src="./public/vector2.svg" /><img
+                                                        class="vector-icon3" alt="" src="./public/vector3.svg" /><img
+                                                        class="group-icon" alt="" src="./public/group.svg" /><b
+                                                        class="intel">INTEL</b><img class="vector-icon4" alt=""
+                                                        src="./public/vector4.svg" /><img class="vector-icon5" alt=""
+                                                        src="./public/vector5.svg" /><img class="vector-icon6" alt=""
+                                                        src="./public/vector6.svg" /><img class="vector-icon7" alt=""
+                                                        src="./public/vector7.svg" /><img class="group-icon1" alt=""
+                                                        src="./public/group1.svg" /><b class="amd">AMD</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div7">
+                                        <div class="chipset">Chipset</div>
+                                        <div class="gigabyte-b550-ud">AMD</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="li1">
+                                <img class="svg-icon5" alt="" src="./public/svg5.svg" />
+                                <div class="button5">
+                                    <img class="div-icon2" alt="" src="./public/div2@2x.png" />
+                                    <div class="div8">
+                                        <div class="chipset">Case</div>
+                                        <div class="gigabyte-b550-ud">NZXT H7</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="li2">
+                                <div class="button6">
+                                    <img class="div-icon2" alt="" src="./public/div3@2x.png" />
+                                    <div class="div9">
+                                        <div class="chipset">Cooling</div>
+                                        <div class="gigabyte-b550-ud">NZXT Kraken 120</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="li3">
+                                <div class="button7">
+                                    <img class="div-icon2" alt="" src="./public/div4@2x.png" />
+                                    <div class="div10">
+                                        <div class="chipset">Motherboards</div>
+                                        <div class="gigabyte-b550-ud">
+                                            Gigabyte B550 UD Y1 (CEC)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="li4">
+                                <div class="button8">
+                                    <img class="div-icon2" alt="" src="./public/div5@2x.png" />
+                                    <div class="div11">
+                                        <div class="chipset">GPU</div>
+                                        <div class="nvidia-geforce-rtx">
+                                            NVIDIA GeForce RTX 4080 - ASUS TUF GAMING OC
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="li5">
+                                <div class="button8">
+                                    <img class="div-icon2" alt="" src="./public/div6@2x.png" />
+                                    <div class="div12">
+                                        <div class="chipset">CPU</div>
+                                        <div class="amd-ryzen-7">
+                                            AMD Ryzen 7 5800X 8-Core 3.8GHz
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="li6">
+                                <div class="button8">
+                                    <img class="div-icon2" alt="" src="./public/div7@2x.png" />
+                                    <div class="div13">
+                                        <div class="chipset">Power Supplies</div>
+                                        <div class="msi-mpg-a1000g">
+                                            MSI MPG A1000G PCIE5 1000W Gold
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="li7">
+                                <div class="button8">
+                                    <img class="div-icon2" alt="" src="./public/div8@2x.png" />
+                                    <div class="div14">
+                                        <div class="chipset">RAM</div>
+                                        <div class="team-t-force-xtreem">
+                                            Team T-FORCE XTREEM ARGB 16GB (2 x 8GB) 4000MHz DDR4
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="li8">
+                                <div class="button12">
+                                    <img class="div-icon2" alt="" src="./public/div9@2x.png" />
+                                    <div class="div15">
+                                        <div class="chipset">Storage</div>
+                                        <div class="gigabyte-b550-ud">
+                                            Samsung 970 EVO Plus 500GB
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div16">
+                        <div class="div17">
+                            <div class="button13">
+                                <div class="div18">
+                                    <img class="svg-icon1" alt="" src="./public/svg6.svg" />
+                                    <div class="performance">Performance</div>
+                                </div>
+                                <img class="svg-icon1" alt="" src="./public/svg7.svg" />
+                            </div>
+                        </div>
+                        <div class="div19">
+                            <div class="div20">
+                                <div class="p">
+                                    <b class="estimated-shipping">Estimated Shipping</b>
+                                    <div class="div21">03/28/2023</div>
+                                </div>
+                                <div class="div22">
+                                    <div class="p1">
+                                        <b class="pc">Subtotal:</b><b class="pc">$2,679.91</b>
+                                    </div>
+                                    <div class="p2">
+                                        <div class="estimated-shipping">
+                                            Monthly payments available. Learn More
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="divscrollroot">
+                        <div class="divcase">
+                            <div class="div23">
+                                <div class="div24">
+                                    <div class="button14">
+                                        <img class="svg-icon8" alt="" src="./public/svg8.svg" />
+                                        <div class="pc">Chipset</div>
+                                    </div>
+                                    <div class="button15">
+                                        <div class="pc">Cooling</div>
+                                        <img class="svg-icon8" alt="" src="./public/svg9.svg" />
+                                    </div>
+                                </div>
+                                <div class="div25">
+                                    <div class="div26">
+                                        <div class="cases">Cases</div>
+                                        <img class="info-icon" alt="" src="./public/info.svg" />
+                                    </div>
+                                    <div class="div27">
+                                        <div class="selectfilter-case">
+                                            <div class="div28">
+                                                <div class="all1">All</div>
+                                            </div>
+                                            <img class="image-icon" alt="" src="./public/image.svg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ul1">
+                                <div class="div29">
+                                    <div class="p3">
+                                        <div class="sale">Sale</div>
+                                    </div>
+                                    <div class="div30">
+                                        <div class="div31">
+                                            <div class="div32">
+                                                <div class="span1">
+                                                    <div class="image2">
+                                                        <div class="image3"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="div33">
+                                                <div class="p4">
+                                                    <div class="performance">NZXT H510</div>
+                                                </div>
+                                                <div class="mid-tower">Mid-Tower</div>
+                                            </div>
+                                        </div>
+                                        <div class="div34">
+                                            <div class="p5">
+                                                <div class="estimated-shipping">
+                                                    <b>Color: </b><span class="black">black</span>
+                                                </div>
+                                            </div>
+                                            <div class="choose-nzxt-h510-black">
+                                                <div class="span2">
+                                                    <div class="span3"></div>
+                                                </div>
+                                            </div>
+                                            <div class="div35">
+                                                <div class="div36">
+                                                    <div class="div37">-$40.00</div>
+                                                    <div class="estimated-shipping">-$30.00</div>
+                                                </div>
+                                                <div class="div39">
+                                                    <div class="button16">
+                                                        <b class="info">Info</b>
+                                                    </div>
+                                                    <div class="button17">
+                                                        <b class="info">Add</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="div29">
+                                    <div class="p3">
+                                        <div class="sale">Sale</div>
+                                    </div>
+                                    <div class="div30">
+                                        <div class="div42">
+                                            <div class="div32">
+                                                <div class="span4">
+                                                    <div class="image2">
+                                                        <div class="image3"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="div33">
+                                                <div class="p7">
+                                                    <div class="performance">NZXT H510i</div>
+                                                </div>
+                                                <div class="mid-tower">Mid-Tower</div>
+                                            </div>
+                                        </div>
+                                        <div class="div45">
+                                            <div class="p8">
+                                                <div class="estimated-shipping">
+                                                    <b>Color: </b><span class="black">black / red</span>
+                                                </div>
+                                            </div>
+                                            <div class="div46">
+                                                <div class="choose-nzxt-h510i-undefined">
+                                                    <div class="span5">
+                                                        <div class="span6"></div>
+                                                        <div class="span7"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="choose-nzxt-h510i-black">
+                                                    <div class="span2">
+                                                        <div class="span3"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="choose-nzxt-h510i-black">
+                                                    <div class="span5">
+                                                        <div class="span6"></div>
+                                                        <div class="span12"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="div47">
+                                                <div class="div48">
+                                                    <div class="div37">-$20.00</div>
+                                                    <div class="estimated-shipping">-$20.00</div>
+                                                </div>
+                                                <div class="div39">
+                                                    <div class="button16">
+                                                        <b class="info">Info</b>
+                                                    </div>
+                                                    <div class="button17">
+                                                        <b class="info">Add</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="div52">
+                                    <div class="p9">
+                                        <div class="sale">Sale</div>
+                                    </div>
+                                    <div class="div30">
+                                        <div class="div54">
+                                            <div class="div32">
+                                                <div class="span13">
+                                                    <div class="image2">
+                                                        <div class="image3"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="div33">
+                                                <div class="p10">
+                                                    <div class="performance">NZXT H7</div>
+                                                </div>
+                                                <div class="mid-tower">Mid-Tower</div>
+                                            </div>
+                                        </div>
+                                        <div class="div57">
+                                            <div class="p11">
+                                                <div class="estimated-shipping">
+                                                    <b>Color: </b><span class="black">white</span>
+                                                </div>
+                                            </div>
+                                            <div class="div58">
+                                                <div class="choose-nzxt-h510i-undefined">
+                                                    <div class="span2">
+                                                        <div class="span15"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="choose-nzxt-h510i-black">
+                                                    <div class="span2">
+                                                        <div class="span3"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="choose-nzxt-h510i-black">
+                                                    <div class="span5">
+                                                        <div class="span6"></div>
+                                                        <div class="span12"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="div59">
+                                                <div class="button16"><b class="info">Info</b></div>
+                                                <div class="span21"><b class="info">Added</b></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divnext">
+                        <div class="button21">
+                            <div class="next">Next</div>
+                        </div>
+                    </div>
+                    <div class="divtabbed-nav">
+                        <div class="button22">
+                            <div class="base">01 Base</div>
+                        </div>
+                        <div class="add-ons">02 Add-ons</div>
+                        <div class="summary">03 Summary</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="div60">
+        <img class="iframe-icon" alt="" src="./public/iframe.svg" />
+        <div class="iframe">
+            <div class="div61">
+                <div class="button23">
+                    <div class="estimated-shipping">Hi. Need any help?</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img class="iframe-icon1" alt="" src="./public/iframe1.svg" />
+    <div class="div62"></div>
+</div> -->
+</body>
+</html>

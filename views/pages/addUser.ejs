@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AdminLTE 3 | Navbar & Tabs</title>
+    <title>Build Wizard</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -141,6 +141,22 @@
                           </select>
                         </div>
                         <div class="col-md-6">
+                          <label for="image">User Image</label>
+                          <input
+                            type="file"
+                            name="userImageURL"
+                            class="form-control"
+                            id="image_input_user"
+                            value="<%= typeof user=='object' && user.userImageURL ? user.userImageURL : '' %>"
+                            placeholder="Enter Dimention of cabinet"
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <a href="" download  id="user_image_download">
+                            <img src="/<%= typeof user=='object' && user.userImageURL ? user.userImageURL : 'download1.jpg' %>" height="100" width="100" id="image_preview_user" style="padding: 10px;">
+                          </a>
+                        </div>
+                        <div class="col-md-6">
                           <label for="MinimumAmount">Date OF Birth</label>
                           <input
                             type="date"
@@ -176,7 +192,7 @@
                         </div>
                         <div class="col-md-6">
                           <a href="" download  id="aadharcard_image_download">
-                            <img src="/<%= typeof user=='object' && user.aadharCardImageURL ? user.aadharCardImageURL : '' %>" height="100" width="100" id="image_preview_aadharcard" style="padding: 10px;">
+                            <img src="/<%= typeof user=='object' && user.aadharCardImageURL ? user.aadharCardImageURL : 'download1.jpg' %>" height="100" width="100" id="image_preview_aadharcard" style="padding: 10px;">
                           </a>
                         </div>
                         
@@ -281,10 +297,10 @@
                             <label for="MinimumAmount">Confiem Password </label>
                             <input
                               type="password"
-                              name="confirmPassword"
+                              name="password1"
                               class="form-control"
                               id="company"
-                              value="<%= typeof user=='object' && user.confirmPassword ? user.confirmPassword : '' %>"
+                              value="<%= typeof user=='object' && user.password ? user.password : '' %>"
                               placeholder="Enter minimum amount"
                             />
                           </div>
@@ -349,6 +365,25 @@
                 aadharcard_image_download.href =reader.result;
     
                 image_preview_aadharcard.src = reader.result;
+              };
+            }
+          });
+      </script>
+      <!-- user Image -->
+      <script>
+        const image_input_user = document.getElementById('image_input_user');
+        const image_preview_user = document.getElementById('image_preview_user');
+        const user_image_download = document.getElementById('user_image_download');
+          
+        image_input_user.addEventListener('change', () => {
+            const file = image_input_user.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = () => {
+                user_image_download.href =reader.result;
+    
+                image_preview_user.src = reader.result;
               };
             }
           });

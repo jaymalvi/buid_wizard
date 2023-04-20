@@ -22,7 +22,7 @@ module.exports = (sequelize, Sequelize) => {
         cabinet_ImageURL: {
           type: Sequelize.STRING,
           allowNull: true,
-          field: "ImageURL",
+          field: "ImageUrl",
         },
         chipset: {
           type: Sequelize.STRING,
@@ -57,7 +57,7 @@ module.exports = (sequelize, Sequelize) => {
         quantityGraphic: {
           type: Sequelize.INTEGER,
           allowNull: true,
-          field: "quantity",
+          field: "Stock",
         }
       },
       {

@@ -26,8 +26,9 @@ exports.findAll = async function(req, res) {
 };
 
 exports.create = async function(req, res) {
-  console.log(req.body);
-  req.body.aadharCardImageURL = req.file && req.file.originalname ? req.file.originalname : "";
+  console.log(req.body, req.file, req.files.userImageURL);
+  req.body.userImageURL = req.files && req.files.userImageURL && req.files.userImageURL[0] && req.files.userImageURL[0].originalname ? req.files.userImageURL[0].originalname : "";
+  req.body.aadharCardImageURL = req.files && req.files.aadharCardImageURL && req.files.aadharCardImageURL[0] && req.files.aadharCardImageURL[0].originalname ? req.files.aadharCardImageURL[0].originalname : "";
   try {
     const user = await db.user.create(req.body);
     return res.redirect('/user');
@@ -45,7 +46,8 @@ exports.create = async function(req, res) {
 
 exports.update = async function(req,res){
   console.log(req.body);
-  req.body.aadharCardImageURL = req.file && req.file.originalname ? req.file.originalname : "";
+  req.body.userImageURL = req.files && req.files.userImageURL && req.files.userImageURL[0] && req.files.userImageURL[0].originalname ? req.files.userImageURL[0].originalname : "";
+  req.body.aadharCardImageURL = req.files && req.files.aadharCardImageURL && req.files.aadharCardImageURL[0] && req.files.aadharCardImageURL[0].originalname ? req.files.aadharCardImageURL[0].originalname : "";
   try {
     const user = await db.user.update(req.body,{
       where: {

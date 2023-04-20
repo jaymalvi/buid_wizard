@@ -1,0 +1,67 @@
+<section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+                <figure><img src="/img/Image2.png" alt="sing up image">
+                    <h3>Built By Experts</h3>
+                    Our highly-trained builders use top-rated components and professionally cable-manage your build.</p>
+                </figure>
+            </div>
+
+            <div class="signin-form">
+                <h2 class="form-title">Sign In</h2>
+                <form method="POST" class="register-form" id="login-form" action="/postLogin">
+                    <div class="form-group">
+                        <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" name="email" id="your_name" placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                        <input type="password" name="password" id="your_pass" placeholder="Password" />
+                    </div>
+                    <div class="form-group">
+                        <a href="#">Forget Password?</a>
+                    </div>
+                    <div class="form-button">
+                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                    </div>
+                    Not a member?<a href="#" style="padding: 10px;">Create Account</a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+
+<script>
+    const form = document.getElementById('login-form');
+    const emailInput = document.getElementById('your_name');
+    const passwordInput = document.getElementById('your_pass');
+    const emailError = document.getElementById('email-error');
+    const passwordError = document.getElementById('password-error');
+
+    form.addEventListener('submit', (event) => {
+        let isValid = true;
+        emailError.textContent = '';
+        passwordError.textContent = '';
+
+        // Validate email format
+        if (!emailInput.validity.valid) {
+            emailError.textContent = 'Please enter a valid email address';
+            isValid = false;
+        }
+
+        // Validate password length
+        if (passwordInput.value.length < 8) {
+            passwordError.textContent = 'Password must be at least 8 characters long';
+            isValid = false;
+        }
+
+        // Prevent form submission if any validation errors
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+</script>

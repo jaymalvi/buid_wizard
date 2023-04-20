@@ -47,7 +47,7 @@ module.exports = (sequelize, Sequelize) => {
         cabinet_ImageURL: {
           type: Sequelize.STRING,
           allowNull: true,
-          field: "Image_Url",
+          field: "ImageUrl",
         },
         read_speed: {
           type: Sequelize.INTEGER,
@@ -62,7 +62,7 @@ module.exports = (sequelize, Sequelize) => {
         quantityStorage: {
           type: Sequelize.INTEGER,
           allowNull: true,
-          field: "quantity",
+          field: "Stock",
         },
         supplierId: {
           field: "supplierId",

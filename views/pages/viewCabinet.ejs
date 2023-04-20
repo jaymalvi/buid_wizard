@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AdminLTE 3 | Navbar & Tabs</title>
+    <title>Build Wizard</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -175,16 +175,6 @@
                     <thead>
                       <tr>
                         <th
-                          class="sorting"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Rendering engine: activate to sort column ascending"
-                        >
-                          Image
-                        </th>
-                        <th
                           class="sorting sorting_desc"
                           tabindex="0"
                           aria-controls="example1"
@@ -262,17 +252,6 @@
                         Price
                         </th>
                         <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Quantity
-                        </th>
-                        <th
                           class="sorting"
                           tabindex="0"
                           aria-controls="example1"
@@ -289,9 +268,6 @@
                     0; i< cabinet.length; i++) {%>
                     <tbody>
                       <tr class="odd">
-                        <td class="dtr-control" tabindex="0">
-                          <%= cabinet[i].cabinet_ImageURL%>
-                        </td>
                         <td><%= cabinet[i].NameCabinet%></td>
                         <td class="sorting_1"><%= cabinet[i].Form_Factor%></td>
                         <td class="sorting_1"><%= cabinet[i].Dimensions%></td>
@@ -299,12 +275,8 @@
                         <td class="sorting_1"><%= cabinet[i].NoOfBayes%></td>
                         <td class="sorting_1"><%= cabinet[i].NoOfFans%></td>
                         <td class="sorting_1"><%= cabinet[i].Pricecabinet%></td>
-                        <td class="sorting_1"><%= cabinet[i].quantityCabinet%></td>
                         <td>
-                          <a href="/cabinet/<%= cabinet[i].idCabinet%>?id=cabinet">Edit</a>
-                          <a href="/cabinet/delete/<%= cabinet[i].idCabinet%>?id=cabinet"
-                            >Delete</a
-                          >
+                          <a href="/item_buy/<%= cabinet[i].idCabinet%>?id=cabinet&supplierId=<%=supplierId%>">Buy</a>
                         </td>
                       </tr>
                       <% }}%>
@@ -324,16 +296,6 @@
                     <thead>
                       <tr>
                         <th
-                          class="sorting"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Rendering engine: activate to sort column ascending"
-                        >
-                          Image
-                        </th>
-                        <th
                           class="sorting sorting_desc"
                           tabindex="0"
                           aria-controls="example1"
@@ -345,33 +307,11 @@
                           Name
                         </th>
                         <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Price
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Quantity
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
+                        class="sorting sorting_desc"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
                           aria-label="Platform(s): activate to sort column ascending"
                           aria-sort="descending"
                         >
@@ -385,13 +325,13 @@
                           colspan="1"
                           aria-label="Platform(s): activate to sort column ascending"
                           aria-sort="descending"
-                        >
+                          >
                           Maximum Ram Capicity
                         </th>
                         <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
+                        class="sorting sorting_desc"
+                        tabindex="0"
+                        aria-controls="example1"
                           rowspan="1"
                           colspan="1"
                           aria-label="Platform(s): activate to sort column ascending"
@@ -400,28 +340,39 @@
                           PCI Slots
                         </th>
                         <th
-                          class="sorting sorting_desc"
+                        class="sorting sorting_desc"
                           tabindex="0"
                           aria-controls="example1"
                           rowspan="1"
                           colspan="1"
                           aria-label="Platform(s): activate to sort column ascending"
                           aria-sort="descending"
-                        >
+                          >
                         Sata Ports
                         </th>
                         <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
+                        class="sorting sorting_desc"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Platform(s): activate to sort column ascending"
+                        aria-sort="descending"
                         >
-                          USB Ports
-                        </th>
-                        <th
+                        USB Ports
+                      </th>
+                      <th
+                        class="sorting sorting_desc"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Platform(s): activate to sort column ascending"
+                        aria-sort="descending"
+                      >
+                        Price
+                      </th>
+                      <th
                           class="sorting"
                           tabindex="0"
                           aria-controls="example1"
@@ -438,22 +389,15 @@
                     0; i< motherboard.length; i++) {%>
                     <tbody>
                       <tr class="odd">
-                        <td class="dtr-control" tabindex="0">
-                          <%= motherboard[i].cabinet_ImageURL%>
-                        </td>
                         <td><%= motherboard[i].nameMotherboard%></td>
-                        <td class="sorting_1"><%= motherboard[i].priceMotherboard%></td>
-                        <td class="sorting_1"><%= motherboard[i].quantityMotherboard%></td>
                         <td class="sorting_1"><%= motherboard[i].cpu_socket%></td>
                         <td class="sorting_1"><%= motherboard[i].ram_slots%></td>
                         <td class="sorting_1"><%= motherboard[i].max_ram_capacity%></td>
                         <td class="sorting_1"><%= motherboard[i].pci_slots%></td>
                         <td class="sorting_1"><%= motherboard[i].sata_ports%></td>
+                        <td class="sorting_1"><%= motherboard[i].priceMotherboard%></td>
                         <td>
-                          <a href="/cabinet/<%= motherboard[i].idMotherboard%>?id=motherboard">Edit</a>
-                          <a href="/cabinet/delete/<%= motherboard[i].idMotherboard%>?id=motherboard"
-                            >Delete</a
-                          >
+                          <a href="/item_buy/<%= motherboard[i].idMotherboard%>?id=motherboard&supplierId=<%=supplierId%>">Buy</a>
                         </td>
                       </tr>
                       <% }}%>
@@ -473,16 +417,6 @@
                     <thead>
                       <tr>
                         <th
-                          class="sorting"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Rendering engine: activate to sort column ascending"
-                        >
-                          Image
-                        </th>
-                        <th
                           class="sorting sorting_desc"
                           tabindex="0"
                           aria-controls="example1"
@@ -492,28 +426,6 @@
                           aria-sort="descending"
                         >
                           Name
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Price
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Quantity
                         </th>
                         <th
                           class="sorting sorting_desc"
@@ -571,6 +483,17 @@
                           Power Consumption
                         </th>
                         <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
                           class="sorting"
                           tabindex="0"
                           aria-controls="example1"
@@ -587,22 +510,15 @@
                     0; i< cpu.length; i++) {%>
                     <tbody>
                       <tr class="odd">
-                        <td class="dtr-control" tabindex="0">
-                          <%= cpu[i].cabinet_ImageURL%>
-                        </td>
                         <td><%= cpu[i].NameCPU%></td>
-                        <td class="sorting_1"><%= cpu[i].PriceCPU%></td>
-                        <td class="sorting_1"><%= cpu[i].quantityCPU%></td>
                         <td class="sorting_1"><%= cpu[i].socket_type%></td>
                         <td class="sorting_1"><%= cpu[i].number_of_cores%></td>
                         <td class="sorting_1"><%= cpu[i].clock_speed%></td>
                         <td class="sorting_1"><%= cpu[i].cache_size%></td>
                         <td class="sorting_1"><%= cpu[i].power_consumtionCPU%></td>
+                        <td class="sorting_1"><%= cpu[i].PriceCPU%></td>
                         <td>
-                          <a href="/cabinet/<%= cpu[i].idCpu%>?id=cpu">Edit</a>
-                          <a href="/cabinet/delete/<%= cpu[i].idCpu%>?id=cpu"
-                            >Delete</a
-                          >
+                          <a href="/item_buy/<%= cpu[i].idCpu%>?id=cpu&supplierId=<%=supplierId%>">Buy</a>
                         </td>
                       </tr>
                       <% }}%>
@@ -622,16 +538,6 @@
                     <thead>
                       <tr>
                         <th
-                          class="sorting"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Rendering engine: activate to sort column ascending"
-                        >
-                          Image
-                        </th>
-                        <th
                           class="sorting sorting_desc"
                           tabindex="0"
                           aria-controls="example1"
@@ -641,28 +547,6 @@
                           aria-sort="descending"
                         >
                           Name
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Price
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Quantity
                         </th>
                         <th
                           class="sorting sorting_desc"
@@ -698,6 +582,17 @@
                         Memory Speed
                         </th>
                         <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
                           class="sorting"
                           tabindex="0"
                           aria-controls="example1"
@@ -714,20 +609,13 @@
                     0; i< ram.length; i++) {%>
                     <tbody>
                       <tr class="odd">
-                        <td class="dtr-control" tabindex="0">
-                          <%= ram[i].ImageURLRam%>
-                        </td>
                         <td><%= ram[i].NameRam%></td>
-                        <td class="sorting_1"><%= ram[i].PriceRam%></td>
-                        <td class="sorting_1"><%= ram[i].quantityRam%></td>
                         <td class="sorting_1"><%= ram[i].memory_sizeRam%></td>
                         <td class="sorting_1"><%= ram[i].memory_typeRam%></td>
                         <td class="sorting_1"><%= ram[i].memory_speed%></td>
+                        <td class="sorting_1"><%= ram[i].PriceRam%></td>
                         <td>
-                          <a href="/cabinet/<%= ram[i].idRam%>?id=ram">Edit</a>
-                          <a href="/cabinet/delete/<%= ram[i].idRam%>?id=ram"
-                            >Delete</a
-                          >
+                          <a href="/item_buy/<%= ram[i].idRam%>?id=ram&supplierId=<%=supplierId%>">Buy</a>
                         </td>
                       </tr>
                       <% }}%>
@@ -747,16 +635,6 @@
                     <thead>
                       <tr>
                         <th
-                          class="sorting"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Rendering engine: activate to sort column ascending"
-                        >
-                          Image
-                        </th>
-                        <th
                           class="sorting sorting_desc"
                           tabindex="0"
                           aria-controls="example1"
@@ -766,28 +644,6 @@
                           aria-sort="descending"
                         >
                           Name
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Price
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Quantity
                         </th>
                         <th
                           class="sorting sorting_desc"
@@ -810,6 +666,18 @@
                           aria-sort="descending"
                         >
                           Fan Speed
+                        </th>
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
                         <th
                           class="sorting"
                           tabindex="0"
@@ -827,19 +695,12 @@
                     0; i< cooling_system.length; i++) {%>
                     <tbody>
                       <tr class="odd">
-                        <td class="dtr-control" tabindex="0">
-                          <%= cooling_system[i].ImageURLColling%>
-                        </td>
                         <td><%= cooling_system[i].NameColling%></td>
-                        <td class="sorting_1"><%= cooling_system[i].PriceColling%></td>
-                        <td class="sorting_1"><%= cooling_system[i].quantityColling%></td>
                         <td class="sorting_1"><%= cooling_system[i].coollingType%></td>
                         <td class="sorting_1"><%= cooling_system[i].fan%></td>
+                        <td class="sorting_1"><%= cooling_system[i].PriceColling%></td>
                         <td>
-                          <a href="/cabinet/<%= cooling_system[i].idCooling_System%>?id=colling">Edit</a>
-                          <a href="/cabinet/delete/<%= cooling_system[i].idCooling_System%>?id=colling"
-                            >Delete</a
-                          >
+                          <a href="/item_buy/<%= cooling_system[i].idCooling_System%>?id=colling&supplierId=<%=supplierId%>">Buy</a>
                         </td>
                       </tr>
                       <% }}%>
@@ -859,16 +720,6 @@
                     <thead>
                       <tr>
                         <th
-                          class="sorting"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Rendering engine: activate to sort column ascending"
-                        >
-                          Image
-                        </th>
-                        <th
                           class="sorting sorting_desc"
                           tabindex="0"
                           aria-controls="example1"
@@ -878,28 +729,6 @@
                           aria-sort="descending"
                         >
                           Name
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Price
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Quantity
                         </th>
                         <th
                           class="sorting sorting_desc"
@@ -957,6 +786,17 @@
                           Power Consumption
                         </th>
                         <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
                           class="sorting"
                           tabindex="0"
                           aria-controls="example1"
@@ -973,12 +813,7 @@
                       0; i< graphic_card.length; i++){%>
                     <tbody>
                       <tr class="odd">
-                        <td class="dtr-control" tabindex="0">
-                          <%= graphic_card[i].ImageURLGraphic%>
-                        </td>
                         <td><%= graphic_card[i].NameGraphic%></td>
-                        <td class="sorting_1"><%= graphic_card[i].PriceGraphic%></td>
-                        <td class="sorting_1"><%= graphic_card[i].quantityGraphic%></td>
                         <td class="sorting_1"><%= graphic_card[i].chipset%></td>
                         <td class="sorting_1"><%= graphic_card[i].memory_typeGraphic%></td>
                         <td class="sorting_1"><%= graphic_card[i].memory_size%></td>
@@ -986,11 +821,9 @@
                         <td class="sorting_1">
                           <%= graphic_card[i].power_consumtionGraphic%>
                         </td>
+                        <td class="sorting_1"><%= graphic_card[i].PriceGraphic%></td>
                         <td>
-                          <a href="/cabinet/<%= graphic_card[i].idgraphic%>?id=graphiccard">Edit</a>
-                          <a href="/cabinet/delete/<%= graphic_card[i].idgraphic%>?id=graphiccard"
-                            >Delete</a
-                          >
+                          <a href="/item_buy/<%= graphic_card[i].idgraphic%>?id=graphiccard&supplierId=<%=supplierId%>">Buy</a>
                         </td>
                       </tr>
                       <%}}%>
@@ -1010,16 +843,6 @@
                     <thead>
                       <tr>
                         <th
-                          class="sorting"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Rendering engine: activate to sort column ascending"
-                        >
-                          Image
-                        </th>
-                        <th
                           class="sorting sorting_desc"
                           tabindex="0"
                           aria-controls="example1"
@@ -1039,31 +862,19 @@
                           aria-label="Platform(s): activate to sort column ascending"
                           aria-sort="descending"
                         >
-                          Price
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Quantity
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
                           Wattage
                         </th>
-                        
+                        <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
                         <th
                           class="sorting"
                           tabindex="0"
@@ -1081,18 +892,11 @@
                     0; i< power_supply.length; i++) {%>
                     <tbody>
                       <tr class="odd">
-                        <td class="dtr-control" tabindex="0">
-                          <%= power_supply[i].cabinet_ImageURL%>
-                        </td>
                         <td><%= power_supply[i].NamePower%></td>
-                        <td class="sorting_1"><%= power_supply[i].PricePower%></td>
-                        <td class="sorting_1"><%= power_supply[i].quantityPower%></td>
                         <td class="sorting_1"><%= power_supply[i].wattage%></td>
+                        <td class="sorting_1"><%= power_supply[i].PricePower%></td>
                         <td>
-                          <a href="/cabinet/<%= power_supply[i].idpower%>?id=powersupply">Edit</a>
-                          <a href="/cabinet/delete/<%= power_supply[i].idpower%>?id=powersupply"
-                            >Delete</a
-                          >
+                          <a href="/item_buy/<%= power_supply[i].idpower%>?id=powersupply&supplierId=<%=supplierId%>">Buy</a>
                         </td>
                       </tr>
                       <% }}%>
@@ -1112,16 +916,6 @@
                     <thead>
                       <tr>
                         <th
-                          class="sorting"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Rendering engine: activate to sort column ascending"
-                        >
-                          Image
-                        </th>
-                        <th
                           class="sorting sorting_desc"
                           tabindex="0"
                           aria-controls="example1"
@@ -1131,28 +925,6 @@
                           aria-sort="descending"
                         >
                           Name
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Price
-                        </th>
-                        <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Quantity
                         </th>
                         <th
                           class="sorting sorting_desc"
@@ -1210,6 +982,17 @@
                           Write Speed
                         </th>
                         <th
+                          class="sorting sorting_desc"
+                          tabindex="0"
+                          aria-controls="example1"
+                          rowspan="1"
+                          colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending"
+                          aria-sort="descending"
+                        >
+                          Price
+                        </th>
+                        <th
                           class="sorting"
                           tabindex="0"
                           aria-controls="example1"
@@ -1230,18 +1013,14 @@
                           <%= storage[i].cabinet_ImageURL%>
                         </td>
                         <td><%= storage[i].NameStorage%></td>
-                        <td class="sorting_1"><%= storage[i].PriceStorage%></td>
-                        <td class="sorting_1"><%= storage[i].quantityStorage%></td>
                         <td class="sorting_1"><%= storage[i].storage_speed%></td>
                         <td class="sorting_1"><%= storage[i].storage_type%></td>
                         <td class="sorting_1"><%= storage[i].storage_size%></td>
                         <td class="sorting_1"><%= storage[i].read_speed%></td>
                         <td class="sorting_1"><%= storage[i].write_speed%></td>
+                        <td class="sorting_1"><%= storage[i].PriceStorage%></td>
                         <td>
-                          <a href="/cabinet/<%= storage[i].idstorage%>?id=storage">Edit</a>
-                          <a href="/cabinet/delete/<%= storage[i].idstorage%>?id=storage"
-                            >Delete</a
-                          >
+                          <a href="/item_buy/<%= storage[i].idstorage%>?id=storage&supplierId=<%=supplierId%>">Buy</a>
                         </td>
                       </tr>
                       <% }}%>
@@ -1260,16 +1039,6 @@
                   >
                     <thead>
                       <tr>
-                        <th
-                          class="sorting"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Rendering engine: activate to sort column ascending"
-                        >
-                          Image
-                        </th>
                         <th
                           class="sorting sorting_desc"
                           tabindex="0"
@@ -1304,17 +1073,6 @@
                           Price
                         </th>
                         <th
-                          class="sorting sorting_desc"
-                          tabindex="0"
-                          aria-controls="example1"
-                          rowspan="1"
-                          colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending"
-                          aria-sort="descending"
-                        >
-                          Quantity
-                        </th>
-                        <th
                           class="sorting"
                           tabindex="0"
                           aria-controls="example1"
@@ -1331,18 +1089,11 @@
                     0; i< peripheral.length; i++) {%>
                     <tbody>
                       <tr class="odd">
-                        <td class="dtr-control" tabindex="0">
-                          <%= peripheral[i].cabinet_ImageURL%>
-                        </td>
                         <td><%= peripheral[i].dropdownPeripheralDevice%></td>
                         <td class="sorting_1"><%= peripheral[i].Nameperipheral%></td>
                         <td class="sorting_1"><%= peripheral[i].Priceperipheral%></td>
-                        <td class="sorting_1"><%= peripheral[i].quantityperipheral%></td>
                         <td>
-                          <a href="/cabinet/<%= peripheral[i].idperipheral%>?id=peripheral">Edit</a>
-                          <a href="/cabinet/delete/<%= peripheral[i].idperipheral%>?id=peripheral"
-                            >Delete</a
-                          >
+                          <a href="/item_buy/<%= peripheral[i].idperipheral%>?id=peripheral&supplierId=<%=supplierId%>">Buy</a>
                         </td>
                       </tr>
                       <% }}%>

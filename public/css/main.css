@@ -1,0 +1,653 @@
+  /* .navbar{
+    max-height: 56px;
+    padding: 0px 16px 0px 16px;
+    background-color: #121212;
+  }
+
+  .navText{
+    color: #fff;
+    font-size: 18px;
+    padding: 16px 24px 16px 24px;
+    text-decoration: none;
+  }
+
+  .brand{
+    font-size: 30px;
+    font-weight: bolder;
+  }
+
+  .navList{
+    display: flex;
+    
+    list-style: none;
+  } */
+
+
+
+
+  *,
+  *::after,
+  *::before{
+    box-sizing: border-box;
+  }
+
+  /* For WebKit browsers */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 5px;
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: black;
+  border-radius: 5px;
+}
+
+  body{
+    margin: 0;
+    overflow-y: scroll;
+  }
+
+
+  .wrapper{
+    height: 56px;
+    background-color: black; 
+    margin: 0 auto;
+    /* position: fixed;
+    width: 100vw; */
+  }
+
+  .content{
+    display: flex;
+    justify-content: space-between;
+    padding:  0 26px; 
+  }
+
+  nav .logo{
+    color: #fff;
+    padding-right: 24px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 22px;
+  }
+
+ .content .left {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    box-sizing: content-box;
+    border: 0;
+  }
+
+  .active{
+    background-color: #7315E5;
+  }
+
+  nav .left .link{
+    padding: 14px 24px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .content .right{
+    display: flex;
+    align-items: center;
+    gap: 17px;
+  }
+
+  .content .right span{
+    color: #fff;
+  }
+
+  
+
+  .filterpagewrap{
+    display: flex;
+  }
+
+  .filterpage .left{
+    flex-basis: 60%;
+    height: 736px;
+    background-color: #1A1C1E;
+  }
+
+  .left .title{
+    display: flex;
+    padding: 8px 16px 0px 16px;
+  }
+
+  .filterpage .left .title h1{
+    color: #fff;
+    font-size: 30px;
+    font-weight: bolder;
+
+  }
+
+  .left .body{
+    display: flex;
+    height: auto;
+    margin-top: 64px;
+  }
+
+  .left .body .buildimage{
+    display: flex;
+    max-width: 404px;
+    justify-content: center;
+  }
+
+  .buildcomponent ul{
+    display: flex;
+    flex-wrap: wrap;
+    width: 504px;
+    list-style: none;
+    margin: 16px;
+    gap: 16px;
+  }
+
+  ul .component{
+    color: #fff;
+    background-color: #222426;
+    border-radius: 8px;
+    height: 57px;
+    padding: 4px;
+  }
+
+  ul .component h6{
+    font-size: 14px;
+    margin: 0px;
+  }
+
+  ul .component p{
+    margin: 0px;
+    display: flex;
+    justify-content: left;
+    font-size: 12px;
+  }
+
+  .componentlist .firstrow{
+    width: 100%;
+  }
+
+  .componentlist .notfirstrow{
+    width: calc(50% - 10px);
+  }
+
+  .componentbtn{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: #222426;
+    border: 0px;
+    color: #fff;
+  }
+
+  .componentbtn:hover{
+    border: 1px solid #fff;
+  }
+
+  .component img{
+    height: 48px;
+    width: 48px;
+    border-radius: 8px;
+  }
+
+  .componenttxt{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin: 0px 12px;
+  }
+
+  .filterpage .right{
+    flex-basis: 40%;
+  }
+
+  .right .title{
+    width: auto;
+    height: 52px;
+    padding-top: 16px;
+    background-color: #313235;
+  }
+
+  .zeroBorder{
+    border: 0px;
+  }
+
+  button.activeNav{
+    border: 0;
+    border-bottom: 2px solid #7315E5;
+  }
+
+  .right .title button{
+    color: #fff;
+    font-size: 16px;
+    background-color: #313235;
+    width: 120px;
+    padding: 0px 16px 8px;
+  }
+
+  .right .body{
+    width: auto;
+    background-color: #111113;
+    padding: 0px 10%;
+    height: 100%;
+    overflow-y: hidden;
+  }
+
+  .componentnav{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+  }
+
+  .body .componentnav button{
+    color: #fff;
+    background-color: transparent;
+    border: 0px;
+    padding: 0px;
+  }
+
+  .navleft::before{
+    content: '<';
+    margin-right: 3px;
+  }
+
+  .navright::after{
+    content: '>';
+    margin-left: 3px;
+  }
+
+  .subtitlefilter{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0px;
+  }
+
+  .body .subtitle{
+    color: #fff;
+  }
+
+  .filterbutton{
+    padding: 0px 16px;
+  }
+
+  .filterbutton select{
+    color: #fff;
+    max-width: 95px;
+    max-height: 38px;
+    align-content: center;
+    background-color: #313235;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    padding: 8px 40px 8px 12px;
+  }
+
+  .modellist ul,.peripheralList ul{
+    padding: 0;
+    margin: 0;
+    max-height: 545px;
+    overflow-y: scroll;
+  }
+  .modelcard{
+    color: #fff;
+    background-color: #313235;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+
+  .cardheader{
+    display: flex;
+    margin-bottom: 12px;
+  }
+
+  .cardheader img{
+    max-height: 70px;
+    max-width: 70px;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+
+  .modeldetail{
+    margin-left: 16px;
+  }
+
+  .cardheader p{
+    margin: 0;
+  }
+
+   .cardheader p:nth-child(2){
+    font-size: 12px;
+   }
+
+  .cardprice{
+    display: flex;
+    justify-content: end;
+  }
+
+  .cardbtncont{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+
+  .cardbtncont button{
+    background-color: transparent;
+    color: #7315E5;
+    border: 1px solid #7315E5;
+    border-radius: 8px;
+    padding: 4px 16px;
+    font-size: 12px;
+  }
+
+
+  .footer{
+    color: #fff;
+    display: flex;
+    background-color: #111113;
+    width: 100vw;
+    position: fixed;
+    top: 710px;
+  }
+
+  .billingDetail{
+    flex-basis: 60%;
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    padding: 8px 28px 8px 16px;
+    box-sizing: border-box;
+  }
+
+  .billingDetail div:nth-child(2){
+    padding: 2px;
+    margin: 3.6px 0px 3.6px 16px;
+    border-left: 1px solid #fff;
+  }
+
+  .billingDetail p:nth-child(1){
+    margin: 5.6px 0px 5.6px 16px;
+  }
+
+  .addToCartBtn{
+    flex-basis: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0px;
+    width: 100%;
+  }
+
+  .cartBtn{
+    padding: 0px 16px;
+    color: #fff;
+    background-color: #7315E5;
+    border: 0px;
+    border-radius: 8px;
+    width: 396px;
+    height: 44px;
+
+  }
+
+
+  /* Chipset Modal*/
+
+  .Modal{
+    position: absolute;
+    top: 200px;
+    left: 500px;
+    color: #fff;
+    border-radius: 8px;
+    height: auto;
+    margin: 55px auto 0;
+    max-height: 85vw;
+    max-width: 670px;
+    width: 30vw;
+    background-color: #222426;
+    padding: 1.25rem;
+  }
+
+  .modalClose{
+    width: 100%;
+    height: 1.5rem;
+    display: flex;
+    justify-content: right;
+  }
+
+  .closeBtn{
+    background-color: transparent;
+    color: #fff;
+    border: 0px;
+  }
+
+  .modalBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Modal h1{
+    margin-bottom: 0.25rem;
+  }
+
+  .Modal h2{
+    font-size: 16px;
+  }
+
+  .chipset p{
+    margin-left: 40px;
+  }
+
+  .chipsetButton{
+    display: flex;
+    justify-content: space-between;
+    background-color: #111113;
+    border-radius: 8px;
+    padding: 3px 10px;
+    width: 150px;
+  }
+
+  .chipsetButton input{
+    display: none;
+  }
+
+  .chipsetButton label{
+    color: #fff;
+    border-radius: 8px;
+    background-color: #111113;
+    border: 0px;
+  }
+
+  .chipsetButton label:hover{
+    background-color: #313235;
+  }
+
+  .chipsetButton input[type="radio"]:checked + label {
+    background-color: #313235;
+  }
+
+  .Modal.show {
+    display: block;
+  }
+  
+  .Modal.hide {
+    display: none;
+  }
+  
+  .Modal.show + .blurred {
+    filter: blur(3px);
+  }
+
+  .blurred {
+    filter: blur(10px);
+  }
+
+  .continue{
+    padding: 5px;
+    margin-top: 10px;
+  }
+
+  .continueBtn{
+    background-color: #7315E5;
+    color: #fff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    border: 0px;
+  }
+
+  /* End */
+
+  button.active{
+    border: 2px solid white;
+  }
+
+  button.added{
+    background-color: #7315E5;
+    color: #fff;
+  }
+
+  button.added:after{
+    content: 'ED';
+  }
+
+  button.cardbtn:hover{
+    background-color: #7315E5;
+    color: #fff;
+  }
+
+
+  /* Peripheral Code */
+  .peripheral{
+    display: none;
+  }
+
+  #addToCartBtn{
+    display: none;
+  }
+  /*END*/
+
+
+
+
+
+  .CART{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    max-width: 700px;
+    max-height: auto;
+  }
+
+  .cartItem{
+    list-style: none;
+  }
+  
+  .cartTitle{
+    border-bottom: 1px solid #313235;
+  }
+
+
+
+  .cartItemHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cartItemHeaderLeft{
+    display: flex;
+  }
+
+  .cartItemHeader img{
+    max-width: 80px;
+    max-height: 80px;
+    margin: 10px;
+  }
+
+  .cartItemTitleCont{
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+  }
+
+  .cartItemHeaderRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cartItemActioinCont{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cartItemEdit{
+    padding: 8px;
+    border-right: 3px solid #313235;
+  }
+
+  .cartItemDelete{
+    background-color: transparent;
+    border: 0;
+    align-content: center;
+  }
+
+  .cartItemPriceCont{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .cartItemPriceCont .cartItemPrice{
+    margin: 0;
+    align-content: center;
+  }
+
+  .cartItemBody dd{
+    margin-left: 12px;
+  }
+
+  .cartList{
+    height: 600px;
+    overflow-y: scroll;
+  }
+
+  .startBuild{
+    /* position: fixed;
+    top: 500px;
+    left : 200px; */
+    padding: 20px;
+    background-color: #7315E5;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    margin-left: 550px;
+    z-index: 100;
+    border-radius: 8px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+

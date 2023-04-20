@@ -1,0 +1,1083 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Build Wizard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css" />
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="/plugins/sweetalert2/sweetalert2.min.css" />
+    <!-- Toastr -->
+    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
+    
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <%- include('../partials/top-nav'); %> <%- include('../partials/sidebar');
+      %>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Buy Item</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="/supplier">Back</a></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <!-- left column -->
+              <div class="col-md-12">
+                <!-- jquery validation -->
+                <div class="card card-primary">
+                  <!-- <div class="card-header">
+                <h3 class="card-title">Quick Example <small>jQuery Validation</small></h3>
+              </div> -->
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form
+                    id="quickForm" 
+                    action="/supplier/buyComponent"
+                    method="post"
+                  >
+                    <div class="row">
+                      <div class="card-body">
+                        <div class="form-group">
+                          <div class="form-group">
+
+                            <% if(typeof isCabinet == 'boolean' && isCabinet == true){%>
+                            <!-- Cabinet related values -->
+                            <div class="row" id="cabinet">
+                              <div class="col-md-12">
+                                <label for="Name">Name</label>
+                                <input
+                                  type="hidden"
+                                  name="Cabinet_idCabinet"
+                                  value="<%= typeof data=='object' && data.idCabinet ? data.idCabinet : '' %>"
+                                />
+                                <input
+                                  type="hidden"
+                                  name="supplierId"
+                                  value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                                />
+                                <input
+                                  type="text"
+                                  name="NameCabinet"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.NameCabinet? data.NameCabinet : '' %>"
+                                  placeholder="Enter company name"
+                                />
+                              </div>
+                              
+                            
+                              <div class="col-md-6">
+                                <label for="image">Image URL</label>
+                                <input
+                                  type="file"
+                                  name="cabinet_ImageURL"
+                                  class="form-control"
+                                  id="image-input-cabinet"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+
+                              <div class="col-md-6">
+                                <a href="" download  id="cabinet_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image-preview-cabinet" style="padding: 10px;">
+                                </a>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="factor">Factor</label>
+                                <input
+                                  type="text"
+                                  name="Form_Factor"
+                                  class="form-control"
+                                  id="factor"
+                                  value="<%= typeof data=='object' && data.Form_Factor ? data.Form_Factor : '' %>"
+                                  placeholder="Enter factor"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="dimention">Dimention</label>
+                                <input
+                                  type="text"
+                                  name="Dimensions"
+                                  class="form-control"
+                                  id="dimention"
+                                  value="<%= typeof data=='object' && data.Dimensions ? data.Dimensions : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="material">Material</label>
+                                <input
+                                  type="text"
+                                  name="Material"
+                                  class="form-control"
+                                  id="material"
+                                  value="<%= typeof data=='object' && data.Material ? data.Material : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="layer">No. of Bayes</label>
+                                <input
+                                  type="number"
+                                  name="NoOfBayes"
+                                  class="form-control"
+                                  id="layer"
+                                  value="<%= typeof data=='object' && data.NoOfBayes ? data.NoOfBayes : '' %>"
+                                  placeholder="Enter number of Bayes"
+                                />
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="fans">No. of fans</label>
+                                <input
+                                  type="number"
+                                  name="NoOfFans"
+                                  class="form-control"
+                                  id="fans"
+                                  value="<%= typeof data=='object' && data.NoOfFans ? data.NoOfFans : '' %>"
+                                  placeholder="Enter number of fans"
+                                />
+                              </div>
+                            </div>
+
+                            <% }%>
+
+                            <% if(typeof isMotherboard =='boolean' && isMotherboard == true){%>
+                            <!-- Motherboard related values -->
+                            <div class="row" id="motherboard">
+                              <div class="col-md-12">
+                                <label for="nameMotherboard">Name</label>
+                                <input
+                                  type="hidden"
+                                  name="idMotherboard"
+                                  value="<%= typeof data=='object' && data.idMotherboard ? data.idMotherboard : '' %>"
+                                  disabled
+                                  />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                                />
+                                <input
+                                  type="text"
+                                  name="nameMotherboard"
+                                  class="form-control"
+                                  id="nameMotherboard"
+                                  value="<%= typeof data=='object' && data.nameMotherboard? data.nameMotherboard : '' %>"
+                                  placeholder="Enter company name"
+                                />
+                              </div>
+                              
+                              <div class="col-md-6">
+                                <label for="image">Image URL</label>
+                                <input
+                                  type="file"
+                                  name="cabinet_ImageURL"
+                                  class="form-control"
+                                  id="image_input_motherboard"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <a href="" download  id="motherboard_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_motherboard" style="padding: 10px;">
+                                </a>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="description">Description</label>
+                                <textarea
+                                  class="form-control"
+                                  name="description"
+                                  rows="2"
+                                  id="description"
+                                  value="<%= typeof data=='object' && data.description ? data.description : '' %>"
+                                  placeholder="Enter description"
+                                >
+                                </textarea>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="socket">CPU Socket</label>
+                                <input
+                                  type="number"
+                                  name="cpu_socket"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.cpu_socket ? data.cpu_socket : '' %>"
+                                  placeholder="Enter number of layer"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="ram_slot">Ram Slot</label>
+                                <input
+                                  type="number"
+                                  name="ram_slots"
+                                  class="form-control"
+                                  id="ram_slot"
+                                  value="<%= typeof data=='object' && data.ram_slots ? data.ram_slots : '' %>"
+                                  placeholder="Enter ram slot"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="max_ram_capacity"
+                                  >Maximum Ram Capacity</label
+                                >
+                                <input
+                                  type="number"
+                                  name="max_ram_capacity"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.max_ram_capacity ? data.max_ram_capacity : '' %>"
+                                  placeholder="Enter maximum ram capicity"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="pci_slot">PCI Slot</label>
+                                <input
+                                  type="number"
+                                  name="pci_slots"
+                                  class="form-control"
+                                  id="pci_slot"
+                                  value="<%= typeof data=='object' && data.pci_slots ? data.pci_slots : '' %>"
+                                  placeholder="Enter pci slot"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="sata_ports">Sata Ports</label>
+                                <input
+                                  type="number"
+                                  name="sata_ports"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.sata_ports ? data.sata_ports : '' %>"
+                                  placeholder="Enter sata ports"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="usb_ports">USB Ports</label>
+                                <input
+                                  type="number"
+                                  name="usb_ports"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.usb_ports ? data.usb_ports : '' %>"
+                                  placeholder="Enter usb ports"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="ethernetport">Ethernet Ports</label
+                                ><br />
+                                <div class="form-group">
+                                  <div class="form-check">
+                                    <input
+                                      type="radio"
+                                      name="ethernet_port"
+                                      value=0 <%= typeof data=='object' && data.ethernet_port == 0 ? 'checked' : '' %>
+                                    />&nbsp; <label>YES</label> &nbsp; &nbsp;
+                                    &nbsp;
+
+                                    <input
+                                      type="radio"
+                                      name="ethernet_port"
+                                      value=1 <%= typeof data=='object' && data.ethernet_port == 1 ? 'checked' : '' %>
+                                    />&nbsp;
+                                    <label>NO</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="wifi">Wifi Module</label><br />
+                                <div class="form-group">
+                                  <div class="form-check">
+                                    <input type="radio" name="wifi_module" value=0 <%= typeof data=='object' && data.wifi_module == 0 ? 'checked' : '' %>/>&nbsp;
+                                    <label>YES</label> &nbsp; &nbsp; &nbsp;
+
+                                    <input type="radio" name="wifi_module" value=1 <%= typeof data=='object' && data.wifi_module == 1 ? 'checked' : '' %>/>&nbsp;
+                                    <label>NO</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="bluetooth">Bluetooth Module</label
+                                ><br />
+                                <div class="form-group">
+                                  <div class="form-check">
+                                    <input
+                                      type="radio"
+                                      name="bluetooth_module"
+                                      value=0 <%= typeof data=='object' && data.bluetooth_module == 0 ? 'checked' : '' %>
+                                    />&nbsp; <label>YES</label> &nbsp; &nbsp;
+                                    &nbsp;
+
+                                    <input
+                                      type="radio"
+                                      name="bluetooth_module"
+                                      value=1 <%= typeof data=='object' && data.bluetooth_module == 1 ? 'checked' : '' %>
+                                    />&nbsp;
+                                    <label>NO</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <% }%>
+
+                            <% if(typeof isCpu == 'boolean' && isCpu == true){%>
+                            <!-- CPU related values -->
+                            <div class="row" id="cpu">
+                              <div class="col-md-12">
+                                <label for="Name">Name</label>
+                                <input
+                                  type="hidden"
+                                  name="idCpu"
+                                  value="<%= typeof data=='object' && data.idCpu ? data.idCpu : '' %>"
+                                />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
+                                <input
+                                  type="text"
+                                  name="NameCPU"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.NameCPU? data.NameCPU : '' %>"
+                                  placeholder="Enter company name"
+                                />
+                              </div>
+                           
+                            
+                              <div class="col-md-6">
+                                <label for="image">Image URL</label>
+                                <input
+                                  type="file"
+                                  name="cabinet_ImageURL"
+                                  class="form-control"
+                                  id="image_input_cpu"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <a href="" download  id="cpu_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_cpu" style="padding: 10px;">
+                                </a>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="socket_type">Socket Type</label>
+                                <input
+                                  type="text"
+                                  name="socket_type"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.socket_type ? data.socket_type : '' %>"
+                                  placeholder="Enter socket type"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="number_of_cores"
+                                  >No. Of Cores</label
+                                >
+                                <input
+                                  type="number"
+                                  name="number_of_cores"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.number_of_cores ? data.number_of_cores : '' %>"
+                                  placeholder="Enter number of cores"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="clock_speed">Clock Speed</label>
+                                <input
+                                  type="number"
+                                  name="clock_speed"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.clock_speed ? data.clock_speed : '' %>"
+                                  placeholder="Enter clock speed"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="cache_size">Cache Size</label>
+                                <input
+                                  type="number"
+                                  name="cache_size"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.cache_size ? data.cache_size : '' %>"
+                                  placeholder="Enter cache size"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="power_consumtion"
+                                  >Power Consumption</label
+                                >
+                                <input
+                                  type="number"
+                                  name="power_consumtionCPU"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.power_consumtionCPU ? data.power_consumtionCPU : '' %>"
+                                  placeholder="Enter power consumtion"
+                                />
+                              </div>
+                            </div>
+
+                            <% }%>
+
+                            <% if(typeof isRam == 'boolean' && isRam == true){%>
+                            <!-- Ram related values -->
+                            <div class="row" id="ram">
+                              <div class="col-md-12">
+                                <label for="Name">Name</label>
+                                <input
+                                  type="hidden"
+                                  name="idRam"
+                                  value="<%= typeof data=='object' && data.idRam ? data.idRam : '' %>"
+                                />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
+                                <input
+                                  type="text"
+                                  name="NameRam"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.NameRam? data.NameRam : '' %>"
+                                  placeholder="Enter company name"
+                                />
+                              </div>
+                              
+                              
+                              <div class="col-md-6">
+                                <label for="image">Image URL</label>
+                                <input
+                                  type="file"
+                                  name="cabinet_ImageURL"
+                                  class="form-control"
+                                  id="image_input_ram"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <a href="" download  id="ram_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_ram" style="padding: 10px;">
+                                </a>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="description">Description</label>
+                                <textarea
+                                  class="form-control"
+                                  name="descriptionRam"
+                                  rows="2"
+                                  value="<%= typeof data=='object' && data.descriptionRam? data.descriptionRam : '' %>"
+                                  placeholder="Enter description"
+                                >
+                                </textarea>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="memory_size">Memory Size</label>
+                                <input
+                                  type="number"
+                                  name="memory_sizeRam"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.memory_sizeRam? data.memory_sizeRam : '' %>"
+                                  placeholder="Enter memory size"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="memory_type">Memory Type</label>
+                                <input
+                                  type="text"
+                                  name="memory_typeRam"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.memory_typeRam? data.memory_typeRam : '' %>"
+                                  placeholder="Enter memory type"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="memory_speed">Memory Speed</label>
+                                <input
+                                  type="number"
+                                  name="memory_speed"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.memory_speed? data.memory_speed : '' %>"
+                                  placeholder="Enter memory speed"
+                                />
+                              </div>
+                            </div>
+
+                            <% }%>
+
+                            <% if(typeof isColling == 'boolean' && isColling == true){%>
+                            <!-- Colling system related values -->
+                            <div class="row" id="colling">
+                              <div class="col-md-12">
+                                <label for="Name">Name</label>
+                                <input
+                                  type="hidden"
+                                  name="idCooling_System"
+                                  value="<%= typeof data=='object' && data.idCooling_System ? data.idCooling_System : '' %>"
+                                />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
+                                <input
+                                  type="text"
+                                  name="NameColling"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.NameColling? data.NameColling : '' %>"
+                                  placeholder="Enter company name"
+                                />
+                              </div>
+                            
+                              
+                              <div class="col-md-6">
+                                <label for="image">Image URL</label>
+                                <input
+                                  type="file"
+                                  name="cabinet_ImageURL"
+                                  class="form-control"
+                                  id="image_input_Colling"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <a href="" download  id="Colling_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_Colling" style="padding: 10px;">
+                                </a>
+                              </div>
+                  
+                              <div class="col-md-6">
+                                <label for="company">Type</label>
+                                <input
+                                  type="text"
+                                  name="coollingType"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.coollingType ? data.coollingType : '' %>"
+                                  placeholder="Enter coolling system type"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="company">Fan Speed</label>
+                                <input
+                                  type="number"
+                                  name="fan"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.fan ? data.fan : '' %>"
+                                  placeholder="Enter fan speed"
+                                />
+                              </div>
+                            </div>
+
+                            <% }%>
+
+                            <% if(typeof isGraphic == 'boolean' && isGraphic == true){%>
+                            <!-- Graphic card related values -->
+                            <div class="row" id="graphiccard">
+                              <div class="col-md-12">
+                                <label for="Name">Name</label>
+                                <input
+                                  type="hidden"
+                                  name="idgraphic"
+                                  value="<%= typeof data=='object' && data.idgraphic ? data.idgraphic : '' %>"
+                                />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
+                                <input
+                                  type="text"
+                                  name="NameGraphic"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.NameGraphic? data.NameGraphic : '' %>"
+                                  placeholder="Enter company name"
+                                />
+                              </div>
+                             
+                            
+                              <div class="col-md-6">
+                                <label for="image">Image URL</label>
+                                <input
+                                  type="file"
+                                  name="cabinet_ImageURL"
+                                  class="form-control"
+                                  id="image_input_graphic"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <a href="" download  id="graphic_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_graphic" style="padding: 10px;">
+                                </a>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="chipset">Chipset</label>
+                                <input
+                                  type="text"
+                                  name="chipset"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.chipset ? data.chipset : '' %>"
+                                  placeholder="Enter chipset"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="memory_type">Memory Type</label>
+                                <input
+                                  type="text"
+                                  name="memory_typeGraphic"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.memory_typeGraphic ? data.memory_typeGraphic : '' %>"
+                                  placeholder="Enter memory type"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="memory_size">Memory Size</label>
+                                <input
+                                  type="number"
+                                  name="memory_sizeGraphic"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.memory_sizeGraphic ? data.memory_sizeGraphic : '' %>"
+                                  placeholder="Enter memory size"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="core_clock">Core Clock</label>
+                                <input
+                                  type="number"
+                                  name="core_clock"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.core_clock ? data.core_clock : '' %>"
+                                  placeholder="Enter core clock"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="power_consumtion"
+                                  >Power Consumption</label
+                                >
+                                <input
+                                  type="number"
+                                  name="power_consumtionGraphic"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.power_consumtionGraphic ? data.power_consumtionGraphic : '' %>"
+                                  placeholder="Enter power consumtion"
+                                />
+                              </div>
+                            </div>
+
+                            <% }%>
+
+                            <% if(typeof isPower == 'boolean' && isPower == true){%>
+                            <!-- Power Supplies related values -->
+                            <div class="row" id="powersupply">
+                              <div class="col-md-12">
+                                <label for="Name">Name</label>
+                                <input
+                                  type="hidden"
+                                  name="idpower"
+                                  value="<%= typeof data=='object' && data.idpower ? data.idpower : '' %>"
+                                />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
+                                <input
+                                  type="text"
+                                  name="NamePower"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.NamePower? data.NamePower : '' %>"
+                                  placeholder="Enter company name"
+                                />
+                              </div>
+                            
+                             
+                              <div class="col-md-6">
+                                <label for="image">Image URL</label>
+                                <input
+                                  type="file"
+                                  name="cabinet_ImageURL"
+                                  class="form-control"
+                                  id="image_input_Power"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <a href="" download  id="Power_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_Power" style="padding: 10px;">
+                                </a>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="descriptionPower">Description</label>
+                                <textarea
+                                  class="form-control"
+                                  name="descriptionPower"
+                                  rows="2"
+                                  placeholder="Enter description"
+                                ><%= typeof data=='object' && data.descriptionPower ? data.descriptionPower : '' %>
+                                </textarea>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="wattage">Wattage</label>
+                                <input
+                                  type="number"
+                                  name="wattage"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.wattage ? data.wattage : '' %>"
+                                  placeholder="Enter wattage"
+                                />
+                              </div>
+                            </div>
+
+                            <% }%>
+
+                            <% if(typeof isStorage == 'boolean' && isStorage == true){%>
+                            <!-- Storage related values -->
+                            <div class="row" id="storage">
+                              <div class="col-md-12">
+                                <label for="Name">Name</label>
+                                <input
+                                  type="hidden"
+                                  name="idstorage"
+                                  value="<%= typeof data=='object' && data.idstorage ? data.idstorage : '' %>"
+                                />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
+                                <input
+                                  type="text"
+                                  name="NameStorage"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.NameStorage? data.NameStorage : '' %>"
+                                  placeholder="Enter company name"
+                                />
+                              </div>
+                            
+                             
+                              <div class="col-md-6">
+                                <label for="image">Image URL</label>
+                                <input
+                                  type="file"
+                                  name="cabinet_ImageURL"
+                                  class="form-control"
+                                  id="image_input_Storage"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <a href="" download  id="Storage_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_Storage" style="padding: 10px;">
+                                </a>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="descriptionStorage">Description</label>
+                                <textarea
+                                  class="form-control"
+                                  name="descriptionStorage"
+                                  placeholder="Enter description"
+                                ><%= typeof data=='object' && data.descriptionStorage ? data.descriptionStorage : '' %>
+                                </textarea>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="storage_speed">Storage Speed</label>
+                                <input
+                                  type="number"
+                                  name="storage_speed"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.storage_speed ? data.storage_speed : '' %>"
+                                  placeholder="Enter storage speed"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="storage_type">Storage Type</label>
+                                <input
+                                  type="text"
+                                  name="storage_type"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.storage_type ? data.storage_type : '' %>"
+                                  placeholder="Enter storage type"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="storage_size">Storage Size</label>
+                                <input
+                                  type="number"
+                                  name="storage_size"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.storage_size ? data.storage_size : '' %>"
+                                  placeholder="Enter storage size"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="read_speed">Read Speed</label>
+                                <input
+                                  type="number"
+                                  name="read_speed"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.read_speed ? data.read_speed : '' %>"
+                                  placeholder="Enter read speed"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="write_speed">Write Speed</label>
+                                <input
+                                  type="number"
+                                  name="write_speed"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.write_speed ? data.write_speed : '' %>"
+                                  placeholder="Enter write speed"
+                                />
+                              </div>
+                            </div>
+
+                            <% }%>
+
+                            <% if(typeof isPeripheral == 'boolean' && isPeripheral == true){%>
+                            <!-- peripheral related values -->
+                            <div class="row" id="peripheral">
+                              <div class="col-md-12">
+                                <label for="Name">Name</label>
+                                <input
+                                  type="hidden"
+                                  name="idperipheral"
+                                  value="<%= typeof data=='object' && data.idperipheral ? data.idperipheral : '' %>"
+                                />
+                                <input
+                                type="hidden"
+                                name="supplierId"
+                                value="<%= typeof userData=='object' && userData.idSupplier ? userData.idSupplier : '' %>"
+                              />
+                                <input
+                                  type="text"
+                                  name="Nameperipheral"
+                                  class="form-control"
+                                  id="company"
+                                  value="<%= typeof data=='object' && data.Nameperipheral? data.Nameperipheral : '' %>"
+                                  placeholder="Enter company name"
+                                />
+                              </div>
+                           
+                              
+                              <div class="col-md-6">
+                                <label for="image">Image URL</label>
+                                <input
+                                  type="file"
+                                  name="cabinet_ImageURL"
+                                  class="form-control"
+                                  id="image_input_peripheral"
+                                  value="<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>"
+                                  placeholder="Enter Dimention of cabinet"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <a href="" download  id="peripheral_image_download">
+                                  <img src="/<%= typeof data=='object' && data.cabinet_ImageURL ? data.cabinet_ImageURL : '' %>" height="100" width="100" id="image_preview_peripheral" style="padding: 10px;">
+                                </a>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="description"
+                                  >Peripheral Device Name</label
+                                >
+                                <select
+                                  id="dropdownItem"
+                                  name="dropdownPeripheralDevice"
+                                  class="form-control select2"
+                                  data-placeholder="Select a Item"
+                                  style="width: 100%"
+                                >
+                                  <option value="">
+                                    --Please choose an Item--
+                                  </option>
+                                  <option value="printer" <%= typeof data=='object' && data.dropdownPeripheralDevice == 'printer' ? 'selected' : '' %>>Printer</option>
+                                  <option value="scanner" <%= typeof data=='object' && data.dropdownPeripheralDevice == 'scanner' ? 'selected' : '' %>>Scanner</option>
+                                  <option value="keyboard" <%= typeof data=='object' && data.dropdownPeripheralDevice == 'keyboard' ? 'selected' : '' %>>Keyboard</option>
+                                  <option value="mouse" <%= typeof data=='object' && data.dropdownPeripheralDevice == 'mouse' ? 'selected' : '' %>>Mouse</option>
+                                  <option value="external-modem" <%= typeof data=='object' && data.dropdownPeripheralDevice == 'external-modem' ? 'selected' : '' %>>
+                                    External Modem
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="descriptionPeripheral">Description</label>
+                                <textarea
+                                  class="form-control"
+                                  name="descriptionPeripheral"
+                                  placeholder="Enter description"
+                                ><%= typeof data=='object' && data.descriptionPeripheral ? data.descriptionPeripheral : '' %>
+                                </textarea>
+                              </div>
+
+                            </div>
+                            <% }%>
+                            <div class="row" id="peripheral">
+                              <div class="col-md-6">
+                                <label for="Cost">Price</label>
+                                <% var Cost = "" %>
+                                <% 
+                                  if (typeof data=='object' && data.Pricecabinet) {
+                                    Cost = data.Pricecabinet;
+                                  } else if (typeof data=='object' && data.priceMotherboard) {
+                                    Cost = data.priceMotherboard;
+                                  } else if (typeof data=='object' && data.PriceCPU) {
+                                    Cost = data.PriceCPU;
+                                  } else if (typeof data=='object' && data.PriceRam) {
+                                    Cost = data.PriceRam;
+                                  } else if (typeof data=='object' && data.PriceColling) {
+                                    Cost = data.PriceColling;
+                                  } else if (typeof data=='object' && data.PriceGraphic) {
+                                    Cost = data.PriceGraphic;
+                                  } else if (typeof data=='object' && data.PricePower) {
+                                    Cost = data.PricePower;
+                                  } else if (typeof data=='object' && data.PriceStorage) {
+                                    Cost = data.PriceStorage;
+                                  }
+                                %>
+
+                                <input
+                                  type="number"
+                                  name="Cost"
+                                  class="form-control"
+                                  id="Cost"
+                                  value="<%= Cost ? Cost : '' %>"
+                                  placeholder="Enter price"
+                                />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="Price">Quantity</label>
+                                
+                                <input
+                                  type="hidden"
+                                  name="supplier_id"
+                                  value="<%= supplierId ? supplierId : '' %>"
+                                />
+                                <input
+                                  type="number"
+                                  name="Quantity"
+                                  class="form-control"
+                                  id=""
+                                  value="<%= typeof data=='object' && data.Quantity ? data.Quantity : '' %>"
+                                  placeholder="Enter Quantity of Item you want"
+                                />
+                              </div>
+                            </div>
+
+                            
+
+                            <!-- form-group -->
+                          </div>
+                          <!-- form-group -->
+                        </div>
+                        <!-- card-body  -->
+                      </div>
+                    </div>
+
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.card -->
+              </div>
+              <!--/.col (left) -->
+              <!-- right column -->
+              <div class="col-md-6"></div>
+              <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <%- include('../partials/footer'); %>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/dist/js/demo.js"></script>
+    <script>
+    document.getElementById("nameMotherboard").disabled = true;
+    document.getElementById("Price").disabled = true;
+    </script>
+  </body>
+</html>

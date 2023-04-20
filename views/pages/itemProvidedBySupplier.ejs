@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Build Wizard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css" />
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="./plugins/sweetalert2/sweetalert2.min.css" />
+    <!-- Toastr -->
+    <link rel="stylesheet" href="./plugins/toastr/toastr.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./dist/css/adminlte.min.css" />
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <%- include('../partials/top-nav'); %> <%-
+      include('../partials/sidebar');%>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Item Provided By Supplier</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item">
+                    <a href="/offer/addOffer">Add Offer</a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <div class="card-body">
+          <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <!-- <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dt-buttons btn-group flex-wrap">
+                  <button
+                    class="btn btn-secondary buttons-copy buttons-html5"
+                    tabindex="0"
+                    aria-controls="example1"
+                    type="button"
+                  >
+                    <span>Copy</span>
+                  </button>
+                  <button
+                    class="btn btn-secondary buttons-csv buttons-html5"
+                    tabindex="0"
+                    aria-controls="example1"
+                    type="button"
+                  >
+                    <span>CSV</span>
+                  </button>
+                  <button
+                    class="btn btn-secondary buttons-excel buttons-html5"
+                    tabindex="0"
+                    aria-controls="example1"
+                    type="button"
+                  >
+                    <span>Excel</span>
+                  </button>
+                  <button
+                    class="btn btn-secondary buttons-pdf buttons-html5"
+                    tabindex="0"
+                    aria-controls="example1"
+                    type="button"
+                  >
+                    <span>PDF</span>
+                  </button>
+                  <button
+                    class="btn btn-secondary buttons-print"
+                    tabindex="0"
+                    aria-controls="example1"
+                    type="button"
+                  >
+                    <span>Print</span>
+                  </button>
+                  <div class="btn-group">
+                    <button
+                      class="btn btn-secondary buttons-collection dropdown-toggle buttons-colvis"
+                      tabindex="0"
+                      aria-controls="example1"
+                      type="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <span>Column visibility</span>
+                      <span class="dt-down-arrow"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6">
+                <div id="example1_filter" class="dataTables_filter">
+                  <label
+                    >Search:<input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder=""
+                      aria-controls="example1"
+                  /></label>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="row">
+              <div class="col-sm-12">
+                <table
+                  id="example1"
+                  class="table table-bordered table-striped dataTable dtr-inline"
+                  aria-describedby="example1_info"
+                >
+                  <thead>
+                    <tr>
+                      <th
+                        class="sorting"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Rendering engine: activate to sort column ascending"
+                      >
+                        Supplier Name
+                      </th>
+                      <th
+                        class="sorting"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Browser: activate to sort column ascending"
+                      >
+                        Email
+                      </th>
+                      <th
+                        class="sorting sorting_desc"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Platform(s): activate to sort column ascending"
+                        aria-sort="descending"
+                      >
+                        Mobile
+                      </th>
+                      <th
+                        class="sorting sorting_desc"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Platform(s): activate to sort column ascending"
+                        aria-sort="descending"
+                      >
+                        Item
+                      </th>
+                      <th
+                        class="sorting sorting_desc"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Platform(s): activate to sort column ascending"
+                        aria-sort="descending"
+                      >
+                        Price
+                      </th>
+                      <th
+                        class="sorting sorting_desc"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Platform(s): activate to sort column ascending"
+                        aria-sort="descending"
+                      >
+                        Quantity
+                      </th>
+                      <th
+                        class="sorting sorting_desc"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Platform(s): activate to sort column ascending"
+                        aria-sort="descending"
+                      >
+                        Date
+                      </th>
+                      <th
+                        class="sorting sorting_desc"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Platform(s): activate to sort column ascending"
+                        aria-sort="descending"
+                      >
+                      Status
+                      </th>
+                      <th
+                        class="sorting"
+                        tabindex="0"
+                        aria-controls="example1"
+                        rowspan="1"
+                        colspan="1"
+                        aria-label="Engine version: activate to sort column ascending"
+                      >
+                        action
+                      </th>
+                      <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
+                    </tr>
+                  </thead>
+                  <% if(typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier.length){ 
+                    for(var i = 0; i< ShowItemProvidedBySupllier.length; i++) {%>
+                  <tbody>
+                    <tr class="odd">
+                      <td><%= ShowItemProvidedBySupllier[i]['supplier.Name']%></td>
+                      <td><%= ShowItemProvidedBySupllier[i]['supplier.Email']%></td>
+                      <td><%= ShowItemProvidedBySupllier[i]['supplier.Mobile']%></td>
+                      <td><%= ShowItemProvidedBySupllier[i].DsicountPercentage%></td>
+                      <td><%= ShowItemProvidedBySupllier[i].Cost%></td>
+                      <td><%= ShowItemProvidedBySupllier[i].Quantity%></td>
+                      <td><%= ShowItemProvidedBySupllier[i].DateOfPurchase%></td>
+                      <td><%= ShowItemProvidedBySupllier[i].start_date%></td>
+                      <td>
+                        <a href="/offer/<%= ShowItemProvidedBySupllier[i].offer_name%>">View</a>
+                      </td>
+                    </tr>
+                    <% }}%>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- <div class="row">
+              <div class="col-sm-12 col-md-5">
+                <div
+                  class="dataTables_info"
+                  id="example1_info"
+                  role="status"
+                  aria-live="polite"
+                >
+                  Showing 1 to 10 of 57 entries
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-7"></div>
+            </div> -->
+          </div>
+        </div>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <%- include('../partials/footer'); %>
+    </div>
+    <!-- ./wrapper -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- jQuery -->
+    <script src="./plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="./dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="./dist/js/demo.js"></script>
+  </body>
+</html>

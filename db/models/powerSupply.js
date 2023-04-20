@@ -27,7 +27,7 @@ module.exports = (sequelize, Sequelize) => {
         cabinet_ImageURL: {
           type: Sequelize.STRING,
           allowNull: true,
-          field: "Image_Url",
+          field: "ImageUrl",
         },
         PricePower: {
           type: Sequelize.DECIMAL,
@@ -43,7 +43,7 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.INTEGER,
           allowNull: true,
           defaultValue: null,
-          field: "quantity",
+          field: "Stock",
         },
         supplierId: {
           field: "supplierId",

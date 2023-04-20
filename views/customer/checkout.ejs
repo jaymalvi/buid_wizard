@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EShopper - Bootstrap Shop Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="./css/payment/min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="./css/payment/style.css" rel="stylesheet">
+  
+
+
+</head>
+
+<body>
+   
+          <!-- Checkout Start -->
+    <form action="/makePayment" method="post">
+        <div class="container-fluid pt-5">
+            <div class="row px-xl-5">
+                <div class="col-lg-8">
+                    <div class="mb-4">
+                        <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>First Name</label>
+                                <input id="firstNameId" class="form-control" type="text"  value="<%= user.fname %>"
+                                    pattern="[A-Za-z]+" maxlength="45"
+                                    title="Please enter a valid first name (alphabetic characters only)"
+                                    placeholder="Firstname" name="fn" required="required">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Last Name</label>
+                                <input id="lastNameId" class="form-control" type="text" name="ln" value="<%= user.lname %>"
+                                    pattern="[A-Za-z]+" maxlength="45"
+                                    title="Please enter a valid last name (alphabetic characters only)"
+                                    placeholder="Last Name" required="required">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>E-mail</label>
+                                <input id="emailId" class="form-control" name="email" value="<%= user.email %>"
+                                    type="email" placeholder="example@email.com"
+                                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                                    title="Please enter a valid email address" required="required" readonly>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Mobile No</label>
+                                <input id="mobileNoId" class="form-control" name="pn" value="<%= user.phone_no %>"
+                                    type="text" placeholder="1234567890" pattern="\d*" maxlength="10"
+                                    title="Please enter a valid 10-digit phone number (numbers only)"
+                                    required="required" readonly>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Address Line 1</label>
+                                <input id="AL1Id" class="form-control" name="al1" value="<%= user.address %>"
+                                    type="text" placeholder="123 Street" required="required">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Address Line 2</label>
+                                <input id="AL2Id" class="form-control" name="al2" value="Gurukul Road"
+                                    type="text" placeholder="123 Street" required="required">
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <label>City</label>
+                                <input id="CityId" class="form-control" type="text"  name="city"
+                                    value="Ahmedabad" required="required" readonly>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>State</label>
+                                <input id="StateId" class="form-control" name="state" 
+                                    type="text" value="Gujarat" readonly>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>ZIP Code</label>
+                                <input id="ZCId" class="form-control" name="pincode" value="<%= user.pincode %>"
+                                    pattern="\d*" type="text" placeholder="380001" maxlength="6" required="required">
+                                <small class="invalid-feedback"></small>
+
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="col-lg-4" id="divp">
+                    <div class="card border-secondary mb-5">
+                        <div class="card-header bg-secondary border-0">
+                            <h4 class="font-weight-semi-bold m-0">Order Total</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="font-weight-medium mb-3">Products</h5>
+                            <div class="d-flex justify-content-between">
+                                <p>Colorful Stylish Shirt 1</p>
+                                <p>$150</p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p>Colorful Stylish Shirt 2</p>
+                                <p>$150</p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p>Colorful Stylish Shirt 3</p>
+                                <p>$150</p>
+                            </div>
+                            <hr class="mt-0">
+                            <div class="d-flex justify-content-between mb-3 pt-1">
+                                <h6 class="font-weight-medium">Subtotal</h6>
+                                <h6 class="font-weight-medium">$150</h6>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <h6 class="font-weight-medium">Shipping</h6>
+                                <h6 class="font-weight-medium">$10</h6>
+                            </div>
+                        </div>
+                        <div class="card-footer border-secondary bg-transparent">
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5 class="font-weight-bold">Total</h5>
+                                <h5 class="font-weight-bold">$160</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3"
+                            id="rzp-button1">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Checkout End -->
+
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var options = {
+                "key": "rzp_test_XoNyDJg6HeB31F", // Enter the Key ID generated from the Dashboard
+                "amount": "1000",
+                "currency": "INR",
+                "description": "Bulidwizard",
+                "prefill":
+                {
+                    "email": "gaurav.kumar@example.com",
+                    "contact": +919900000000,
+                },
+                "handler": function (response) {
+                    alert(response.razorpay_payment_id);
+                },
+                "modal": {
+                    "ondismiss": function () {
+                        if (confirm("Are you sure, you want to close the form?")) {
+                            txt = "You pressed OK!";
+                            console.log("Checkout form closed by the user");
+                        } else {
+                            txt = "You pressed Cancel!";
+                            console.log("Complete the Payment")
+                        }
+                    }
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            const firstName = document.getElementById('firstNameId');
+            const lastName = document.getElementById('lastNameId');
+            const address1 = document.getElementById('AL1Id');
+            const address2 = document.getElementById('AL2Id');
+            const zipCode = document.getElementById('ZCId');
+            document.getElementById('rzp-button1').onclick = function (e) {
+                e.preventDefault();
+                const validin = validateInputs();
+               
+                if (validin) {
+                    rzp1.open();
+                }
+                else{
+                }
+                
+
+
+            }
+            function validateInputs() {
+                
+                const boolArray = new Array(5);
+                const firstNameValue = firstName.value.trim();
+                const lastNameValue = lastName.value.trim();
+                const address1Value = address1.value.trim();
+                const address2Value = address2.value.trim();
+                const zipCodeValue = zipCode.value.trim();
+
+                if (firstNameValue === '') {
+                    setErrorFor(firstName, 'First Name cannot be blank');
+                } else if (!isNameValid(firstNameValue)) {
+                    setErrorFor(firstName, 'First Name can only contain letters');
+                } else {
+                    setSuccessFor(firstName);
+                    boolArray.push(true);
+
+                }
+
+                if (lastNameValue === '') {
+                    setErrorFor(lastName, 'Last Name cannot be blank');
+                } else if (!isNameValid(lastNameValue)) {
+                    setErrorFor(lastName, 'Last Name can only contain letters');
+                } else {
+                    setSuccessFor(lastName);
+                    boolArray.push(true);
+                }
+
+                if (address1Value === '') {
+                    setErrorFor(address1, 'Address Line 1 cannot be blank');
+                } else {
+                    setSuccessFor(address1);
+                    boolArray.push(true);
+                }
+
+                if (address2Value === '') {
+                    setErrorFor(address2, 'Address Line 2 cannot be blank');
+                } else {
+                    setSuccessFor(address2);
+                    boolArray.push(true);
+
+
+                }
+
+                if (zipCodeValue === '' && zipCodeValue.length !== 6) {
+                    setErrorFor(zipCode, 'ZIP Code cannot be blank');
+                } else if (!isZipCodeValid(zipCodeValue)) {
+                    setErrorFor(zipCode, 'ZIP Code can only contain numbers and must be 6 digits long');
+                }
+                else if(zipCodeValue.length != 6){
+                    setErrorFor(zipCode,'ZIP Code length is must equal to 6');
+                }
+                else {
+                    setSuccessFor(zipCode);
+                    boolArray.push(true);
+                }
+
+                if( boolArray.length >=10){
+                //    alert(zipCodeValue.length+" "+boolArray.length);
+                    return true;
+                }
+                else{
+                    // alert(boolArray.length);
+                    return false;
+                }
+            }
+
+            function setErrorFor(input, message) {
+                const formGroup = input.parentElement;
+                const errorMessage = formGroup.querySelector('small');
+                input.classList.add('is-invalid');
+                errorMessage.innerText = message;
+            }
+
+            function setSuccessFor(input) {
+                const formGroup = input.parentElement;
+                input.classList.remove('is-invalid');
+            }
+
+            function isNameValid(name) {
+                return /^[A-Za-z]+$/.test(name);
+            }
+
+            function isZipCodeValid(zip) {
+                return /^\d{6}$/.test(zip);
+            }
+        </script>
+
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+
+
+    </form>
+</body>
+
+</html>

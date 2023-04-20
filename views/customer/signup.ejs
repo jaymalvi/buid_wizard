@@ -1,0 +1,50 @@
+<div class="main">
+
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign up</h2>
+                    <form method="POST" class="register-form" id="register-form" action="/postSignup">
+                        <div class="form-group">
+                            <label for="fname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="fname" id="fname" placeholder="First Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="lname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="lname" id="lname" placeholder="Last Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            <input type="email" name="email" id="email" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password" id="pass" placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                            <input type="password" name="cpassword" id="re_pass" placeholder="Confirm Password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="mnum"><i class="bi bi-telephone-fill"></i></i></label>
+                            <input type="number" name="mobile" id="mnum" placeholder="Mobile Number" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                        </div>
+                        Already have an account? <a href="#">Login</a>
+                    </form>
+                </div>
+                <div class="signup-image">
+                    <figure><img src="/img/Image1.png" alt="sing up image" style="height:250px; width: 600px;">
+                        <h3>Build Your Dream PC</h3>
+                        Choose from a variety of components and focus on the parts that will make the perfect PC
+                        experience for you.</p>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

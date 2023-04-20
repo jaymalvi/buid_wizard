@@ -5,7 +5,29 @@ const app = express();
 const path = require("path");
 const db = require('./db');
 var session = require('express-session')
+var session1 = require('express-session')
 var MemoryStore = require('memorystore')(session)
+const supplierController = require('./controllers/supplierController');
+//const expressLayouts = require('express-ejs-layouts');
+// const MySqlStore = require('express-mysql-session')(session1);
+// const mydb = require('./db');
+
+
+const customerRoutes = require('./routes/customer');
+
+//app.use(expressLayouts);
+app.set('view engine', 'ejs');
+// app.set('layout', './layouts/full-width');
+app.use(express.static(__dirname + '/public/'));
+// var sessionStore = new MySqlStore({}, mydb);
+// app.use(session1({
+//     secret: 'any Secret',
+//     store: sessionStore,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: { maxAge: null }
+// }));
+
 
 
 function errorHandler(err, req, res, next) {
@@ -28,64 +50,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-// global error handler
-// app.use(errorHandler);
-
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: '',
-//   database: 'demo1'
-// });
-
-// connection.connect((error) => {
-//   if (error) {
-//     console.error('Error connecting to MySQL database:', error);
-//   } else {
-//     console.log('Connected to MySQL database!');
-//   }
-// });
-
-// app.post('/category', (req, res) => {
-//   const { name} = req.body;
-//   const sql = `INSERT INTO category (name) VALUES (?)`;
-//   connection.query(sql, [name], (err, result) => {
-//     if (err) {
-//       res.status(500).send(err.message);
-//     } else {
-//       res.json({ id: result.insertId });
-//     }
-//   });
-// });
-
-// app.post('/category', (req, res) => {
-//   // extract form data
-//   const category = req.body.category;
-
-//   // define database query
-//   const query = `INSERT INTO category (name) VALUES (?)`;
-
-//   // execute query with form data
-//   connection.query(query, [category], (err, result) => {
-//     if (err) {
-//       console.error(err);
-//       res.sendStatus(500);
-//       return;
-//     }
-
-//     res.sendStatus(200);
-//   });
-// });
 
 app.set("views", "views/");
-// app.set('view engine', 'ejs');
-
-// app.get('/', function(req, res) {
-//   connection.query('SELECT * FROM users', function (error, results, fields) {
-//     if (error) throw error;
-//     res.render('users', { users: results });
-//   });
-// });
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "uploads")));
@@ -146,6 +112,11 @@ app.post("/login", async (req, res) => {
   
 });
 
+app.get("/viewItem", async (req, res) => {
+    const ShowItemProvidedBySupllier= await db.supplier.findAll({raw :true});
+    console.log(ShowItemProvidedBySupllier); 
+    return res.render('pages/cabinetItem.ejs', { ShowItemProvidedBySupllier , userData: req.session && req.session.user ? req.session.user : null });
+});
 
 app.get("/auth/register", (req, res) => {
   res.render("pages/auth/registration.ejs", { title: "Component Craze" , userData: req.session && req.session.user ? req.session.user : null });
@@ -172,8 +143,8 @@ app.get("/dashboard", (req, res) => {
 //     res.render('pages/addCategory.ejs', { title: 'Component1111111111 Craze' });
 //   });
 
-app.get("/company", (req, res) => {
-  res.render("pages/company.ejs", { title: "Component Craze" , userData: req.session && req.session.user ? req.session.user : null });
+app.get("/S/buyComponent", (req, res) => {
+  res.render("pages/cabinetItem.ejs", { title: "Component Craze" , userData: req.session && req.session.user ? req.session.user : null });
 });
 
 app.get("/company/addCompany", (req, res) => {
@@ -218,6 +189,9 @@ app.get("/home-page", (req, res) => {
   res.render("pages/build-wizard/home-page.ejs", { title: "Component Craze" , userData: req.session && req.session.user ? req.session.user : null });
 });
 
+app.get('/item_buy/:id', supplierController.BuyItem);
+
+
 // Require employee routes
 const offerRoutes = require("./routes/offer-route");
 const offer = require("./db/models/offer");
@@ -230,6 +204,8 @@ app.use("/offer", offerRoutes);
 app.use("/cabinet", cabinet);
 app.use("/supplier", supplier);
 app.use("/user", user);
+app.use(customerRoutes.router);
+
 
 app.use(errorHandler);
 

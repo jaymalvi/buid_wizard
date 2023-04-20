@@ -27,7 +27,7 @@ module.exports = (sequelize, Sequelize) => {
       cabinet_ImageURL: {
         type: Sequelize.STRING,
         allowNull: true,
-        field: "ImageURL",
+        field: "ImageUrl",
       },
       coollingType: {
         type: Sequelize.STRING,
@@ -42,7 +42,7 @@ module.exports = (sequelize, Sequelize) => {
       quantityColling: {
         type: Sequelize.INTEGER,
         allowNull: true,
-        field: "quantity",
+        field: "Stock",
       },
       supplierId: {
         field: "supplierId",

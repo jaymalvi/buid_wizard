@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
         cabinet_ImageURL: {
           type: Sequelize.STRING,
           allowNull: true,
-          field: "image_URL",
+          field: "ImageUrl",
         },
         socket_type: {
           type: Sequelize.STRING,
@@ -56,7 +56,7 @@ module.exports = (sequelize, Sequelize) => {
         quantityCPU: {
           type: Sequelize.INTEGER,
           allowNull: true,
-          field: "quantity",
+          field: "Stock",
         },supplierId: {
           field: "supplierId",
           type: Sequelize.INTEGER,
