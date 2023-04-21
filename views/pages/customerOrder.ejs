@@ -30,7 +30,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Item Provided By Supplier</h1>
+                <h1>Order</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -136,7 +136,7 @@
                         colspan="1"
                         aria-label="Rendering engine: activate to sort column ascending"
                       >
-                        Supplier Name
+                        Customer Name
                       </th>
                       <th
                         class="sorting"
@@ -168,7 +168,7 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                        Item
+                      Build Name
                       </th>
                       <th
                         class="sorting sorting_desc"
@@ -179,7 +179,7 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                        Price
+                        ChipSet
                       </th>
                       <th
                         class="sorting sorting_desc"
@@ -190,8 +190,9 @@
                         aria-label="Platform(s): activate to sort column ascending"
                         aria-sort="descending"
                       >
-                        Quantity
+                        Payment
                       </th>
+                      
                       <th
                         class="sorting sorting_desc"
                         tabindex="0"
@@ -227,63 +228,63 @@
                       <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
                     </tr>
                   </thead>
-                  <% if(typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier.length){ 
-                    for(var i = 0; i< ShowItemProvidedBySupllier.length; i++) {%>
+                  <% if(typeof order=='object' && order.length){ 
+                    for(var i = 0; i< order.length; i++) {%>
                   <tbody>
                     <tr class="odd">
-                      <td><%= ShowItemProvidedBySupllier[i]['supplier.Name']%></td>
-                      <td><%= ShowItemProvidedBySupllier[i]['supplier.Email']%></td>
-                      <td><%= ShowItemProvidedBySupllier[i]['supplier.Mobile']%></td>
-                      <td><%= ShowItemProvidedBySupllier[i].DsicountPercentage%></td>
-                      <td><%= ShowItemProvidedBySupllier[i].Cost%></td>
-                      <td><%= ShowItemProvidedBySupllier[i].Quantity%></td>
-                      <td><%= ShowItemProvidedBySupllier[i].DateOfPurchase%></td>
-                      <% if(typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].purchase_staus=="Pending"){%>
-                      <td class="text-warning"><%= ShowItemProvidedBySupllier[i].purchase_staus%></td>
-                      <% }else if(typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].purchase_staus=="Accept"){%>
-                      <td class="text-success"><%= ShowItemProvidedBySupllier[i].purchase_staus%></td>
-                      <% }else if(typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].purchase_staus=="Denied"){%>
-                      <td class="text-danger"><%= ShowItemProvidedBySupllier[i].purchase_staus%></td>
+                      <td><%= order[i].user.fname  +" "+ order[i].user.lname%></td>
+                      <td><%= order[i].user.email%></td>
+                      <td><%= order[i].user.phone_no%></td>
+                      <td><%= order[i].DsicountPercentage%></td>
+                      <td><%= order[i].Cost%></td>
+                      <td><%= order[i].Amount%></td>
+                      <td><%= order[i].Date%></td>
+                      <% if(typeof order=='object' && order[i].OrderStatus=="ordered"){%>
+                      <td class="text-warning"><%= order[i].purchase_staus%></td>
+                      <% }else if(typeof order=='object' && order[i].purchase_staus=="Accept"){%>
+                      <td class="text-success"><%= order[i].purchase_staus%></td>
+                      <% }else if(typeof order=='object' && order[i].purchase_staus=="Denied"){%>
+                      <td class="text-danger"><%= order[i].purchase_staus%></td>
                       <% } else {%>
-                      <td class="text-danger"><%= ShowItemProvidedBySupllier[i].purchase_staus%></td>
+                      <td class="text-danger"><%= order[i].purchase_staus%></td>
                       <% } %>    
                       <td>
                         <% var text = ''%>
                         <% var id = ''%>
-                        <% if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idMotherboard ) { %>
+                        <% if (typeof order=='object' && order[i].idMotherboard ) { %>
                           <% text = 'motherboard' %>
-                          <% id = ShowItemProvidedBySupllier[i].idMotherboard %>
+                          <% id = order[i].idMotherboard %>
 
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].Power_Supply_idPower_Supply) { %>
+                        <% } else if (typeof order=='object' && order[i].Power_Supply_idPower_Supply) { %>
                           <% text = 'powersupply' %>
-                          <% id = ShowItemProvidedBySupllier[i].Power_Supply_idPower_Supply %>
+                          <% id = order[i].Power_Supply_idPower_Supply %>
 
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idCpu) { %>
+                        <% } else if (typeof order=='object' && order[i].idCpu) { %>
                           <% text = 'cpu' %>
-                          <% id = ShowItemProvidedBySupllier[i].idCpu %>
+                          <% id = order[i].idCpu %>
 
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idgraphic) { %>
+                        <% } else if (typeof order=='object' && order[i].idgraphic) { %>
                           <% text = 'graphiccard' %>
-                          <% id = ShowItemProvidedBySupllier[i].idgraphic %>
+                          <% id = order[i].idgraphic %>
 
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idCabinet) { %>
+                        <% } else if (typeof order=='object' && order[i].idCabinet) { %>
                           <% text = 'cabinet' %>
-                          <% id = ShowItemProvidedBySupllier[i].idCabinet %>
+                          <% id = order[i].idCabinet %>
 
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idRam) { %>
+                        <% } else if (typeof order=='object' && order[i].idRam) { %>
                           <% text = 'ram' %>
-                          <% id = ShowItemProvidedBySupllier[i].idRam %>
+                          <% id = order[i].idRam %>
 
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idCooling_System) { %>
+                        <% } else if (typeof order=='object' && order[i].idCooling_System) { %>
                           <% text = 'colling' %>
-                          <% id = ShowItemProvidedBySupllier[i].idCooling_System %>
+                          <% id = order[i].idCooling_System %>
 
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].isStorage) { %>
+                        <% } else if (typeof order=='object' && order[i].isStorage) { %>
                           <% text = 'storage' %>
-                          <% id = ShowItemProvidedBySupllier[i].isStorage %>
+                          <% id = order[i].isStorage %>
                         <% } %>
                         
-                        <a href="<%= '/item_buy/' + id + '?id=' + text + '&supplierId=' + ShowItemProvidedBySupllier[i].Supplier_idSupplier %>">View</a>
+                        <a href="<%= '/item_buy/' + id + '?id=' + text + '&supplierId=' + order[i].Supplier_idSupplier %>">View</a>
                       </td>
                     </tr>
                     <% }}%>

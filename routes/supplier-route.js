@@ -23,8 +23,12 @@ const upload = multer({ storage: storage });
 router.get('/', supplierController.findAll);
 
  router.get('/showItem', supplierController.ShowBuyItemProvidedBySupllier);
+
+ router.get('/order', supplierController.ShowOrder);
 // Retrieve all offer
 router.get('/viewlist', upload.single('cabinet_ImageURL'), supplierController.viewItem);
+
+
 // Create a new offer
 router.post('/add', supplierController.create);
 
@@ -32,6 +36,8 @@ router.post('/buyComponent', supplierController.supplierComponent);
 
 // Retrieve a single offer with id
 router.get('/:id', supplierController.findOne);
+
+router.get('/acceptOrder/:id', supplierController.updateStatusBySupplier);
 
 // Update a offer with id
 router.post('/update', supplierController.update);

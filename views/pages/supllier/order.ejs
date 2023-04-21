@@ -21,8 +21,8 @@
   </head>
   <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-      <%- include('../partials/top-nav'); %> <%-
-      include('../partials/sidebar');%>
+      <%- include('../../partials/top-nav'); %> <%-
+      include('../../partials/sidebar');%>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -30,12 +30,12 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Item Provided By Supplier</h1>
+                <h1>Order</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item">
-                    <a href="/offer/addOffer">Add Offer</a>
+                    <a href="#">Add Order</a>
                   </li>
                 </ol>
               </div>
@@ -136,7 +136,7 @@
                         colspan="1"
                         aria-label="Rendering engine: activate to sort column ascending"
                       >
-                        Supplier Name
+                        Customer Name
                       </th>
                       <th
                         class="sorting"
@@ -227,63 +227,26 @@
                       <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
                     </tr>
                   </thead>
-                  <% if(typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier.length){ 
-                    for(var i = 0; i< ShowItemProvidedBySupllier.length; i++) {%>
+                  <% if(typeof ShowOrder=='object' && ShowOrder.length){ 
+                    for(var i = 0; i< ShowOrder.length; i++) {%>
                   <tbody>
                     <tr class="odd">
-                      <td><%= ShowItemProvidedBySupllier[i]['supplier.Name']%></td>
-                      <td><%= ShowItemProvidedBySupllier[i]['supplier.Email']%></td>
-                      <td><%= ShowItemProvidedBySupllier[i]['supplier.Mobile']%></td>
-                      <td><%= ShowItemProvidedBySupllier[i].DsicountPercentage%></td>
-                      <td><%= ShowItemProvidedBySupllier[i].Cost%></td>
-                      <td><%= ShowItemProvidedBySupllier[i].Quantity%></td>
-                      <td><%= ShowItemProvidedBySupllier[i].DateOfPurchase%></td>
-                      <% if(typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].purchase_staus=="Pending"){%>
-                      <td class="text-warning"><%= ShowItemProvidedBySupllier[i].purchase_staus%></td>
-                      <% }else if(typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].purchase_staus=="Accept"){%>
-                      <td class="text-success"><%= ShowItemProvidedBySupllier[i].purchase_staus%></td>
-                      <% }else if(typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].purchase_staus=="Denied"){%>
-                      <td class="text-danger"><%= ShowItemProvidedBySupllier[i].purchase_staus%></td>
+                      <td><%= ShowOrder[i]['supplier.Name']%></td>
+                      <td><%= ShowOrder[i]['supplier.Email']%></td>
+                      <td><%= ShowOrder[i]['supplier.Mobile']%></td>
+                      <td><%= ShowOrder[i].DsicountPercentage%></td>
+                      <td><%= ShowOrder[i].Cost%></td>
+                      <td><%= ShowOrder[i].Quantity%></td>
+                      <td><%= ShowOrder[i].DateOfPurchase%></td>
+                      <% if(typeof ShowOrder=='object' && ShowOrder[i].purchase_staus=="Pending"){%>
+                      <td class="text-warning"><%= ShowOrder[i].purchase_staus%></td>
+                      <% }else if(typeof ShowOrder=='object' && ShowOrder[i].purchase_staus=="Accept"){%>
+                      <td class="text-success"><%= ShowOrder[i].purchase_staus%></td>
                       <% } else {%>
-                      <td class="text-danger"><%= ShowItemProvidedBySupllier[i].purchase_staus%></td>
+                      <td class="text-danger"><%= ShowOrder[i].purchase_staus%></td>
                       <% } %>    
                       <td>
-                        <% var text = ''%>
-                        <% var id = ''%>
-                        <% if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idMotherboard ) { %>
-                          <% text = 'motherboard' %>
-                          <% id = ShowItemProvidedBySupllier[i].idMotherboard %>
-
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].Power_Supply_idPower_Supply) { %>
-                          <% text = 'powersupply' %>
-                          <% id = ShowItemProvidedBySupllier[i].Power_Supply_idPower_Supply %>
-
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idCpu) { %>
-                          <% text = 'cpu' %>
-                          <% id = ShowItemProvidedBySupllier[i].idCpu %>
-
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idgraphic) { %>
-                          <% text = 'graphiccard' %>
-                          <% id = ShowItemProvidedBySupllier[i].idgraphic %>
-
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idCabinet) { %>
-                          <% text = 'cabinet' %>
-                          <% id = ShowItemProvidedBySupllier[i].idCabinet %>
-
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idRam) { %>
-                          <% text = 'ram' %>
-                          <% id = ShowItemProvidedBySupllier[i].idRam %>
-
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].idCooling_System) { %>
-                          <% text = 'colling' %>
-                          <% id = ShowItemProvidedBySupllier[i].idCooling_System %>
-
-                        <% } else if (typeof ShowItemProvidedBySupllier=='object' && ShowItemProvidedBySupllier[i].isStorage) { %>
-                          <% text = 'storage' %>
-                          <% id = ShowItemProvidedBySupllier[i].isStorage %>
-                        <% } %>
-                        
-                        <a href="<%= '/item_buy/' + id + '?id=' + text + '&supplierId=' + ShowItemProvidedBySupllier[i].Supplier_idSupplier %>">View</a>
+                        <a href="<%= '/supplier/acceptOrder/' + ShowOrder[i].id + '?supplier=' + ShowOrder[i].Supplier_idSupplier %>">View</a>
                       </td>
                     </tr>
                     <% }}%>
@@ -312,7 +275,7 @@
       </div>
       <!-- /.content-wrapper -->
 
-      <%- include('../partials/footer'); %>
+      <%- include('../../partials/footer'); %>
     </div>
     <!-- ./wrapper -->
     <!-- Control Sidebar -->

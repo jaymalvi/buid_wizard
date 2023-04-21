@@ -143,9 +143,9 @@ app.get("/dashboard", (req, res) => {
 //     res.render('pages/addCategory.ejs', { title: 'Component1111111111 Craze' });
 //   });
 
-app.get("/S/buyComponent", (req, res) => {
-  res.render("pages/cabinetItem.ejs", { title: "Component Craze" , userData: req.session && req.session.user ? req.session.user : null });
-});
+// app.get("/customerOrder", (req, res) => {
+//   res.render("pages/customerOrder.ejs", { title: "Component Craze" , userData: req.session && req.session.user ? req.session.user : null });
+// });
 
 app.get("/company/addCompany", (req, res) => {
   res.render("pages/addCompany.ejs", { title: "Component1111111111 Craze" , userData: req.session && req.session.user ? req.session.user : null });
@@ -184,6 +184,10 @@ app.get("/addItems", (req, res) => {
   res.render("pages/supllier/addItems.ejs", { title: "Component Craze" , userData: req.session && req.session.user ? req.session.user : null });
 });
 
+app.get("/order", (req, res) => {
+  res.render("pages/supllier/order.ejs", { title: "Component Craze" , userData: req.session && req.session.user ? req.session.user : null });
+});
+
 // build wizard (customer side's routes)
 app.get("/home-page", (req, res) => {
   res.render("pages/build-wizard/home-page.ejs", { title: "Component Craze" , userData: req.session && req.session.user ? req.session.user : null });
@@ -198,12 +202,14 @@ const offer = require("./db/models/offer");
 const cabinet = require("./routes/cabinet-route");
 const supplier = require("./routes/supplier-route");
 const user = require("./routes/user-route");
+const order = require("./routes/order-route");
 
 // using as middleware
 app.use("/offer", offerRoutes);
 app.use("/cabinet", cabinet);
 app.use("/supplier", supplier);
 app.use("/user", user);
+app.use("/orders", order);
 app.use(customerRoutes.router);
 
 

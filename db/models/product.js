@@ -5,99 +5,94 @@ module.exports = (sequelize, Sequelize) => {
       idBuilds: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
+        autoIncrement: true,
+        field: "idBuilds",
       },
       name: {
-        type: Sequelize.STRING(70),
+        type: Sequelize,
         allowNull: true,
+        field: "name",
       },
       chipset: {
-        type: Sequelize.STRING(50),
+        type: Sequelize,
         allowNull: false,
+        field: "chipset",
       },
       ScreenSize: {
-        type: Sequelize.DECIMAL(10, 0),
+        type: Sequelize.DECIMAL,
         allowNull: true,
+        field: "ScreenSize",
       },
       NoOfFans: {
         type: Sequelize.INTEGER,
         allowNull: true,
+        field: "NoOfFans",
       },
       isBuild: {
         type: Sequelize.BOOLEAN,
         allowNull: true,
-      },
-      Cabinet_idCabinet: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "cabinet",
-          key: "idCabinet",
-        },
+        field: "isBuild",
       },
       Motherboard_idMotherboard: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: "motherboard", // name of the referenced table
-          key: "idMotherboard", // name of the referenced column
-        },
-      },
-      Cpu_idCpu: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "cpu",
-          key: "idCpu",
-        },
-      },
-      ram_idRam: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "ram",
-          key: "idRam",
-        },
+        field: "Motherboard_idMotherboard",
       },
       Cooling_System_idCooling_System: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: "cooling_system",
-          key: "idCooling_System",
-        },
+        field: "Cooling_System_idCooling_System",
       },
-
+      Cpu_idCpu: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        field: "Cpu_idCpu",
+      },
+      Ram_idRam: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        field: "Ram_idRam",
+      },
       Graphic_Card_idGraphic_Card: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: "graphic_card",
-          key: "idGraphic_Card",
-        },
+        field: "Graphic_Card_idGraphic_Card",
+      },
+      Cabinet_idCabinet: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        field: "Cabinet_idCabinet",
       },
       Power_Supply_idPower_Supply: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: "power_supply",
-          key: "idPower_Supply",
-        },
+        field: "Power_Supply_idPower_Supply",
       },
       Storage_idStorage: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: "storage",
-          key: "idStorage",
-        },
-      },
+        field: "Storage_idStorage",
+      }
     },
     {
       tableName: "product",
       timestamps: false,
     }
   );
+  product.associate = (models) => {
+    // associations can be defined here
+    product.belongsTo(models.cabinet, { as: 'cabinet', foreignKey: 'Cabinet_idCabinet' });
+    product.belongsTo(models.motherboard, { as: 'motherboard', foreignKey: 'Motherboard_idMotherboard' });
+    product.belongsTo(models.cpu, { as: 'cpu', foreignKey: 'Cpu_idCpu' });
+    product.belongsTo(models.ram, { as: 'ram', foreignKey: 'Ram_idRam' });
+    product.belongsTo(models.cooling_system, { as: 'cooling_system', foreignKey: 'Cooling_System_idCooling_System' });
+    product.belongsTo(models.graphic_card, { as: 'graphic_card', foreignKey: 'Graphic_Card_idGraphic_Card' });
+    product.belongsTo(models.power_supply, { as: 'power_supply', foreignKey: 'Power_Supply_idPower_Supply' });
+    product.belongsTo(models.storage, { as: 'storage', foreignKey: 'Storage_idStorage' });
+    product.hasMany(models.order_has_product, { as: 'order_has_product', foreignKey: 'Builds_idBuilds' });
+    product.hasMany(models.order_has_product, { as: 'builds_has_ram', foreignKey: 'Builds_idBuilds' });
+    product.hasMany(models.order_has_product, { as: 'build_has_storage', foreignKey: 'Builds_idBuilds' });
+  };
   return product;
 };

@@ -81,7 +81,7 @@ module.exports = (sequelize, Sequelize) => {
           //   key: 'Cooling_System_idCooling_System'
           // }
         },
-        isStorage: {
+        idStorage: {
           type: Sequelize.INTEGER,
           allowNull: true,
           field: "Storage_idStorage",
@@ -104,6 +104,11 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.DATEONLY,
           allowNull: false,
           field: "DateOfPurchase",
+        },
+        purchase_staus: {
+          type: Sequelize.STRING,
+          allowNull: false,
+          field: "Status",
         }
       },
       {
@@ -115,6 +120,14 @@ module.exports = (sequelize, Sequelize) => {
     supplier_provide_cmponents.associate = (models) => {
       // associations can be defined here
       supplier_provide_cmponents.belongsTo(models.supplier, { as: 'supplier', foreignKey: 'Supplier_idSupplier' });
+      supplier_provide_cmponents.belongsTo(models.cabinet, { as: 'cabinet', foreignKey: 'Cabinet_idCabinet' });
+      supplier_provide_cmponents.belongsTo(models.motherboard, { as: 'motherboard', foreignKey: 'Motherboard_idMotherboard' });
+      supplier_provide_cmponents.belongsTo(models.cpu, { as: 'cpu', foreignKey: 'Cpu_idCpu' });
+      supplier_provide_cmponents.belongsTo(models.ram, { as: 'ram', foreignKey: 'Ram_idRam' });
+      supplier_provide_cmponents.belongsTo(models.cooling_system, { as: 'cooling_system', foreignKey: 'Cooling_System_idCooling_System' });
+      supplier_provide_cmponents.belongsTo(models.graphic_card, { as: 'graphic_card', foreignKey: 'Graphic_Card_idGraphic_Card' });
+      supplier_provide_cmponents.belongsTo(models.power_supply, { as: 'power_supply', foreignKey: 'Power_Supply_idPower_Supply' });
+      supplier_provide_cmponents.belongsTo(models.storage, { as: 'storage', foreignKey: 'Storage_idStorage' });
     };
     return supplier_provide_cmponents;
   };

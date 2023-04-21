@@ -75,6 +75,10 @@ module.exports = (sequelize, Sequelize) => {
         timestamps: false,
       }
     );
+    storage.associate = (models) => {
+      // associations can be defined here
+      storage.hasMany(models.build_has_storage, { as: 'build_has_storage', foreignKey: 'Storage_idStorage' });
+    };
     return storage;
   };
   

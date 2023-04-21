@@ -65,6 +65,10 @@ module.exports = (sequelize, Sequelize) => {
         timestamps: false,
       }
     );
+    ram.associate = (models) => {
+      // associations can be defined here
+      ram.hasMany(models.builds_has_ram, { as: 'builds_has_ram', foreignKey: 'Ram_idRam' });
+    };
     return ram;
   };
   
