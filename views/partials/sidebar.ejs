@@ -52,7 +52,7 @@
       >
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-        <!-- <% if(userData.role == "Admin"){%> -->
+        <% if(userData.role == "Admin"){%>
         <li class="nav-item">
           <a href="/dashboard" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -188,7 +188,24 @@
                   </p>
                 </a>
               </li> -->
-        <!-- <% } else {%> -->
+        <% } else if(userData.role == "Technical Team"){%>
+          <li class="nav-item">
+            <a href="/supplier/order" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Order 
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/supplier/order" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Order 
+              </p>
+            </a>
+          </li>
+        <% } else {%>
         <li class="nav-item">
           <a href="/sup_dashborad" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
@@ -268,7 +285,8 @@
             </p>
           </a>
         </li>
-        <!-- <% }%> -->
+        
+        <% }%>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

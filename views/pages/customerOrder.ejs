@@ -32,13 +32,13 @@
               <div class="col-sm-6">
                 <h1>Order</h1>
               </div>
-              <div class="col-sm-6">
+              <!-- <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item">
                     <a href="/offer/addOffer">Add Offer</a>
                   </li>
                 </ol>
-              </div>
+              </div> -->
             </div>
           </div>
           <!-- /.container-fluid -->
@@ -235,12 +235,12 @@
                       <td><%= order[i].user.fname  +" "+ order[i].user.lname%></td>
                       <td><%= order[i].user.email%></td>
                       <td><%= order[i].user.phone_no%></td>
-                      <td><%= order[i].DsicountPercentage%></td>
-                      <td><%= order[i].Cost%></td>
+                      <td><%= order[i].order_has_products[0].product.name %></td>
+                      <td><%= order[i].order_has_products[0].product.chipset %></td>
                       <td><%= order[i].Amount%></td>
                       <td><%= order[i].Date%></td>
                       <% if(typeof order=='object' && order[i].OrderStatus=="ordered"){%>
-                      <td class="text-warning"><%= order[i].purchase_staus%></td>
+                      <td class="text-warning"><%= order[i].OrderStatus%></td>
                       <% }else if(typeof order=='object' && order[i].purchase_staus=="Accept"){%>
                       <td class="text-success"><%= order[i].purchase_staus%></td>
                       <% }else if(typeof order=='object' && order[i].purchase_staus=="Denied"){%>
@@ -283,8 +283,8 @@
                           <% text = 'storage' %>
                           <% id = order[i].isStorage %>
                         <% } %>
-                        
-                        <a href="<%= '/item_buy/' + id + '?id=' + text + '&supplierId=' + order[i].Supplier_idSupplier %>">View</a>
+                        <a href="/orders/<%= order[i].idOrder%>">View</a>
+
                       </td>
                     </tr>
                     <% }}%>
