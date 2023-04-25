@@ -1,4 +1,5 @@
 const { response } = require('express');
+const { Op } = require('sequelize');
 const db = require('../db/index');
 const user = require('../db/models/user');
 
@@ -19,7 +20,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 exports.findAll = async function(req, res) {
-  const user= await await db.user.findAll({raw :true});
+  const user= await await db.user.findAll({where: {
+    role: {[Op.in]: ["Delivery Person","Technical Team"]}
+  },raw :true});
   console.log(user); 
   return res.render('pages/user.ejs', { user , userData: req.session && req.session.user ? req.session.user : null });
 

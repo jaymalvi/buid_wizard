@@ -61,7 +61,7 @@ module.exports = (sequelize, Sequelize) => {
         order.belongsTo(models.payment, { as: 'payment', foreignKey: 'Payment_idPayment' });
         order.belongsTo(models.delivery, { as: 'delivery', foreignKey: 'Delivery_idDelivery' });
         order.belongsTo(models.offer, { as: 'offer', foreignKey: 'Offers_idOffers' });
-        order.hasMany(models.order_has_product, { as: 'order_has_product', foreignKey: 'Builds_idBuilds' });
+        order.hasMany(models.order_has_products, { as: 'order_has_products', foreignKey: 'Builds_idBuilds' });
       };
     return order;
   };

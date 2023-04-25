@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Build Wizard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css" />
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="./plugins/sweetalert2/sweetalert2.min.css" />
+    <!-- Toastr -->
+    <link rel="stylesheet" href="./plugins/toastr/toastr.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./dist/css/adminlte.min.css" />
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <%- include('../partials/top-nav'); %> <%-
+      include('../partials/sidebar');%>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Order Details</h1>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <div class="card-body">
+          <!-- Main content -->
+          <div class="invoice p-3 mb-3">
+            <!-- title row -->
+            <div class="row">
+              <div class="col-12">
+                <h4>
+                  <i class="fas fa-globe"></i> Build Wizard
+                  <small class="float-right">Date: <%= order.Date%></small>
+                </h4>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+              <div class="col-sm-4 invoice-col">
+                From
+                <address>
+                  <strong>Build Wizard</strong><br />
+                  313, Karma Complex, Mahalaxmi Char Rasta,<br />
+                  Paldi, Near Suvidha Shopping Centre.<br />
+                  Phone: 9727220798<br />
+                  Email: jay@gmail.com
+                </address>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-4 invoice-col">
+                To
+                <address>
+                  <strong
+                    ><%= order['user.fname'] +" "+ order['user.lname']%></strong
+                  ><br />
+                  <%= order['user.address']%><br />
+                  Phone: <%= order['user.phone_no']%><br />
+                  Email: <%= order['user.email']%>
+                </address>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-4 invoice-col">
+                <!-- <b>Invoice #007612</b><br />
+                <br /> -->
+                <b>Order ID:</b> <%= order.idOrder%><br />
+                <b>Payment Date:</b> <%= order['payment.Date']%><br />
+                <form>
+                  <b>Assign Delivery Person:</b> 
+                  <select>
+                    <% for(var i = 0; i < users.length; i = i+1) { %>
+                      <option value="<%= users[i].idUser %>"><%= users[i].fname %></option>
+                    <% } %>
+                  </select>
+
+                </form>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <!-- Table row -->
+            <div class="row">
+              <div class="col-12 table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>Item</th>
+                      <th>Name</th>
+                      <th>Form Factor</th>
+                      <th>Dimension</th>
+                      <th>Material</th>
+                      <th>No. Of Bayes</th>
+                      <th>No. Of Fans</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <%= order['order_has_products.product.cabinet.item']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cabinet.NameCabinet']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cabinet.Form_Factor']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cabinet.Dimensions']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cabinet.Material']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cabinet.NoOfBayes']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cabinet.NoOfFans']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cabinet.Pricecabinet']%>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>Item</th>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>CPU Socket</th>
+                      <th>Ram Slot</th>
+                      <th>Max Ram Cap.</th>
+                      <th>PCI Slot</th>
+                      <th>Sata Port</th>
+                      <th>USB Port</th>
+                      <th>Ethernet Port</th>
+                      <th>Wifi Module</th>
+                      <th>Bluetooth Module</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.item']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.nameMotherboard']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.description']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.cpu_socket']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.ram_slots']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.max_ram_capacity']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.pci_slots']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.sata_ports']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.usb_ports']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.ethernet_port']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.wifi_module']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.bluetooth_module']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.motherboard.priceMotherboard']%>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>Item</th>
+                      <th>Name</th>
+                      <th>Socket Type</th>
+                      <th>No. Cores</th>
+                      <th>Clock Speed</th>
+                      <th>Cache Size</th>
+                      <th>Power Consumption</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <%= order['order_has_products.product.cpu.item']%>
+                      </td>
+                      <td>
+                        <%= order['order_has_products.product.cpu.NameCPU']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cpu.socket_type']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cpu.number_of_cores']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cpu.clock_speed']%>
+                      </td>
+                      <td>
+                        <%= order['order_has_products.product.cpu.cache_size']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cpu.power_consumtionCPU']%>
+                      </td>
+                      <td>
+                        <%= order['order_has_products.product.cpu.PriceCPU']%>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>Item</th>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Memory Size</th>
+                      <th>Memory Type</th>
+                      <th>Memory Speed</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <%= order['order_has_products.product.ram.item']%>
+                      </td>
+                      <td>
+                        <%= order['order_has_products.product.ram.NameRam']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.ram.descriptionRam']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.ram.memory_sizeRam']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.ram.memory_typeRam']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.ram.memory_speed']%>
+                      </td>
+                      <td>
+                        <%= order['order_has_products.product.ram.PriceRam']%>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>Item</th>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Fan Speed</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cooling_system.item']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cooling_system.NameColling']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cooling_system.coollingType']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cooling_system.fan']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.cooling_system.PriceColling']%>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>Item</th>
+                      <th>Name</th>
+                      <th>Chipset</th>
+                      <th>Memory Type</th>
+                      <th>Memory Size</th>
+                      <th>Core Clock</th>
+                      <th>Power Consumption</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.graphic_card.item']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.graphic_card.Name']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.graphic_card.chipset']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.graphic_card.memory_typeGraphic']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.graphic_card.memory_sizeGraphic']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.graphic_card.core_clock']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.graphic_card.power_consumtionGraphic']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.graphic_card.PriceGraphic']%>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>Item</th>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Wattage</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.power_supply.item']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.power_supply.NamePower']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.power_supply.descriptionPower']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.power_supply.wattage']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.power_supply.PricePower']%>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>Item</th>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>storage Speed</th>
+                      <th>Storage Type</th>
+                      <th>Storage Size</th>
+                      <th>Read Speed</th>
+                      <th>Write Speed</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <%= order['order_has_products.product.storage.item']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.storage.NameStorage']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.storage.descriptionStorage']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.storage.storage_speed']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.storage.storage_type']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.storage.storage_size']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.storage.read_speed']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.storage.write_speed']%>
+                      </td>
+                      <td>
+                        <%=
+                        order['order_has_products.product.storage.PriceStorage']%>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+              <!-- accepted payments column -->
+              <div class="col-6">
+                <p class="lead">Payment Methods:</p>
+                <img src="../../dist/img/credit/visa.png" alt="Visa" />
+                <img
+                  src="../../dist/img/credit/mastercard.png"
+                  alt="Mastercard"
+                />
+                <img
+                  src="../../dist/img/credit/american-express.png"
+                  alt="American Express"
+                />
+                <img src="../../dist/img/credit/paypal2.png" alt="Paypal" />
+
+                <p
+                  class="text-muted well well-sm shadow-none"
+                  style="margin-top: 10px"
+                >
+                  Etsy doostang zoodles disqus groupon greplin oooj voxy
+                  zoodles, weebly ning heekya handango imeem plugg dopplr
+                  jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                </p>
+                <table class="table">
+                  <tr>
+                    <th>Offer Name:</th>
+                    <td><%= order['payment.Amount']%></td>
+                  </tr>
+                  <tr>
+                    <th>Promo Code:</th>
+                    <td><%= order['offer.offer_name']%></td>
+                  </tr>
+                  <tr>
+                    <th>Offer Percentage:</th>
+                    <td><%= order['offer.DsicountPercentage']%>%</td>
+                  </tr>
+                </table>
+              </div>
+              <!-- /.col -->
+              <div class="col-6">
+                <!-- <p class="lead">Amount Due 2/22/2014</p> -->
+
+                <div class="table-responsive">
+                  <table class="table">
+                    <tr>
+                      <th style="width: 50%">Subtotal:</th>
+                      <td><%= order['payment.Amount']%></td>
+                    </tr>
+
+                    <tr>
+                      <th>Discount:</th>
+                      <td><%= order['offer.offer_name']%></td>
+                    </tr>
+
+                    <tr>
+                      <th>Total:</th>
+                      <td></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <!-- this row will not appear when printing -->
+            <div class="row no-print">
+              <div class="col-12">
+                <a
+                  href="invoice-print.html"
+                  rel="noopener"
+                  target="_blank"
+                  class="btn btn-default"
+                  ><i class="fas fa-print"></i> Print</a
+                >
+                <button type="button" class="btn btn-success float-right">
+                  <i class="far fa-credit-card"></i> Submit Payment
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary float-right"
+                  style="margin-right: 5px"
+                >
+                  <i class="fas fa-download"></i> Generate PDF
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- /.invoice -->
+        </div>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <%- include('../partials/footer'); %>
+    </div>
+    <!-- ./wrapper -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- jQuery -->
+    <script src="./plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="./dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="./dist/js/demo.js"></script>
+  </body>
+</html>

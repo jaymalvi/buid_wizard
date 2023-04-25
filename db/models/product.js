@@ -90,9 +90,9 @@ module.exports = (sequelize, Sequelize) => {
     product.belongsTo(models.graphic_card, { as: 'graphic_card', foreignKey: 'Graphic_Card_idGraphic_Card' });
     product.belongsTo(models.power_supply, { as: 'power_supply', foreignKey: 'Power_Supply_idPower_Supply' });
     product.belongsTo(models.storage, { as: 'storage', foreignKey: 'Storage_idStorage' });
-    product.hasMany(models.order_has_product, { as: 'order_has_product', foreignKey: 'Builds_idBuilds' });
-    product.hasMany(models.order_has_product, { as: 'builds_has_ram', foreignKey: 'Builds_idBuilds' });
-    product.hasMany(models.order_has_product, { as: 'build_has_storage', foreignKey: 'Builds_idBuilds' });
+    product.hasMany(models.order_has_products, { as: 'order_has_products', foreignKey: 'Builds_idBuilds' });
+    product.hasMany(models.order_has_products, { as: 'builds_has_ram', foreignKey: 'Builds_idBuilds' });
+    product.hasMany(models.order_has_products, { as: 'build_has_storage', foreignKey: 'Builds_idBuilds' });
   };
   return product;
 };

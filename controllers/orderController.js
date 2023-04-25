@@ -21,11 +21,21 @@ exports.findAll = async function (req, res) {
         model: db.offer,
         as: "offer",
       },
+      {
+        model: db.order_has_products,
+        as: "order_has_products",
+        include: [
+          {
+            model: db.product,
+            as: "product",
+          },
+        ],
+      },
     ],
     // raw: true,
   });
-  order = order.map((i) => i.toJSON())
-  console.log(order);
+  order = order.map((i) => i.toJSON());
+  console.log(JSON.stringify(order));
   return res.render("pages/customerOrder.ejs", {
     order,
     userData: req.session && req.session.user ? req.session.user : null,
@@ -58,14 +68,79 @@ exports.update = async function (req, res) {
 };
 
 exports.findOne = async function (req, res) {
-  const offer = await db.offer.findOne({
-    where: { idOffers: req.params.id },
+  const users = await db.user.findAll({ raw: true, where: { role : 'Delivery Person' } });
+  console.log("users >>>>>>>>>>>. ", users);
+  const order = await db.order.findOne({
+    include: [
+      {
+        model: db.user,
+        as: "user"
+      },
+      {
+        model: db.payment,
+        as: "payment",
+      },
+      {
+        model: db.delivery,
+        as: "delivery",
+      },
+      {
+        model: db.offer,
+        as: "offer",
+      },
+      {
+        model: db.order_has_products,
+        as: "order_has_products",
+        include: [
+          {
+            model: db.product,
+            as: "product",
+            include: [
+              {
+                model: db.cabinet,
+                as: "cabinet",
+              },
+              {
+                model: db.motherboard,
+                as: "motherboard",
+              },
+              {
+                model: db.cpu,
+                as: "cpu",
+              },
+              {
+                model: db.ram,
+                as: "ram",
+              },
+              {
+                model: db.cooling_system,
+                as: "cooling_system",
+              },
+              {
+                model: db.graphic_card,
+                as: "graphic_card",
+              },
+              {
+                model: db.power_supply,
+                as: "power_supply",
+              },
+              {
+                model: db.storage,
+                as: "storage"
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    where: { idOrder: req.params.id },
     raw: true,
   });
-  console.log(offer);
-  return res.render("pages/addOffer.ejs", {
-    offer,
+  console.log(order);
+  return res.render("pages/orderDetails.ejs", {
+    order,
     userData: req.session && req.session.user ? req.session.user : null,
+    users
   });
 };
 

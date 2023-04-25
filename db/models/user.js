@@ -55,6 +55,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.TINYINT,
         allowNull: true,
       },
+      is_available: {
+        type: Sequelize.TINYINT,
+        allowNull: true,
+      },
       password: {
         type: Sequelize.STRING,
         allowNull: true,

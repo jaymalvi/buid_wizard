@@ -1,13 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
-    const order_has_product = sequelize.define(
-      "order_has_product",
+    const order_has_products = sequelize.define(
+      "order_has_products",
       {
-        // id: {
-        //   type: DataTypes.INTEGER,
-        //   allowNull: false,
-        //   primaryKey: true,
-        //   autoIncrement: true
-        // },
+        id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          autoIncrement: true
+        },
         Order_idOrder: {
           type: Sequelize.INTEGER,
           allowNull: false,
@@ -22,14 +22,14 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       {
-        tableName: "order_has_product",
+        tableName: "order_has_products",
         timestamps: false,
       }
     );
-    order_has_product.associate = (models) => {
+    order_has_products.associate = (models) => {
         // associations can be defined here
-        order_has_product.belongsTo(models.order, { as: 'order', foreignKey: 'Order_idOrder' });
-        order_has_product.belongsTo(models.product, { as: 'product', foreignKey: 'Builds_idBuilds' });
+        order_has_products.belongsTo(models.order, { as: 'order', foreignKey: 'Order_idOrder' });
+        order_has_products.belongsTo(models.product, { as: 'product', foreignKey: 'Builds_idBuilds' });
       };
-    return order_has_product;
+    return order_has_products;
   };
